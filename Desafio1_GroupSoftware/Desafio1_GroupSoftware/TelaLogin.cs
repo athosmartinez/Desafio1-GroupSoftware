@@ -5,7 +5,7 @@ namespace Desafio1_GroupSoftware
         public TelaLogin()
         {
             InitializeComponent();
-            this.KeyPress += TelaLogin_KeyPress; // Associa o evento KeyPress ao método TelaLogin_KeyPress
+            this.KeyPress += TelaLgiogin_KeyPress; // Associa o evento KeyPress ao método TelaLogin_KeyPress
 
         }
 
