@@ -64,7 +64,9 @@ namespace Desafio1_GroupSoftware
 
         private void button_exit_Click(object sender, EventArgs e)
         {
-           
+            var tela_login = new TelaLogin();
+            tela_login.Show();
+            this.Visible = false;
         }
 
         private void button_save_Click(object sender, EventArgs e)

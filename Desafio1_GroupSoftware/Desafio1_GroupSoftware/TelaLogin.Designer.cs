@@ -48,12 +48,12 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txt_user);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(12, 7);
+            groupBox1.Location = new Point(12, 11);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(418, 204);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Login Form";
+            groupBox1.Text = "Login";
             // 
             // checkBox_showpass
             // 
@@ -123,17 +123,18 @@
             label1.Text = "User";
             label1.Click += label1_Click;
             // 
-            // Form1
+            // TelaLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(437, 217);
+            ClientSize = new Size(442, 227);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            KeyPreview = true;
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "TelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "DESAFIO 1";
+            Text = "NOVO CADASTRAMENTO";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

@@ -215,6 +215,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 239);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "CadastramentoClientes";
             StartPosition = FormStartPosition.CenterScreen;
