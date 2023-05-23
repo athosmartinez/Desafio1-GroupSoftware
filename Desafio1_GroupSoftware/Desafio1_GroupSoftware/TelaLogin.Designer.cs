@@ -99,7 +99,7 @@
             txt_password.Size = new Size(356, 23);
             txt_password.TabIndex = 2;
             txt_password.UseSystemPasswordChar = true;
-            txt_password.TextChanged += textBox2_TextChanged;
+            txt_password.TextChanged += txt_Password_TextChanged;
             // 
             // label2
             // 

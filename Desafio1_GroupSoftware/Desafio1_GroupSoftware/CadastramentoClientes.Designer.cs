@@ -34,8 +34,6 @@
             label7 = new Label();
             button_save = new Button();
             button_exit = new Button();
-            checkbox_cnpj = new CheckBox();
-            checkbox_cpf = new CheckBox();
             txt_email = new TextBox();
             txt_endereco = new TextBox();
             txt_nome = new TextBox();
@@ -44,18 +42,21 @@
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
+            panel1 = new Panel();
+            radio_CNPJ = new RadioButton();
+            radio_CPF = new RadioButton();
             groupBox1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(panel1);
             groupBox1.Controls.Add(maskedTextBox1);
             groupBox1.Controls.Add(mask_telefone);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(button_save);
             groupBox1.Controls.Add(button_exit);
-            groupBox1.Controls.Add(checkbox_cnpj);
-            groupBox1.Controls.Add(checkbox_cpf);
             groupBox1.Controls.Add(txt_email);
             groupBox1.Controls.Add(txt_endereco);
             groupBox1.Controls.Add(txt_nome);
@@ -121,30 +122,6 @@
             button_exit.Text = "EXIT";
             button_exit.UseVisualStyleBackColor = true;
             button_exit.Click += button_exit_Click;
-            // 
-            // checkbox_cnpj
-            // 
-            checkbox_cnpj.AutoSize = true;
-            checkbox_cnpj.Location = new Point(286, 38);
-            checkbox_cnpj.Margin = new Padding(3, 2, 3, 2);
-            checkbox_cnpj.Name = "checkbox_cnpj";
-            checkbox_cnpj.Size = new Size(53, 19);
-            checkbox_cnpj.TabIndex = 2;
-            checkbox_cnpj.Text = "CNPJ";
-            checkbox_cnpj.UseVisualStyleBackColor = true;
-            checkbox_cnpj.CheckedChanged += checkbox_cnpj_CheckedChanged;
-            // 
-            // checkbox_cpf
-            // 
-            checkbox_cpf.AutoSize = true;
-            checkbox_cpf.Location = new Point(357, 38);
-            checkbox_cpf.Margin = new Padding(3, 2, 3, 2);
-            checkbox_cpf.Name = "checkbox_cpf";
-            checkbox_cpf.Size = new Size(47, 19);
-            checkbox_cpf.TabIndex = 3;
-            checkbox_cpf.Text = "CPF";
-            checkbox_cpf.UseVisualStyleBackColor = true;
-            checkbox_cpf.CheckedChanged += checkbox_cpf_CheckedChanged;
             // 
             // txt_email
             // 
@@ -220,6 +197,39 @@
             label1.TabIndex = 0;
             label1.Text = "Nome:";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(radio_CPF);
+            panel1.Controls.Add(radio_CNPJ);
+            panel1.Location = new Point(288, 32);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(111, 25);
+            panel1.TabIndex = 17;
+            // 
+            // radio_CNPJ
+            // 
+            radio_CNPJ.AutoSize = true;
+            radio_CNPJ.Location = new Point(3, 3);
+            radio_CNPJ.Name = "radio_CNPJ";
+            radio_CNPJ.Size = new Size(52, 19);
+            radio_CNPJ.TabIndex = 0;
+            radio_CNPJ.TabStop = true;
+            radio_CNPJ.Text = "CNPJ";
+            radio_CNPJ.UseVisualStyleBackColor = true;
+            radio_CNPJ.CheckedChanged += radio_CNPJ_CheckedChanged;
+            // 
+            // radio_CPF
+            // 
+            radio_CPF.AutoSize = true;
+            radio_CPF.Location = new Point(61, 3);
+            radio_CPF.Name = "radio_CPF";
+            radio_CPF.Size = new Size(46, 19);
+            radio_CPF.TabIndex = 1;
+            radio_CPF.TabStop = true;
+            radio_CPF.Text = "CPF";
+            radio_CPF.UseVisualStyleBackColor = true;
+            radio_CPF.CheckedChanged += radio_CPF_CheckedChanged;
+            // 
             // CadastramentoClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -234,6 +244,8 @@
             Text = "Cadastramento Clientes";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -245,8 +257,6 @@
         private Label label4;
         private Label label2;
         private Label label1;
-        private CheckBox checkbox_cnpj;
-        private CheckBox checkbox_cpf;
         private TextBox txt_email;
         private TextBox txt_endereco;
         private TextBox txt_nome;
@@ -256,5 +266,8 @@
         private Label label7;
         private MaskedTextBox mask_telefone;
         private MaskedTextBox maskedTextBox1;
+        private Panel panel1;
+        private RadioButton radio_CPF;
+        private RadioButton radio_CNPJ;
     }
 }
