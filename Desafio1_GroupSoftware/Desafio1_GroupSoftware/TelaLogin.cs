@@ -40,13 +40,6 @@ namespace Desafio1_GroupSoftware
             {
                 if (txt_User.Text.Equals("group") && txt_Password.Text.Equals("admin"))
                 {
-
-                    /*var cadastramento_clientes = new CadastramentoClientes();
-                    cadastramento_clientes.Show();
-                    frmPrincipal frmPrincipal = new frmPrincipal();
-                    frmPrincipal.Show();
-                    this.Close();
-                    //this.Visible = false;*/
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

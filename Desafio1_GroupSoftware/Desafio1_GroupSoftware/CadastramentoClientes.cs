@@ -55,8 +55,7 @@ namespace Desafio1_GroupSoftware
         private void button_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
-            var tela_login = new TelaLogin();
-            tela_login.ShowDialog();
+           
         }
 
         private void button_Save_Click(object sender, EventArgs e)
@@ -130,9 +129,7 @@ namespace Desafio1_GroupSoftware
         private bool ValidarDadosTela()
         {
             bool valid = false;
-
             valid = Util.ValidarCNPJ(maskText_Documento.Text);
-
             return valid;
         }
     }

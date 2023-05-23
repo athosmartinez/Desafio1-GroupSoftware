@@ -31,7 +31,11 @@ namespace Desafio1_GroupSoftware
 
         private void button_Sair_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            frmPrincipal frmPrincipal = new frmPrincipal();
+            frmPrincipal.Close();
+            TelaLogin telaLogin = new TelaLogin();
+            telaLogin.ShowDialog();
+
         }
     }
 }

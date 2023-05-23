@@ -48,7 +48,7 @@
             groupBox_Login.Controls.Add(label_Password);
             groupBox_Login.Controls.Add(txt_User);
             groupBox_Login.Controls.Add(label_User);
-            groupBox_Login.Location = new Point(11, 11);
+            groupBox_Login.Location = new Point(11, 10);
             groupBox_Login.Name = "groupBox_Login";
             groupBox_Login.Size = new Size(418, 204);
             groupBox_Login.TabIndex = 0;
@@ -134,7 +134,7 @@
             MaximizeBox = false;
             Name = "TelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "NOVO CADASTRAMENTO";
+            Text = "Login";
             groupBox_Login.ResumeLayout(false);
             groupBox_Login.PerformLayout();
             ResumeLayout(false);
