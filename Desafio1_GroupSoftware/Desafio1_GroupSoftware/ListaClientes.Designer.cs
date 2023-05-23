@@ -38,6 +38,7 @@
             ClientSize = new Size(800, 450);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ListaClientes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Clientes";
             ResumeLayout(false);
         }

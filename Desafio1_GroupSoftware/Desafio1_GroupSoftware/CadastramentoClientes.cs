@@ -61,10 +61,20 @@ namespace Desafio1_GroupSoftware
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            if (ValidarDadosTela())
-            {
 
+            if (!radio_CNPJ.Checked || !radio_CNPJ.Checked)
+            {
+                MessageBox.Show("SELECIONE O TIPO DE DOCUMENTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                
+            }else if (ValidarDadosTela() == false)
+            {
+                MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (ValidarDadosTela() == true)
+            {
+                MessageBox.Show("OK");
+            }
+
         }
 
         private void label_Doc_Click(object sender, EventArgs e)
@@ -82,23 +92,24 @@ namespace Desafio1_GroupSoftware
             maskText_Documento.Select(0, 0);
         }
 
-        private bool ValidarDadosTela()
-        {
-            bool valid = false;
-
-            valid = Util.ValidarCNPJ(maskText_Documento.Text);
-
-            return valid;
-        }
 
         private void radio_CNPJ_CheckedChanged(object sender, EventArgs e)
         {
             MudouCNPJCPF();
         }
 
-        private void MudouCNPJCPF()
+
+        private void radio_CPF_CheckedChanged(object sender, EventArgs e)
+        {
+            MudouCNPJCPF();
+        }
+
+        private void groupBox_Form_Enter(object sender, EventArgs e)
         {
 
+        }
+        private void MudouCNPJCPF()
+        {
             if (radio_CNPJ.Checked)
             {
                 label_Doc.Text = "CPNJ: ";
@@ -116,15 +127,13 @@ namespace Desafio1_GroupSoftware
                 maskText_Documento.Text = "";
             }
         }
-
-        private void radio_CPF_CheckedChanged(object sender, EventArgs e)
+        private bool ValidarDadosTela()
         {
-            MudouCNPJCPF();
-        }
+            bool valid = false;
 
-        private void groupBox_Form_Enter(object sender, EventArgs e)
-        {
+            valid = Util.ValidarCNPJ(maskText_Documento.Text);
 
+            return valid;
         }
     }
 }
