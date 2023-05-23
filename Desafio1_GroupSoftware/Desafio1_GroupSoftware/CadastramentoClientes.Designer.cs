@@ -38,7 +38,7 @@
             button_save = new Button();
             button_exit = new Button();
             txt_email = new TextBox();
-            txt_endereco = new TextBox();
+            txt_Endereco = new TextBox();
             txt_nome = new TextBox();
             label6 = new Label();
             label5 = new Label();
@@ -58,7 +58,7 @@
             groupBox1.Controls.Add(button_save);
             groupBox1.Controls.Add(button_exit);
             groupBox1.Controls.Add(txt_email);
-            groupBox1.Controls.Add(txt_endereco);
+            groupBox1.Controls.Add(txt_Endereco);
             groupBox1.Controls.Add(txt_nome);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
@@ -126,7 +126,7 @@
             mask_telefone.Name = "mask_telefone";
             mask_telefone.Size = new Size(310, 27);
             mask_telefone.TabIndex = 7;
-            mask_telefone.MaskInputRejected += maskText_telefone_MaskInputRejected;
+            mask_telefone.MaskInputRejected += maskText_Telefone_MaskInputRejected;
             // 
             // label_Doc
             // 
@@ -146,7 +146,7 @@
             button_save.TabIndex = 8;
             button_save.Text = "SAVE";
             button_save.UseVisualStyleBackColor = true;
-            button_save.Click += button_save_Click;
+            button_save.Click += button_Save_Click;
             // 
             // button_exit
             // 
@@ -156,7 +156,7 @@
             button_exit.TabIndex = 9;
             button_exit.Text = "EXIT";
             button_exit.UseVisualStyleBackColor = true;
-            button_exit.Click += button_exit_Click;
+            button_exit.Click += button_Exit_Click;
             // 
             // txt_email
             // 
@@ -164,15 +164,15 @@
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(310, 27);
             txt_email.TabIndex = 5;
-            txt_email.TextChanged += txt_email_TextChanged;
+            txt_email.TextChanged += txt_Email_TextChanged;
             // 
-            // txt_endereco
+            // txt_Endereco
             // 
-            txt_endereco.Location = new Point(15, 99);
-            txt_endereco.Name = "txt_endereco";
-            txt_endereco.Size = new Size(292, 27);
-            txt_endereco.TabIndex = 4;
-            txt_endereco.TextChanged += txt_endereco_TextChanged;
+            txt_Endereco.Location = new Point(15, 99);
+            txt_Endereco.Name = "txt_Endereco";
+            txt_Endereco.Size = new Size(292, 27);
+            txt_Endereco.TabIndex = 4;
+            txt_Endereco.TextChanged += txt_Endereco_TextChanged;
             // 
             // txt_nome
             // 
@@ -180,7 +180,7 @@
             txt_nome.Name = "txt_nome";
             txt_nome.Size = new Size(292, 27);
             txt_nome.TabIndex = 1;
-            txt_nome.TextChanged += txt_nome_TextChanged;
+            txt_nome.TextChanged += txt_Nome_TextChanged;
             // 
             // label6
             // 
@@ -256,7 +256,7 @@
         private Label label_Endereco;
         private Label label_Nome;
         private TextBox txt_email;
-        private TextBox txt_endereco;
+        private TextBox txt_Endereco;
         private TextBox txt_nome;
         private Button button_save;
         private Button button_exit;

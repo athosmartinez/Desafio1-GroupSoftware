@@ -38,7 +38,7 @@ namespace Desafio1_GroupSoftware
         {
             try
             {
-                if (txt_user.Text.Equals("group") && txt_password.Text.Equals("admin"))
+                if (txt_User.Text.Equals("group") && txt_Password.Text.Equals("admin"))
                 {
 
                     /*var cadastramento_clientes = new CadastramentoClientes();
@@ -53,8 +53,8 @@ namespace Desafio1_GroupSoftware
                 else
                 {
                     MessageBox.Show("Wrong Password", "Failed Acess", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txt_user.Focus();
-                    txt_password.Text = "";
+                    txt_User.Focus();
+                    txt_Password.Text = "";
                 }
             }
             catch (Exception ex)
@@ -67,19 +67,19 @@ namespace Desafio1_GroupSoftware
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true; // Indica que o evento de tecla foi tratado para evitar que o caractere Enter seja inserido em controles de texto
-                button_enter.PerformClick(); // Chame o método PerformClick do botão para executar a mesma função
+                button_Enter.PerformClick(); // Chame o método PerformClick do botão para executar a mesma função
             }
         }
 
         private void checkBox_Showpass_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_showpass.Checked)
+            if (checkBox_Showpass.Checked)
             {
-                txt_password.UseSystemPasswordChar = false;
+                txt_Password.UseSystemPasswordChar = false;
             }
             else
             {
-                txt_password.UseSystemPasswordChar = true;
+                txt_Password.UseSystemPasswordChar = true;
             }
         }
     }

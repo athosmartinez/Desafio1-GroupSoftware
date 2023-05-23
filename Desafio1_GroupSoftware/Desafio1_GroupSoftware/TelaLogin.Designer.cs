@@ -28,72 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            checkBox_showpass = new CheckBox();
-            button_enter = new Button();
-            button_cancel = new Button();
-            txt_password = new TextBox();
+            groupBox_Login = new GroupBox();
+            checkBox_Showpass = new CheckBox();
+            button_Enter = new Button();
+            button_Cancel = new Button();
+            txt_Password = new TextBox();
             label_Password = new Label();
-            txt_user = new TextBox();
+            txt_User = new TextBox();
             label_User = new Label();
-            groupBox1.SuspendLayout();
+            groupBox_Login.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // groupBox_Login
             // 
-            groupBox1.Controls.Add(checkBox_showpass);
-            groupBox1.Controls.Add(button_enter);
-            groupBox1.Controls.Add(button_cancel);
-            groupBox1.Controls.Add(txt_password);
-            groupBox1.Controls.Add(label_Password);
-            groupBox1.Controls.Add(txt_user);
-            groupBox1.Controls.Add(label_User);
-            groupBox1.Location = new Point(11, 11);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(418, 204);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Login";
+            groupBox_Login.Controls.Add(checkBox_Showpass);
+            groupBox_Login.Controls.Add(button_Enter);
+            groupBox_Login.Controls.Add(button_Cancel);
+            groupBox_Login.Controls.Add(txt_Password);
+            groupBox_Login.Controls.Add(label_Password);
+            groupBox_Login.Controls.Add(txt_User);
+            groupBox_Login.Controls.Add(label_User);
+            groupBox_Login.Location = new Point(11, 11);
+            groupBox_Login.Name = "groupBox_Login";
+            groupBox_Login.Size = new Size(418, 204);
+            groupBox_Login.TabIndex = 0;
+            groupBox_Login.TabStop = false;
+            groupBox_Login.Text = "Login";
             // 
-            // checkBox_showpass
+            // checkBox_Showpass
             // 
-            checkBox_showpass.AutoSize = true;
-            checkBox_showpass.Location = new Point(289, 135);
-            checkBox_showpass.Name = "checkBox_showpass";
-            checkBox_showpass.Size = new Size(132, 24);
-            checkBox_showpass.TabIndex = 3;
-            checkBox_showpass.Text = "Show Password";
-            checkBox_showpass.UseVisualStyleBackColor = true;
-            checkBox_showpass.CheckedChanged += checkBox_Showpass_CheckedChanged;
+            checkBox_Showpass.AutoSize = true;
+            checkBox_Showpass.Location = new Point(289, 135);
+            checkBox_Showpass.Name = "checkBox_Showpass";
+            checkBox_Showpass.Size = new Size(132, 24);
+            checkBox_Showpass.TabIndex = 3;
+            checkBox_Showpass.Text = "Show Password";
+            checkBox_Showpass.UseVisualStyleBackColor = true;
+            checkBox_Showpass.CheckedChanged += checkBox_Showpass_CheckedChanged;
             // 
-            // button_enter
+            // button_Enter
             // 
-            button_enter.Location = new Point(318, 163);
-            button_enter.Name = "button_enter";
-            button_enter.Size = new Size(94, 29);
-            button_enter.TabIndex = 3;
-            button_enter.Text = "ENTER";
-            button_enter.UseVisualStyleBackColor = true;
-            button_enter.Click += button_Enter_Click;
+            button_Enter.Location = new Point(318, 163);
+            button_Enter.Name = "button_Enter";
+            button_Enter.Size = new Size(94, 29);
+            button_Enter.TabIndex = 3;
+            button_Enter.Text = "ENTER";
+            button_Enter.UseVisualStyleBackColor = true;
+            button_Enter.Click += button_Enter_Click;
             // 
-            // button_cancel
+            // button_Cancel
             // 
-            button_cancel.Location = new Point(218, 163);
-            button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(94, 29);
-            button_cancel.TabIndex = 5;
-            button_cancel.Text = "CANCEL";
-            button_cancel.UseVisualStyleBackColor = true;
-            button_cancel.Click += button_Cancel_Click;
+            button_Cancel.Location = new Point(218, 163);
+            button_Cancel.Name = "button_Cancel";
+            button_Cancel.Size = new Size(94, 29);
+            button_Cancel.TabIndex = 5;
+            button_Cancel.Text = "CANCEL";
+            button_Cancel.UseVisualStyleBackColor = true;
+            button_Cancel.Click += button_Cancel_Click;
             // 
-            // txt_password
+            // txt_Password
             // 
-            txt_password.Location = new Point(6, 99);
-            txt_password.Name = "txt_password";
-            txt_password.Size = new Size(406, 27);
-            txt_password.TabIndex = 2;
-            txt_password.UseSystemPasswordChar = true;
-            txt_password.TextChanged += txt_Password_TextChanged;
+            txt_Password.Location = new Point(6, 99);
+            txt_Password.Name = "txt_Password";
+            txt_Password.Size = new Size(406, 27);
+            txt_Password.TabIndex = 2;
+            txt_Password.UseSystemPasswordChar = true;
+            txt_Password.TextChanged += txt_Password_TextChanged;
             // 
             // label_Password
             // 
@@ -105,13 +105,13 @@
             label_Password.Text = "Password";
             label_Password.Click += label_Password_Click;
             // 
-            // txt_user
+            // txt_User
             // 
-            txt_user.Location = new Point(6, 45);
-            txt_user.Name = "txt_user";
-            txt_user.Size = new Size(406, 27);
-            txt_user.TabIndex = 1;
-            txt_user.TextChanged += txt_User_TextChanged;
+            txt_User.Location = new Point(6, 45);
+            txt_User.Name = "txt_User";
+            txt_User.Size = new Size(406, 27);
+            txt_User.TabIndex = 1;
+            txt_User.TextChanged += txt_User_TextChanged;
             // 
             // label_User
             // 
@@ -128,27 +128,27 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(442, 227);
-            Controls.Add(groupBox1);
+            Controls.Add(groupBox_Login);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             KeyPreview = true;
             MaximizeBox = false;
             Name = "TelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "NOVO CADASTRAMENTO";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBox_Login.ResumeLayout(false);
+            groupBox_Login.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
+        private GroupBox groupBox_Login;
         private Label label_User;
-        private TextBox txt_user;
+        private TextBox txt_User;
         private Label label_Password;
-        private TextBox txt_password;
-        private Button button_enter;
-        private Button button_cancel;
-        private CheckBox checkBox_showpass;
+        private TextBox txt_Password;
+        private Button button_Enter;
+        private Button button_Cancel;
+        private CheckBox checkBox_Showpass;
     }
 }

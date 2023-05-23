@@ -17,19 +17,19 @@ namespace Desafio1_GroupSoftware
             InitializeComponent();
         }
 
-        private void button_cadastramento_Click(object sender, EventArgs e)
+        private void button_Cadastramento_Click(object sender, EventArgs e)
         {
             CadastramentoClientes cad = new CadastramentoClientes();
             cad.Show();
         }
 
-        private void button_lista_Click(object sender, EventArgs e)
+        private void button_Lista_Click(object sender, EventArgs e)
         {
             CadastramentoClientes cad = new CadastramentoClientes();
             cad.ShowDialog();
         }
 
-        private void button_sair_Click(object sender, EventArgs e)
+        private void button_Sair_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

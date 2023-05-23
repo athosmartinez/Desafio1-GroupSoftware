@@ -11,7 +11,6 @@ namespace Desafio1_GroupSoftware
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //Application.Run(new TelaLogin());
             TelaLogin login = new TelaLogin();
             if (login.ShowDialog() == DialogResult.OK)
                 Application.Run(new frmPrincipal());

@@ -27,48 +27,39 @@ namespace Desafio1_GroupSoftware
 
         }
 
-        private void checkbox_cpf_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txt_nome_TextChanged(object sender, EventArgs e)
+        private void txt_Nome_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void txt_endereco_TextChanged(object sender, EventArgs e)
+        private void txt_Endereco_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void txt_documento_TextChanged(object sender, EventArgs e)
+        private void txt_Documento_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void txt_email_TextChanged(object sender, EventArgs e)
+        private void txt_Email_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void txt_telefone_TextChanged(object sender, EventArgs e)
+        private void txt_Telefone_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void checkbox_cnpj_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_exit_Click(object sender, EventArgs e)
+        private void button_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
             var tela_login = new TelaLogin();
             tela_login.ShowDialog();
         }
 
-        private void button_save_Click(object sender, EventArgs e)
+        private void button_Save_Click(object sender, EventArgs e)
         {
             if (ValidarDadosTela())
             {
@@ -81,7 +72,7 @@ namespace Desafio1_GroupSoftware
 
         }
 
-        private void maskText_telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void maskText_Telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             mask_telefone.Select(0, 0);
         }
