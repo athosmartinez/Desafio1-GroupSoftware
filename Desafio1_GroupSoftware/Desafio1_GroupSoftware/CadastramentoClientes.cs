@@ -17,12 +17,12 @@ namespace Desafio1_GroupSoftware
             InitializeComponent();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void label_Tipo_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void label_Endereco_Click(object sender, EventArgs e)
         {
 
         }
@@ -76,26 +76,26 @@ namespace Desafio1_GroupSoftware
             }
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void label_Doc_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void mask_telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void maskText_telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             mask_telefone.Select(0, 0);
         }
 
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void maskText_Documento_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            maskedTextBox1.Select(0, 0);
+            maskText_Documento.Select(0, 0);
         }
 
         private bool ValidarDadosTela()
         {
             bool valid = false;
 
-            valid = Util.ValidarCNPJ(maskedTextBox1.Text);
+            valid = Util.ValidarCNPJ(maskText_Documento.Text);
 
             return valid;
         }
@@ -110,25 +110,30 @@ namespace Desafio1_GroupSoftware
 
             if (radio_CNPJ.Checked)
             {
-                label7.Text = "CPNJ: ";
-                maskedTextBox1.Mask = "00,000,000/0000-00";
+                label_Doc.Text = "CPNJ: ";
+                maskText_Documento.Mask = "00,000,000/0000-00";
             }
             else if (radio_CPF.Checked)
             {
-                label7.Text = "CPF: ";
-                maskedTextBox1.Mask = "000,000,000-00";
+                label_Doc.Text = "CPF: ";
+                maskText_Documento.Mask = "000,000,000-00";
             }
             else
             {
-                label7.Text = "Documento: ";
-                maskedTextBox1.Mask = "";
-                maskedTextBox1.Text = "";
+                label_Doc.Text = "Documento: ";
+                maskText_Documento.Mask = "";
+                maskText_Documento.Text = "";
             }
         }
 
         private void radio_CPF_CheckedChanged(object sender, EventArgs e)
         {
             MudouCNPJCPF();
+        }
+
+        private void groupBox_Form_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

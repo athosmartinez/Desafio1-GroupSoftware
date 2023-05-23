@@ -17,7 +17,6 @@ namespace Desafio1_GroupSoftware
             string digito;
             string tempCnpj;
             cnpj = SomenteNumeros(cnpj.Trim());
-            //cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
             if (cnpj.Length != 14)
                 return false;
             tempCnpj = cnpj.Substring(0, 12);
@@ -42,8 +41,6 @@ namespace Desafio1_GroupSoftware
             digito = digito + resto.ToString();
             return cnpj.EndsWith(digito);
         }
-
-
         public static string SomenteNumeros(this string s)
         {
             return String.Join("", System.Text.RegularExpressions.Regex.Split(s, @"[^\d]"));

@@ -9,17 +9,17 @@ namespace Desafio1_GroupSoftware
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label_User_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txt_User_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void label_Password_Click(object sender, EventArgs e)
         {
 
         }
@@ -29,12 +29,12 @@ namespace Desafio1_GroupSoftware
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_Cancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_Enter_Click(object sender, EventArgs e)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Desafio1_GroupSoftware
             }
         }
 
-        private void checkBox_showpass_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_Showpass_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_showpass.Checked)
             {
