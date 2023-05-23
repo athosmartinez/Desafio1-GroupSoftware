@@ -65,7 +65,7 @@ namespace Desafio1_GroupSoftware
         {
             this.Close();
             var tela_login = new TelaLogin();
-            tela_login.Show();
+            tela_login.ShowDialog();
         }
 
         private void button_save_Click(object sender, EventArgs e)

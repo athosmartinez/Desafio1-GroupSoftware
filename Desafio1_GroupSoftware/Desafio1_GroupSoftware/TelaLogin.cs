@@ -71,8 +71,6 @@ namespace Desafio1_GroupSoftware
             }
         }
 
-
-
         private void checkBox_showpass_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_showpass.Checked)
