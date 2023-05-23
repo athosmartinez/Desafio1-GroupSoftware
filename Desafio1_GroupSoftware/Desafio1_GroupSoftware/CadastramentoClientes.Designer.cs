@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            maskedTextBox1 = new MaskedTextBox();
             mask_telefone = new MaskedTextBox();
             label7 = new Label();
             button_save = new Button();
             button_exit = new Button();
             checkbox_cnpj = new CheckBox();
             checkbox_cpf = new CheckBox();
-            txt_documento = new TextBox();
             txt_email = new TextBox();
             txt_endereco = new TextBox();
             txt_nome = new TextBox();
@@ -49,13 +49,13 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(maskedTextBox1);
             groupBox1.Controls.Add(mask_telefone);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(button_save);
             groupBox1.Controls.Add(button_exit);
             groupBox1.Controls.Add(checkbox_cnpj);
             groupBox1.Controls.Add(checkbox_cpf);
-            groupBox1.Controls.Add(txt_documento);
             groupBox1.Controls.Add(txt_email);
             groupBox1.Controls.Add(txt_endereco);
             groupBox1.Controls.Add(txt_nome);
@@ -73,9 +73,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Preencha os campos";
             // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Location = new Point(13, 115);
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(256, 23);
+            maskedTextBox1.TabIndex = 6;
+            maskedTextBox1.MaskInputRejected += maskedTextBox1_MaskInputRejected;
+            // 
             // mask_telefone
             // 
-            mask_telefone.Location = new Point(285, 117);
+            mask_telefone.Location = new Point(285, 115);
             mask_telefone.Mask = "(99) 00000-0000";
             mask_telefone.Name = "mask_telefone";
             mask_telefone.Size = new Size(272, 23);
@@ -138,15 +146,6 @@
             checkbox_cpf.UseVisualStyleBackColor = true;
             checkbox_cpf.CheckedChanged += checkbox_cpf_CheckedChanged;
             // 
-            // txt_documento
-            // 
-            txt_documento.Location = new Point(13, 116);
-            txt_documento.Margin = new Padding(3, 2, 3, 2);
-            txt_documento.Name = "txt_documento";
-            txt_documento.Size = new Size(256, 23);
-            txt_documento.TabIndex = 6;
-            txt_documento.TextChanged += txt_documento_TextChanged;
-            // 
             // txt_email
             // 
             txt_email.Location = new Point(285, 74);
@@ -170,7 +169,7 @@
             txt_nome.Location = new Point(13, 34);
             txt_nome.Margin = new Padding(3, 2, 3, 2);
             txt_nome.Name = "txt_nome";
-            txt_nome.Size = new Size(259, 23);
+            txt_nome.Size = new Size(256, 23);
             txt_nome.TabIndex = 1;
             txt_nome.TextChanged += txt_nome_TextChanged;
             // 
@@ -248,7 +247,6 @@
         private Label label1;
         private CheckBox checkbox_cnpj;
         private CheckBox checkbox_cpf;
-        private TextBox txt_documento;
         private TextBox txt_email;
         private TextBox txt_endereco;
         private TextBox txt_nome;
@@ -257,5 +255,6 @@
         private RadioButton radioButton1;
         private Label label7;
         private MaskedTextBox mask_telefone;
+        private MaskedTextBox maskedTextBox1;
     }
 }

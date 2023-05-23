@@ -32,13 +32,17 @@ namespace Desafio1_GroupSoftware
             if (checkbox_cpf.Checked)
             {
                 checkbox_cnpj.Checked = false;
-
+       
                 label7.Text = "CPF: ";
+                maskedTextBox1.Mask = "000,000,000-00";
 
             }
             else if (!checkbox_cnpj.Checked || !checkbox_cpf.Checked)
             {
                 label7.Text = "Documento: ";
+                maskedTextBox1.Mask = "";
+                maskedTextBox1.Text = "";
+
             }
         }
 
@@ -74,10 +78,13 @@ namespace Desafio1_GroupSoftware
                 checkbox_cpf.Checked = false;
 
                 label7.Text = "CPNJ: ";
+                maskedTextBox1.Mask = "00,000,000/0000-00";
             }
             else if (!checkbox_cnpj.Checked || !checkbox_cpf.Checked)
             {
                 label7.Text = "Documento: ";
+                maskedTextBox1.Mask = "";
+                maskedTextBox1.Text = "";
             }
         }
 
@@ -100,7 +107,12 @@ namespace Desafio1_GroupSoftware
 
         private void mask_telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
+            mask_telefone.Select(0, 0);
+        }
 
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            maskedTextBox1.Select(0, 0);
         }
     }
 }
