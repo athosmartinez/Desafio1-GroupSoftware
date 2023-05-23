@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            mask_telefone = new MaskedTextBox();
             label7 = new Label();
             button_save = new Button();
             button_exit = new Button();
             checkbox_cnpj = new CheckBox();
             checkbox_cpf = new CheckBox();
-            txt_telefone = new TextBox();
             txt_documento = new TextBox();
             txt_email = new TextBox();
             txt_endereco = new TextBox();
@@ -49,12 +49,12 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(mask_telefone);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(button_save);
             groupBox1.Controls.Add(button_exit);
             groupBox1.Controls.Add(checkbox_cnpj);
             groupBox1.Controls.Add(checkbox_cpf);
-            groupBox1.Controls.Add(txt_telefone);
             groupBox1.Controls.Add(txt_documento);
             groupBox1.Controls.Add(txt_email);
             groupBox1.Controls.Add(txt_endereco);
@@ -73,6 +73,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Preencha os campos";
             // 
+            // mask_telefone
+            // 
+            mask_telefone.Location = new Point(285, 117);
+            mask_telefone.Mask = "(99) 00000-0000";
+            mask_telefone.Name = "mask_telefone";
+            mask_telefone.Size = new Size(272, 23);
+            mask_telefone.TabIndex = 7;
+            mask_telefone.MaskInputRejected += mask_telefone_MaskInputRejected;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -89,7 +98,7 @@
             button_save.Margin = new Padding(3, 2, 3, 2);
             button_save.Name = "button_save";
             button_save.Size = new Size(82, 22);
-            button_save.TabIndex = 15;
+            button_save.TabIndex = 8;
             button_save.Text = "SAVE";
             button_save.UseVisualStyleBackColor = true;
             button_save.Click += button_save_Click;
@@ -100,7 +109,7 @@
             button_exit.Margin = new Padding(3, 2, 3, 2);
             button_exit.Name = "button_exit";
             button_exit.Size = new Size(82, 22);
-            button_exit.TabIndex = 14;
+            button_exit.TabIndex = 9;
             button_exit.Text = "EXIT";
             button_exit.UseVisualStyleBackColor = true;
             button_exit.Click += button_exit_Click;
@@ -112,7 +121,7 @@
             checkbox_cnpj.Margin = new Padding(3, 2, 3, 2);
             checkbox_cnpj.Name = "checkbox_cnpj";
             checkbox_cnpj.Size = new Size(53, 19);
-            checkbox_cnpj.TabIndex = 13;
+            checkbox_cnpj.TabIndex = 2;
             checkbox_cnpj.Text = "CNPJ";
             checkbox_cnpj.UseVisualStyleBackColor = true;
             checkbox_cnpj.CheckedChanged += checkbox_cnpj_CheckedChanged;
@@ -124,19 +133,10 @@
             checkbox_cpf.Margin = new Padding(3, 2, 3, 2);
             checkbox_cpf.Name = "checkbox_cpf";
             checkbox_cpf.Size = new Size(47, 19);
-            checkbox_cpf.TabIndex = 12;
+            checkbox_cpf.TabIndex = 3;
             checkbox_cpf.Text = "CPF";
             checkbox_cpf.UseVisualStyleBackColor = true;
             checkbox_cpf.CheckedChanged += checkbox_cpf_CheckedChanged;
-            // 
-            // txt_telefone
-            // 
-            txt_telefone.Location = new Point(286, 116);
-            txt_telefone.Margin = new Padding(3, 2, 3, 2);
-            txt_telefone.Name = "txt_telefone";
-            txt_telefone.Size = new Size(272, 23);
-            txt_telefone.TabIndex = 11;
-            txt_telefone.TextChanged += txt_telefone_TextChanged;
             // 
             // txt_documento
             // 
@@ -144,7 +144,7 @@
             txt_documento.Margin = new Padding(3, 2, 3, 2);
             txt_documento.Name = "txt_documento";
             txt_documento.Size = new Size(256, 23);
-            txt_documento.TabIndex = 10;
+            txt_documento.TabIndex = 6;
             txt_documento.TextChanged += txt_documento_TextChanged;
             // 
             // txt_email
@@ -153,7 +153,7 @@
             txt_email.Margin = new Padding(3, 2, 3, 2);
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(272, 23);
-            txt_email.TabIndex = 9;
+            txt_email.TabIndex = 5;
             txt_email.TextChanged += txt_email_TextChanged;
             // 
             // txt_endereco
@@ -162,7 +162,7 @@
             txt_endereco.Margin = new Padding(3, 2, 3, 2);
             txt_endereco.Name = "txt_endereco";
             txt_endereco.Size = new Size(256, 23);
-            txt_endereco.TabIndex = 8;
+            txt_endereco.TabIndex = 4;
             txt_endereco.TextChanged += txt_endereco_TextChanged;
             // 
             // txt_nome
@@ -171,7 +171,7 @@
             txt_nome.Margin = new Padding(3, 2, 3, 2);
             txt_nome.Name = "txt_nome";
             txt_nome.Size = new Size(259, 23);
-            txt_nome.TabIndex = 6;
+            txt_nome.TabIndex = 1;
             txt_nome.TextChanged += txt_nome_TextChanged;
             // 
             // label6
@@ -248,7 +248,6 @@
         private Label label1;
         private CheckBox checkbox_cnpj;
         private CheckBox checkbox_cpf;
-        private TextBox txt_telefone;
         private TextBox txt_documento;
         private TextBox txt_email;
         private TextBox txt_endereco;
@@ -257,5 +256,6 @@
         private Button button_exit;
         private RadioButton radioButton1;
         private Label label7;
+        private MaskedTextBox mask_telefone;
     }
 }

@@ -97,5 +97,10 @@ namespace Desafio1_GroupSoftware
         {
 
         }
+
+        private void mask_telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

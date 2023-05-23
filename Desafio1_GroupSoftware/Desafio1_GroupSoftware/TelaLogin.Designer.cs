@@ -64,7 +64,7 @@
             checkBox_showpass.Margin = new Padding(3, 2, 3, 2);
             checkBox_showpass.Name = "checkBox_showpass";
             checkBox_showpass.Size = new Size(108, 19);
-            checkBox_showpass.TabIndex = 6;
+            checkBox_showpass.TabIndex = 3;
             checkBox_showpass.Text = "Show Password";
             checkBox_showpass.UseVisualStyleBackColor = true;
             checkBox_showpass.CheckedChanged += checkBox_showpass_CheckedChanged;
@@ -75,7 +75,7 @@
             button_enter.Margin = new Padding(3, 2, 3, 2);
             button_enter.Name = "button_enter";
             button_enter.Size = new Size(82, 22);
-            button_enter.TabIndex = 5;
+            button_enter.TabIndex = 3;
             button_enter.Text = "ENTER";
             button_enter.UseVisualStyleBackColor = true;
             button_enter.Click += button2_Click;
@@ -86,7 +86,7 @@
             button_cancel.Margin = new Padding(3, 2, 3, 2);
             button_cancel.Name = "button_cancel";
             button_cancel.Size = new Size(82, 22);
-            button_cancel.TabIndex = 4;
+            button_cancel.TabIndex = 5;
             button_cancel.Text = "CANCEL";
             button_cancel.UseVisualStyleBackColor = true;
             button_cancel.Click += button1_Click;
@@ -97,7 +97,7 @@
             txt_password.Margin = new Padding(3, 2, 3, 2);
             txt_password.Name = "txt_password";
             txt_password.Size = new Size(356, 23);
-            txt_password.TabIndex = 3;
+            txt_password.TabIndex = 2;
             txt_password.UseSystemPasswordChar = true;
             txt_password.TextChanged += textBox2_TextChanged;
             // 
