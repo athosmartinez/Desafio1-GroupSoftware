@@ -4,6 +4,9 @@
     <Compile Update="CadastramentoClientes.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TelaLogin.cs">
       <SubType>Form</SubType>
     </Compile>

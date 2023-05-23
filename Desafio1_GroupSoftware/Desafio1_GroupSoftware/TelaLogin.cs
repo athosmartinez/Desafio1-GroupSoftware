@@ -24,14 +24,14 @@ namespace Desafio1_GroupSoftware
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void txt_Password_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -41,9 +41,14 @@ namespace Desafio1_GroupSoftware
                 if (txt_user.Text.Equals("group") && txt_password.Text.Equals("admin"))
                 {
 
-                    var cadastramento_clientes = new CadastramentoClientes();
+                    /*var cadastramento_clientes = new CadastramentoClientes();
                     cadastramento_clientes.Show();
-                    this.Visible = false;
+                    frmPrincipal frmPrincipal = new frmPrincipal();
+                    frmPrincipal.Show();
+                    this.Close();
+                    //this.Visible = false;*/
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
@@ -65,8 +70,6 @@ namespace Desafio1_GroupSoftware
                 button_enter.PerformClick(); // Chame o método PerformClick do botão para executar a mesma função
             }
         }
-
-
 
         private void checkBox_showpass_CheckedChanged(object sender, EventArgs e)
         {
