@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,6 +86,18 @@ namespace Desafio1_GroupSoftware
             return cpf.EndsWith(digito);
         }
 
+        public static string RemoverAcentos(string txtPesquisa)
+        {
+            string txtSemAcento = txtPesquisa.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach(char c in txtSemAcento)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    stringBuilder.Append(c);
+            }
+
+            return stringBuilder.ToString();
+        }
 
     }
 }

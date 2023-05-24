@@ -35,13 +35,13 @@
             txt_Pesquisa = new TextBox();
             button_Voltar = new Button();
             dataGrid_Clientes = new DataGridView();
-            clienteBindingSource = new BindingSource(components);
-            clienteBindingSource1 = new BindingSource(components);
             nomeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             enderecoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            clienteBindingSource = new BindingSource(components);
+            clienteBindingSource1 = new BindingSource(components);
             groupBox_Pesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
@@ -109,14 +109,6 @@
             dataGrid_Clientes.TabIndex = 3;
             dataGrid_Clientes.CellContentClick += dataGrid_Clientes_CellContentClick;
             // 
-            // clienteBindingSource
-            // 
-            clienteBindingSource.DataSource = typeof(Cliente);
-            // 
-            // clienteBindingSource1
-            // 
-            clienteBindingSource1.DataSource = typeof(Cliente);
-            // 
             // nomeDataGridViewTextBoxColumn
             // 
             nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
@@ -157,6 +149,14 @@
             telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             telefoneDataGridViewTextBoxColumn.ReadOnly = true;
             telefoneDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // clienteBindingSource
+            // 
+            clienteBindingSource.DataSource = typeof(Cliente);
+            // 
+            // clienteBindingSource1
+            // 
+            clienteBindingSource1.DataSource = typeof(Cliente);
             // 
             // ListaClientes
             // 
