@@ -55,25 +55,32 @@ namespace Desafio1_GroupSoftware
         private void button_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
-           
+
         }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
 
-            if (!radio_CNPJ.Checked || !radio_CNPJ.Checked)
+            if (!radio_CNPJ.Checked && !radio_CPF.Checked)
             {
                 MessageBox.Show("SELECIONE O TIPO DE DOCUMENTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                
-            }else if (ValidarDadosTela() == false)
+            }
+            else if (radio_CNPJ.Checked && ValidarDadoCPNJ() == false)
             {
                 MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (ValidarDadosTela() == true)
+            else if (radio_CNPJ.Checked && ValidarDadoCPNJ() == true)
+            {
+                MessageBox.Show("OK!");
+            }
+            else if (radio_CPF.Checked && ValidarDadoCPF() == false)
+            {
+                MessageBox.Show("CPF Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (radio_CPF.Checked && ValidarDadoCPF() == true)
             {
                 MessageBox.Show("OK");
             }
-
         }
 
         private void label_Doc_Click(object sender, EventArgs e)
@@ -113,11 +120,13 @@ namespace Desafio1_GroupSoftware
             {
                 label_Doc.Text = "CPNJ: ";
                 maskText_Documento.Mask = "00,000,000/0000-00";
+                maskText_Documento.Text = "";
             }
             else if (radio_CPF.Checked)
             {
                 label_Doc.Text = "CPF: ";
                 maskText_Documento.Mask = "000,000,000-00";
+                maskText_Documento.Text = "";
             }
             else
             {
@@ -126,10 +135,16 @@ namespace Desafio1_GroupSoftware
                 maskText_Documento.Text = "";
             }
         }
-        private bool ValidarDadosTela()
+        private bool ValidarDadoCPNJ()
         {
             bool valid = false;
             valid = Util.ValidarCNPJ(maskText_Documento.Text);
+            return valid;
+        }
+        private bool ValidarDadoCPF()
+        {
+            bool valid = false;
+            valid = Util.ValidarCPF(maskText_Documento.Text);
             return valid;
         }
     }

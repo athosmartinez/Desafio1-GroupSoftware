@@ -8,6 +8,10 @@ namespace Desafio1_GroupSoftware
 {
     public static class Util
     {
+        public static string SomenteNumeros(this string s)
+        {
+            return String.Join("", System.Text.RegularExpressions.Regex.Split(s, @"[^\d]"));
+        }
         public static bool ValidarCNPJ(string cnpj)
         {
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -41,7 +45,6 @@ namespace Desafio1_GroupSoftware
             digito = digito + resto.ToString();
             return cnpj.EndsWith(digito);
         }
-
         public static bool ValidarCPF(string cpf)
         {
             cpf = SomenteNumeros(cpf.Trim());
@@ -83,9 +86,5 @@ namespace Desafio1_GroupSoftware
         }
 
 
-        public static string SomenteNumeros(this string s)
-        {
-            return String.Join("", System.Text.RegularExpressions.Regex.Split(s, @"[^\d]"));
-        }
     }
 }
