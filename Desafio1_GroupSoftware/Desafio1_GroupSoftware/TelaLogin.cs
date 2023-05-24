@@ -6,7 +6,6 @@ namespace Desafio1_GroupSoftware
         {
             InitializeComponent();
             this.KeyPress += TelaLogin_KeyPress; // Associa o evento KeyPress ao método TelaLogin_KeyPress
-
         }
 
         private void label_User_Click(object sender, EventArgs e)
@@ -21,12 +20,10 @@ namespace Desafio1_GroupSoftware
 
         private void label_Password_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txt_Password_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
