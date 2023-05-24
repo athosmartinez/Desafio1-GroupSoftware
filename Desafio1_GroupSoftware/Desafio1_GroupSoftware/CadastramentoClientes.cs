@@ -1,4 +1,4 @@
-﻿using Desafio1_GroupSoftware;
+﻿using Desafio1_GroupSoftware.Funcoes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

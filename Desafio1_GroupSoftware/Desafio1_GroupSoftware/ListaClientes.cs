@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Desafio1_GroupSoftware;
 using System.Globalization;
+using Desafio1_GroupSoftware.Classes;
+using Desafio1_GroupSoftware.Funcoes;
 
 namespace Desafio1_GroupSoftware
 {
@@ -36,7 +37,7 @@ namespace Desafio1_GroupSoftware
 
                 List<Cliente> clientesFiltrados = ListClientes.clientes.Where(cliente =>
         Util.RemoverAcentos(cliente.Nome.ToLower()).Contains(termoPesquisa) ||
-        Util.RemoverAcentos(cliente.Endereco.ToLower()).Contains(termoPesquisa) ||
+        Util.RemoverAcentos(cliente.Endereço.ToLower()).Contains(termoPesquisa) ||
         Util.RemoverAcentos(cliente.Documento.ToLower()).Contains(termoPesquisa) ||
         Util.RemoverAcentos(cliente.Email.ToLower()).Contains(termoPesquisa) ||
         Util.RemoverAcentos(cliente.Telefone.ToLower()).Contains(termoPesquisa))

@@ -137,6 +137,7 @@
             // 
             // button_save
             // 
+            button_save.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button_save.Location = new Point(475, 143);
             button_save.Margin = new Padding(3, 2, 3, 2);
             button_save.Name = "button_save";
@@ -148,6 +149,7 @@
             // 
             // button_exit
             // 
+            button_exit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button_exit.Location = new Point(388, 143);
             button_exit.Margin = new Padding(3, 2, 3, 2);
             button_exit.Name = "button_exit";

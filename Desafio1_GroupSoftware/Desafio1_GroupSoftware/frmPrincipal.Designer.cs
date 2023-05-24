@@ -36,10 +36,10 @@
             // 
             // button_Cadastramento
             // 
-            button_Cadastramento.Location = new Point(14, 16);
-            button_Cadastramento.Margin = new Padding(3, 4, 3, 4);
+            button_Cadastramento.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Cadastramento.Location = new Point(12, 12);
             button_Cadastramento.Name = "button_Cadastramento";
-            button_Cadastramento.Size = new Size(135, 101);
+            button_Cadastramento.Size = new Size(118, 76);
             button_Cadastramento.TabIndex = 0;
             button_Cadastramento.Text = "Cadastramento";
             button_Cadastramento.UseVisualStyleBackColor = true;
@@ -47,10 +47,10 @@
             // 
             // button_Lista
             // 
-            button_Lista.Location = new Point(166, 16);
-            button_Lista.Margin = new Padding(3, 4, 3, 4);
+            button_Lista.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Lista.Location = new Point(145, 12);
             button_Lista.Name = "button_Lista";
-            button_Lista.Size = new Size(135, 101);
+            button_Lista.Size = new Size(118, 76);
             button_Lista.TabIndex = 1;
             button_Lista.Text = "Lista";
             button_Lista.UseVisualStyleBackColor = true;
@@ -58,10 +58,10 @@
             // 
             // button_Sair
             // 
-            button_Sair.Location = new Point(318, 16);
-            button_Sair.Margin = new Padding(3, 4, 3, 4);
+            button_Sair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Sair.Location = new Point(278, 12);
             button_Sair.Name = "button_Sair";
-            button_Sair.Size = new Size(135, 101);
+            button_Sair.Size = new Size(118, 76);
             button_Sair.TabIndex = 2;
             button_Sair.Text = "Sair";
             button_Sair.UseVisualStyleBackColor = true;
@@ -69,14 +69,13 @@
             // 
             // frmPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(467, 132);
+            ClientSize = new Size(409, 99);
             Controls.Add(button_Sair);
             Controls.Add(button_Lista);
             Controls.Add(button_Cadastramento);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             Name = "frmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;

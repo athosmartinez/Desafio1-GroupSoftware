@@ -1,4 +1,6 @@
-﻿namespace Desafio1_GroupSoftware
+﻿using Desafio1_GroupSoftware.Classes;
+
+namespace Desafio1_GroupSoftware
 {
     partial class ListaClientes
     {
@@ -63,6 +65,7 @@
             // button_Pesquisa
             // 
             button_Pesquisa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_Pesquisa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button_Pesquisa.Location = new Point(597, 21);
             button_Pesquisa.Name = "button_Pesquisa";
             button_Pesquisa.Size = new Size(75, 23);

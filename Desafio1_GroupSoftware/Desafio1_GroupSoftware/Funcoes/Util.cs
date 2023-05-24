@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desafio1_GroupSoftware
+namespace Desafio1_GroupSoftware.Funcoes
 {
     public static class Util
     {
         public static string SomenteNumeros(this string s)
         {
-            return String.Join("", System.Text.RegularExpressions.Regex.Split(s, @"[^\d]"));
+            return string.Join("", System.Text.RegularExpressions.Regex.Split(s, @"[^\d]"));
         }
         public static bool ValidarCNPJ(string cnpj)
         {
@@ -21,14 +21,14 @@ namespace Desafio1_GroupSoftware
             int resto;
             string digito;
             string tempCnpj;
-            cnpj = SomenteNumeros(cnpj.Trim());
+            cnpj = cnpj.Trim().SomenteNumeros();
             if (cnpj.Length != 14)
                 return false;
             tempCnpj = cnpj.Substring(0, 12);
             soma = 0;
             for (int i = 0; i < 12; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
-            resto = (soma % 11);
+            resto = soma % 11;
             if (resto < 2)
                 resto = 0;
             else
@@ -38,7 +38,7 @@ namespace Desafio1_GroupSoftware
             soma = 0;
             for (int i = 0; i < 13; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
-            resto = (soma % 11);
+            resto = soma % 11;
             if (resto < 2)
                 resto = 0;
             else
@@ -48,7 +48,7 @@ namespace Desafio1_GroupSoftware
         }
         public static bool ValidarCPF(string cpf)
         {
-            cpf = SomenteNumeros(cpf.Trim());
+            cpf = cpf.Trim().SomenteNumeros();
             if (cpf.Length != 11)
                 return false;
 
@@ -90,7 +90,7 @@ namespace Desafio1_GroupSoftware
         {
             string txtSemAcento = txtPesquisa.Normalize(NormalizationForm.FormD);
             StringBuilder stringBuilder = new StringBuilder();
-            foreach(char c in txtSemAcento)
+            foreach (char c in txtSemAcento)
             {
                 if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
                     stringBuilder.Append(c);
