@@ -31,6 +31,7 @@ namespace Desafio1_GroupSoftware
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaClientes));
             groupBox_Pesquisa = new GroupBox();
             button_Pesquisa = new Button();
@@ -38,7 +39,7 @@ namespace Desafio1_GroupSoftware
             button_Voltar = new Button();
             dataGrid_Clientes = new DataGridView();
             nomeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            enderecoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            endereçoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -101,8 +102,16 @@ namespace Desafio1_GroupSoftware
             dataGrid_Clientes.AllowUserToDeleteRows = false;
             dataGrid_Clientes.AutoGenerateColumns = false;
             dataGrid_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, enderecoDataGridViewTextBoxColumn, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
+            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, endereçoDataGridViewTextBoxColumn, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
             dataGrid_Clientes.DataSource = clienteBindingSource;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGrid_Clientes.DefaultCellStyle = dataGridViewCellStyle1;
             dataGrid_Clientes.Location = new Point(16, 78);
             dataGrid_Clientes.Name = "dataGrid_Clientes";
             dataGrid_Clientes.ReadOnly = true;
@@ -116,27 +125,26 @@ namespace Desafio1_GroupSoftware
             // nomeDataGridViewTextBoxColumn
             // 
             nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            nomeDataGridViewTextBoxColumn.FillWeight = 150F;
             nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
             nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
             nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            nomeDataGridViewTextBoxColumn.Width = 120;
+            nomeDataGridViewTextBoxColumn.Width = 130;
             // 
-            // enderecoDataGridViewTextBoxColumn
+            // endereçoDataGridViewTextBoxColumn
             // 
-            enderecoDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            enderecoDataGridViewTextBoxColumn.DataPropertyName = "Endereco";
-            enderecoDataGridViewTextBoxColumn.HeaderText = "Endereco";
-            enderecoDataGridViewTextBoxColumn.Name = "enderecoDataGridViewTextBoxColumn";
-            enderecoDataGridViewTextBoxColumn.ReadOnly = true;
+            endereçoDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            endereçoDataGridViewTextBoxColumn.DataPropertyName = "Endereço";
+            endereçoDataGridViewTextBoxColumn.HeaderText = "Endereço";
+            endereçoDataGridViewTextBoxColumn.Name = "endereçoDataGridViewTextBoxColumn";
+            endereçoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // documentoDataGridViewTextBoxColumn
             // 
             documentoDataGridViewTextBoxColumn.DataPropertyName = "Documento";
+            documentoDataGridViewTextBoxColumn.FillWeight = 130F;
             documentoDataGridViewTextBoxColumn.HeaderText = "Documento";
             documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
             documentoDataGridViewTextBoxColumn.ReadOnly = true;
-            documentoDataGridViewTextBoxColumn.Width = 120;
             // 
             // emailDataGridViewTextBoxColumn
             // 
@@ -144,7 +152,7 @@ namespace Desafio1_GroupSoftware
             emailDataGridViewTextBoxColumn.HeaderText = "Email";
             emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             emailDataGridViewTextBoxColumn.ReadOnly = true;
-            emailDataGridViewTextBoxColumn.Width = 150;
+            emailDataGridViewTextBoxColumn.Width = 140;
             // 
             // telefoneDataGridViewTextBoxColumn
             // 
@@ -192,8 +200,9 @@ namespace Desafio1_GroupSoftware
         private DataGridView dataGrid_Clientes;
         private BindingSource clienteBindingSource;
         private BindingSource clienteBindingSource1;
-        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn enderecoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn endereçoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
