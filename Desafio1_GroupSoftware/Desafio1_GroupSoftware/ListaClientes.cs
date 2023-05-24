@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Desafio1_GroupSoftware;
 
 namespace Desafio1_GroupSoftware
 {
@@ -15,6 +16,27 @@ namespace Desafio1_GroupSoftware
         public ListaClientes()
         {
             InitializeComponent();
+        }
+
+        private void txt_Pesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Pesquisa_Click(object sender, EventArgs e)
+        {
+            dataGrid_Clientes.DataSource = ListClientes.clientes;
+        }
+
+        private void button_Voltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ListClientes.clientes.Clear();
+        }
+
+        private void dataGrid_Clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

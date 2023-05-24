@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desafio1_GroupSoftware;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,29 +56,30 @@ namespace Desafio1_GroupSoftware
         private void button_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
 
+           
+           
             if (!radio_CNPJ.Checked && !radio_CPF.Checked)
             {
                 MessageBox.Show("SELECIONE O TIPO DE DOCUMENTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CNPJ.Checked && ValidarDadoCPNJ() == false)
+            else if (radio_CNPJ.Checked && !Util.ValidarCNPJ(maskText_Documento.Text))
             {
                 MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CNPJ.Checked && ValidarDadoCPNJ() == true)
+            else if (radio_CNPJ.Checked && Util.ValidarCNPJ(maskText_Documento.Text))
             {
                 MessageBox.Show("OK!");
             }
-            else if (radio_CPF.Checked && ValidarDadoCPF() == false)
+            else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text))
             {
                 MessageBox.Show("CPF Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CPF.Checked && ValidarDadoCPF() == true)
+            else if (radio_CPF.Checked && Util.ValidarCPF(maskText_Documento.Text))
             {
                 MessageBox.Show("OK");
             }
@@ -135,17 +137,17 @@ namespace Desafio1_GroupSoftware
                 maskText_Documento.Text = "";
             }
         }
-        private bool ValidarDadoCPNJ()
-        {
-            bool valid = false;
-            valid = Util.ValidarCNPJ(maskText_Documento.Text);
-            return valid;
-        }
-        private bool ValidarDadoCPF()
-        {
-            bool valid = false;
-            valid = Util.ValidarCPF(maskText_Documento.Text);
-            return valid;
-        }
+        //private bool ValidarDadoCPNJ()
+        //{
+        //    bool valid = false;
+        //    valid = Util.ValidarCNPJ(maskText_Documento.Text);
+        //    return valid;
+        //}
+        //private bool ValidarDadoCPF()
+        //{
+        //    bool valid = false;
+        //    valid = Util.ValidarCPF(maskText_Documento.Text);
+        //    return valid;
+        //}
     }
 }

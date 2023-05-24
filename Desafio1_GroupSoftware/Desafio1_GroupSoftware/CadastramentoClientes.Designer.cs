@@ -65,9 +65,11 @@
             groupBox1.Controls.Add(label_Tipo);
             groupBox1.Controls.Add(label_Endereco);
             groupBox1.Controls.Add(label_Nome);
-            groupBox1.Location = new Point(11, 7);
+            groupBox1.Location = new Point(10, 5);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(647, 227);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(566, 170);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Preencha os campos";
@@ -77,19 +79,17 @@
             // 
             panel1.Controls.Add(radio_CPF);
             panel1.Controls.Add(radio_CNPJ);
-            panel1.Location = new Point(329, 43);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(288, 32);
             panel1.Name = "panel1";
-            panel1.Size = new Size(127, 33);
+            panel1.Size = new Size(111, 25);
             panel1.TabIndex = 17;
             // 
             // radio_CPF
             // 
             radio_CPF.AutoSize = true;
-            radio_CPF.Location = new Point(70, 4);
-            radio_CPF.Margin = new Padding(3, 4, 3, 4);
+            radio_CPF.Location = new Point(61, 3);
             radio_CPF.Name = "radio_CPF";
-            radio_CPF.Size = new Size(54, 24);
+            radio_CPF.Size = new Size(46, 19);
             radio_CPF.TabIndex = 1;
             radio_CPF.TabStop = true;
             radio_CPF.Text = "CPF";
@@ -99,10 +99,9 @@
             // radio_CNPJ
             // 
             radio_CNPJ.AutoSize = true;
-            radio_CNPJ.Location = new Point(3, 4);
-            radio_CNPJ.Margin = new Padding(3, 4, 3, 4);
+            radio_CNPJ.Location = new Point(3, 3);
             radio_CNPJ.Name = "radio_CNPJ";
-            radio_CNPJ.Size = new Size(62, 24);
+            radio_CNPJ.Size = new Size(52, 19);
             radio_CNPJ.TabIndex = 0;
             radio_CNPJ.TabStop = true;
             radio_CNPJ.Text = "CNPJ";
@@ -111,38 +110,37 @@
             // 
             // maskText_Documento
             // 
-            maskText_Documento.Location = new Point(15, 153);
-            maskText_Documento.Margin = new Padding(3, 4, 3, 4);
+            maskText_Documento.Location = new Point(13, 115);
             maskText_Documento.Name = "maskText_Documento";
-            maskText_Documento.Size = new Size(292, 27);
+            maskText_Documento.Size = new Size(256, 23);
             maskText_Documento.TabIndex = 6;
             maskText_Documento.MaskInputRejected += maskText_Documento_MaskInputRejected;
             // 
             // mask_telefone
             // 
-            mask_telefone.Location = new Point(326, 153);
-            mask_telefone.Margin = new Padding(3, 4, 3, 4);
+            mask_telefone.Location = new Point(285, 115);
             mask_telefone.Mask = "(99) 00000-0000";
             mask_telefone.Name = "mask_telefone";
-            mask_telefone.Size = new Size(310, 27);
+            mask_telefone.Size = new Size(272, 23);
             mask_telefone.TabIndex = 7;
             mask_telefone.MaskInputRejected += maskText_Telefone_MaskInputRejected;
             // 
             // label_Doc
             // 
             label_Doc.AutoSize = true;
-            label_Doc.Location = new Point(15, 132);
+            label_Doc.Location = new Point(13, 99);
             label_Doc.Name = "label_Doc";
-            label_Doc.Size = new Size(90, 20);
+            label_Doc.Size = new Size(73, 15);
             label_Doc.TabIndex = 16;
             label_Doc.Text = "Documento:";
             label_Doc.Click += label_Doc_Click;
             // 
             // button_save
             // 
-            button_save.Location = new Point(543, 191);
+            button_save.Location = new Point(475, 143);
+            button_save.Margin = new Padding(3, 2, 3, 2);
             button_save.Name = "button_save";
-            button_save.Size = new Size(94, 29);
+            button_save.Size = new Size(82, 22);
             button_save.TabIndex = 8;
             button_save.Text = "SAVE";
             button_save.UseVisualStyleBackColor = true;
@@ -150,9 +148,10 @@
             // 
             // button_exit
             // 
-            button_exit.Location = new Point(443, 191);
+            button_exit.Location = new Point(388, 143);
+            button_exit.Margin = new Padding(3, 2, 3, 2);
             button_exit.Name = "button_exit";
-            button_exit.Size = new Size(94, 29);
+            button_exit.Size = new Size(82, 22);
             button_exit.TabIndex = 9;
             button_exit.Text = "EXIT";
             button_exit.UseVisualStyleBackColor = true;
@@ -160,52 +159,55 @@
             // 
             // txt_email
             // 
-            txt_email.Location = new Point(326, 99);
+            txt_email.Location = new Point(285, 74);
+            txt_email.Margin = new Padding(3, 2, 3, 2);
             txt_email.Name = "txt_email";
-            txt_email.Size = new Size(310, 27);
+            txt_email.Size = new Size(272, 23);
             txt_email.TabIndex = 5;
             txt_email.TextChanged += txt_Email_TextChanged;
             // 
             // txt_Endereco
             // 
-            txt_Endereco.Location = new Point(15, 99);
+            txt_Endereco.Location = new Point(13, 74);
+            txt_Endereco.Margin = new Padding(3, 2, 3, 2);
             txt_Endereco.Name = "txt_Endereco";
-            txt_Endereco.Size = new Size(292, 27);
+            txt_Endereco.Size = new Size(256, 23);
             txt_Endereco.TabIndex = 4;
             txt_Endereco.TextChanged += txt_Endereco_TextChanged;
             // 
             // txt_nome
             // 
-            txt_nome.Location = new Point(15, 45);
+            txt_nome.Location = new Point(13, 34);
+            txt_nome.Margin = new Padding(3, 2, 3, 2);
             txt_nome.Name = "txt_nome";
-            txt_nome.Size = new Size(292, 27);
+            txt_nome.Size = new Size(256, 23);
             txt_nome.TabIndex = 1;
             txt_nome.TextChanged += txt_Nome_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(327, 132);
+            label6.Location = new Point(286, 99);
             label6.Name = "label6";
-            label6.Size = new Size(69, 20);
+            label6.Size = new Size(54, 15);
             label6.TabIndex = 5;
             label6.Text = "Telefone:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(327, 77);
+            label5.Location = new Point(286, 58);
             label5.Name = "label5";
-            label5.Size = new Size(55, 20);
+            label5.Size = new Size(44, 15);
             label5.TabIndex = 4;
             label5.Text = "E-mail:";
             // 
             // label_Tipo
             // 
             label_Tipo.AutoSize = true;
-            label_Tipo.Location = new Point(327, 23);
+            label_Tipo.Location = new Point(286, 17);
             label_Tipo.Name = "label_Tipo";
-            label_Tipo.Size = new Size(42, 20);
+            label_Tipo.Size = new Size(33, 15);
             label_Tipo.TabIndex = 3;
             label_Tipo.Text = "Tipo:";
             label_Tipo.Click += label_Tipo_Click;
@@ -213,9 +215,9 @@
             // label_Endereco
             // 
             label_Endereco.AutoSize = true;
-            label_Endereco.Location = new Point(15, 76);
+            label_Endereco.Location = new Point(13, 57);
             label_Endereco.Name = "label_Endereco";
-            label_Endereco.Size = new Size(74, 20);
+            label_Endereco.Size = new Size(59, 15);
             label_Endereco.TabIndex = 1;
             label_Endereco.Text = "Endereço:";
             label_Endereco.Click += label_Endereco_Click;
@@ -223,19 +225,20 @@
             // label_Nome
             // 
             label_Nome.AutoSize = true;
-            label_Nome.Location = new Point(13, 23);
+            label_Nome.Location = new Point(11, 17);
             label_Nome.Name = "label_Nome";
-            label_Nome.Size = new Size(53, 20);
+            label_Nome.Size = new Size(43, 15);
             label_Nome.TabIndex = 0;
             label_Nome.Text = "Nome:";
             // 
             // CadastramentoClientes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(667, 239);
+            ClientSize = new Size(584, 179);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "CadastramentoClientes";
             StartPosition = FormStartPosition.CenterScreen;

@@ -38,3 +38,5 @@ C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftwar
 C:\Users\athos\OneDrive\Documents\GitHub\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.frmPrincipal.resources
 C:\Users\athos\OneDrive\Documents\GitHub\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.ListaClientes.resources
 C:\Users\athos\OneDrive\Documents\GitHub\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.Properties.Resources.resources
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.ListaClientes.resources
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.Properties.Resources.resources
