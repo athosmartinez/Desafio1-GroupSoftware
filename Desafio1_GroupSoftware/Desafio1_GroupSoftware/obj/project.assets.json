@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\athos.andrade\\.nuget\\packages\\": {}
+    "C:\\Users\\athos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\athos.andrade\\source\\repos\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
+      "projectUniqueName": "C:\\Users\\athos\\OneDrive\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
       "projectName": "Desafio1_GroupSoftware",
-      "projectPath": "C:\\Users\\athos.andrade\\source\\repos\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
-      "packagesPath": "C:\\Users\\athos.andrade\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\athos.andrade\\source\\repos\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\obj\\",
+      "projectPath": "C:\\Users\\athos\\OneDrive\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
+      "packagesPath": "C:\\Users\\athos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\athos\\OneDrive\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\athos.andrade\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\athos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
