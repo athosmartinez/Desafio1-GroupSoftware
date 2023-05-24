@@ -95,7 +95,6 @@ namespace Desafio1_GroupSoftware
                 if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
                     stringBuilder.Append(c);
             }
-
             return stringBuilder.ToString();
         }
 
