@@ -79,6 +79,7 @@
             txt_Pesquisa.Size = new Size(585, 23);
             txt_Pesquisa.TabIndex = 0;
             txt_Pesquisa.TextChanged += txt_Pesquisa_TextChanged;
+            txt_Pesquisa.KeyDown += txt_Pesquisa_KeyDown;
             // 
             // button_Voltar
             // 

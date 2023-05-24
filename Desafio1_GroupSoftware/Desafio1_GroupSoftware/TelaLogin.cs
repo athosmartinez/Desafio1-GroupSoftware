@@ -5,7 +5,6 @@ namespace Desafio1_GroupSoftware
         public TelaLogin()
         {
             InitializeComponent();
-            this.KeyPress += TelaLogin_KeyPress; // Associa o evento KeyPress ao método TelaLogin_KeyPress
         }
 
         private void label_User_Click(object sender, EventArgs e)
@@ -42,24 +41,17 @@ namespace Desafio1_GroupSoftware
                 }
                 else
                 {
-                    MessageBox.Show("Wrong Password", "Failed Acess", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("User ou senha estão errados!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txt_User.Focus();
                     txt_Password.Text = "";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERRO", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void TelaLogin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true; // Indica que o evento de tecla foi tratado para evitar que o caractere Enter seja inserido em controles de texto
-                button_Enter.PerformClick(); // Chame o método PerformClick do botão para executar a mesma função
-            }
-        }
+
 
         private void checkBox_Showpass_CheckedChanged(object sender, EventArgs e)
         {
@@ -70,6 +62,24 @@ namespace Desafio1_GroupSoftware
             else
             {
                 txt_Password.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txt_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Enter_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+        }
+
+        private void txt_User_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Enter_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
             }
         }
     }

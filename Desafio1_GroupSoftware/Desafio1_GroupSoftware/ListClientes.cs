@@ -37,7 +37,5 @@ namespace Desafio1_GroupSoftware
             cliente.Telefone = "(99) 99999-9090";
             clientes.Add(cliente);
         }
-
-
     }
 }

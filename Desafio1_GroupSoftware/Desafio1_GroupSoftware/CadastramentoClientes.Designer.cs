@@ -243,6 +243,7 @@
             Name = "CadastramentoClientes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastramento Clientes";
+            TopMost = true;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);

@@ -48,9 +48,11 @@
             groupBox_Login.Controls.Add(label_Password);
             groupBox_Login.Controls.Add(txt_User);
             groupBox_Login.Controls.Add(label_User);
-            groupBox_Login.Location = new Point(11, 10);
+            groupBox_Login.Location = new Point(10, 8);
+            groupBox_Login.Margin = new Padding(3, 2, 3, 2);
             groupBox_Login.Name = "groupBox_Login";
-            groupBox_Login.Size = new Size(418, 204);
+            groupBox_Login.Padding = new Padding(3, 2, 3, 2);
+            groupBox_Login.Size = new Size(366, 153);
             groupBox_Login.TabIndex = 0;
             groupBox_Login.TabStop = false;
             groupBox_Login.Text = "Login";
@@ -58,9 +60,10 @@
             // checkBox_Showpass
             // 
             checkBox_Showpass.AutoSize = true;
-            checkBox_Showpass.Location = new Point(289, 135);
+            checkBox_Showpass.Location = new Point(253, 101);
+            checkBox_Showpass.Margin = new Padding(3, 2, 3, 2);
             checkBox_Showpass.Name = "checkBox_Showpass";
-            checkBox_Showpass.Size = new Size(132, 24);
+            checkBox_Showpass.Size = new Size(108, 19);
             checkBox_Showpass.TabIndex = 3;
             checkBox_Showpass.Text = "Show Password";
             checkBox_Showpass.UseVisualStyleBackColor = true;
@@ -68,9 +71,11 @@
             // 
             // button_Enter
             // 
-            button_Enter.Location = new Point(318, 163);
+            button_Enter.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Enter.Location = new Point(278, 122);
+            button_Enter.Margin = new Padding(3, 2, 3, 2);
             button_Enter.Name = "button_Enter";
-            button_Enter.Size = new Size(94, 29);
+            button_Enter.Size = new Size(82, 22);
             button_Enter.TabIndex = 3;
             button_Enter.Text = "ENTER";
             button_Enter.UseVisualStyleBackColor = true;
@@ -78,9 +83,11 @@
             // 
             // button_Cancel
             // 
-            button_Cancel.Location = new Point(218, 163);
+            button_Cancel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Cancel.Location = new Point(191, 122);
+            button_Cancel.Margin = new Padding(3, 2, 3, 2);
             button_Cancel.Name = "button_Cancel";
-            button_Cancel.Size = new Size(94, 29);
+            button_Cancel.Size = new Size(82, 22);
             button_Cancel.TabIndex = 5;
             button_Cancel.Text = "CANCEL";
             button_Cancel.UseVisualStyleBackColor = true;
@@ -88,49 +95,54 @@
             // 
             // txt_Password
             // 
-            txt_Password.Location = new Point(6, 99);
+            txt_Password.Location = new Point(5, 74);
+            txt_Password.Margin = new Padding(3, 2, 3, 2);
             txt_Password.Name = "txt_Password";
-            txt_Password.Size = new Size(406, 27);
+            txt_Password.Size = new Size(356, 23);
             txt_Password.TabIndex = 2;
             txt_Password.UseSystemPasswordChar = true;
             txt_Password.TextChanged += txt_Password_TextChanged;
+            txt_Password.KeyDown += txt_Password_KeyDown;
             // 
             // label_Password
             // 
             label_Password.AutoSize = true;
-            label_Password.Location = new Point(6, 76);
+            label_Password.Location = new Point(5, 57);
             label_Password.Name = "label_Password";
-            label_Password.Size = new Size(70, 20);
+            label_Password.Size = new Size(57, 15);
             label_Password.TabIndex = 2;
             label_Password.Text = "Password";
             label_Password.Click += label_Password_Click;
             // 
             // txt_User
             // 
-            txt_User.Location = new Point(6, 45);
+            txt_User.Location = new Point(5, 34);
+            txt_User.Margin = new Padding(3, 2, 3, 2);
             txt_User.Name = "txt_User";
-            txt_User.Size = new Size(406, 27);
+            txt_User.Size = new Size(356, 23);
             txt_User.TabIndex = 1;
             txt_User.TextChanged += txt_User_TextChanged;
+            txt_User.KeyDown += txt_User_KeyDown;
             // 
             // label_User
             // 
             label_User.AutoSize = true;
-            label_User.Location = new Point(6, 23);
+            label_User.Location = new Point(5, 17);
             label_User.Name = "label_User";
-            label_User.Size = new Size(38, 20);
+            label_User.Size = new Size(30, 15);
             label_User.TabIndex = 0;
             label_User.Text = "User";
             label_User.Click += label_User_Click;
             // 
             // TelaLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(442, 227);
+            ClientSize = new Size(387, 170);
             Controls.Add(groupBox_Login);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             KeyPreview = true;
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "TelaLogin";
             StartPosition = FormStartPosition.CenterScreen;

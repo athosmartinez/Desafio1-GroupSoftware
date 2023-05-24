@@ -55,5 +55,14 @@ namespace Desafio1_GroupSoftware
         {
 
         }
+
+        private void txt_Pesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Pesquisa_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+        }
     }
 }

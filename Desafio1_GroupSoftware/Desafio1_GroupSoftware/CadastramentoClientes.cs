@@ -60,9 +60,6 @@ namespace Desafio1_GroupSoftware
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-
-           
-           
             if (!radio_CNPJ.Checked && !radio_CPF.Checked)
             {
                 MessageBox.Show("SELECIONE O TIPO DE DOCUMENTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -77,7 +74,7 @@ namespace Desafio1_GroupSoftware
             }
             else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text))
             {
-                MessageBox.Show("CPF Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("CPF Inválido", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (radio_CPF.Checked && Util.ValidarCPF(maskText_Documento.Text))
             {
@@ -99,7 +96,6 @@ namespace Desafio1_GroupSoftware
         {
             maskText_Documento.Select(0, 0);
         }
-
 
         private void radio_CNPJ_CheckedChanged(object sender, EventArgs e)
         {
@@ -137,17 +133,5 @@ namespace Desafio1_GroupSoftware
                 maskText_Documento.Text = "";
             }
         }
-        //private bool ValidarDadoCPNJ()
-        //{
-        //    bool valid = false;
-        //    valid = Util.ValidarCNPJ(maskText_Documento.Text);
-        //    return valid;
-        //}
-        //private bool ValidarDadoCPF()
-        //{
-        //    bool valid = false;
-        //    valid = Util.ValidarCPF(maskText_Documento.Text);
-        //    return valid;
-        //}
     }
 }
