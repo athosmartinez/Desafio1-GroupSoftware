@@ -12,6 +12,7 @@ namespace Desafio1_GroupSoftware
         public static List<Cliente> clientes = new List<Cliente>();
         public static void CriarObjClientes()
         {
+            clientes.Clear();
             Cliente cliente = new Cliente();
             cliente.Nome = "Athos";
             cliente.Email = "email.teste@gmail.com";

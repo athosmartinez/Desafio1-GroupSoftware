@@ -31,7 +31,7 @@ namespace Desafio1_GroupSoftware
         private void button_Voltar_Click(object sender, EventArgs e)
         {
             this.Close();
-            ListClientes.clientes.Clear();
+           
         }
 
         private void dataGrid_Clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -28,14 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaClientes));
             groupBox_Pesquisa = new GroupBox();
             button_Pesquisa = new Button();
             txt_Pesquisa = new TextBox();
             button_Voltar = new Button();
             dataGrid_Clientes = new DataGridView();
+            clienteBindingSource = new BindingSource(components);
+            clienteBindingSource1 = new BindingSource(components);
+            nomeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            enderecoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             groupBox_Pesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)clienteBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // groupBox_Pesquisa
@@ -85,15 +95,68 @@
             // 
             dataGrid_Clientes.AllowUserToAddRows = false;
             dataGrid_Clientes.AllowUserToDeleteRows = false;
-            dataGrid_Clientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGrid_Clientes.AutoGenerateColumns = false;
             dataGrid_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, enderecoDataGridViewTextBoxColumn, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
+            dataGrid_Clientes.DataSource = clienteBindingSource;
             dataGrid_Clientes.Location = new Point(16, 78);
             dataGrid_Clientes.Name = "dataGrid_Clientes";
             dataGrid_Clientes.ReadOnly = true;
+            dataGrid_Clientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGrid_Clientes.RowHeadersVisible = false;
             dataGrid_Clientes.RowTemplate.Height = 25;
             dataGrid_Clientes.Size = new Size(666, 226);
             dataGrid_Clientes.TabIndex = 3;
             dataGrid_Clientes.CellContentClick += dataGrid_Clientes_CellContentClick;
+            // 
+            // clienteBindingSource
+            // 
+            clienteBindingSource.DataSource = typeof(Cliente);
+            // 
+            // clienteBindingSource1
+            // 
+            clienteBindingSource1.DataSource = typeof(Cliente);
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            nomeDataGridViewTextBoxColumn.FillWeight = 150F;
+            nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            nomeDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // enderecoDataGridViewTextBoxColumn
+            // 
+            enderecoDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            enderecoDataGridViewTextBoxColumn.DataPropertyName = "Endereco";
+            enderecoDataGridViewTextBoxColumn.HeaderText = "Endereco";
+            enderecoDataGridViewTextBoxColumn.Name = "enderecoDataGridViewTextBoxColumn";
+            enderecoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // documentoDataGridViewTextBoxColumn
+            // 
+            documentoDataGridViewTextBoxColumn.DataPropertyName = "Documento";
+            documentoDataGridViewTextBoxColumn.HeaderText = "Documento";
+            documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
+            documentoDataGridViewTextBoxColumn.ReadOnly = true;
+            documentoDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.ReadOnly = true;
+            emailDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            telefoneDataGridViewTextBoxColumn.DataPropertyName = "Telefone";
+            telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
+            telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            telefoneDataGridViewTextBoxColumn.ReadOnly = true;
+            telefoneDataGridViewTextBoxColumn.Width = 130;
             // 
             // ListaClientes
             // 
@@ -111,6 +174,8 @@
             groupBox_Pesquisa.ResumeLayout(false);
             groupBox_Pesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)clienteBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)clienteBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -121,5 +186,12 @@
         private TextBox txt_Pesquisa;
         private Button button_Voltar;
         private DataGridView dataGrid_Clientes;
+        private BindingSource clienteBindingSource;
+        private BindingSource clienteBindingSource1;
+        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn enderecoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
     }
 }
