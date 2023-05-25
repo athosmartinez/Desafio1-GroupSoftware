@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -96,6 +98,72 @@ namespace Desafio1_GroupSoftware.Funcoes
                     stringBuilder.Append(c);
             }
             return stringBuilder.ToString();
+        }
+
+        public static void InserirDadosCliente(string nome, string email, string endereco, string documento, string telefone)
+        {
+            try
+            {
+                string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    // Verificar se o cliente já existe com base no nome, telefone ou documento
+                    string queryVerificacao = "SELECT COUNT(*) FROM dados_clientes WHERE nome = @nome OR telefone = @telefone OR documento = @documento";
+                    SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
+                    commandVerificacao.Parameters.AddWithValue("@nome", nome);
+                    commandVerificacao.Parameters.AddWithValue("@telefone", telefone);
+                    commandVerificacao.Parameters.AddWithValue("@documento", documento);
+
+                    int count = (int)commandVerificacao.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Cliente já existe no banco de dados. Verifique os campos NOME, DOCUMENTO ou telefone", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Não realizar a inserção se o cliente já existe
+                    }
+
+                    // Inserir o cliente caso não exista
+                    string queryInsercao = "INSERT INTO dados_clientes (nome, email, endereco, documento, telefone) VALUES (@nome, @email, @endereco, @documento, @telefone)";
+                    SqlCommand commandInsercao = new SqlCommand(queryInsercao, connection);
+                    commandInsercao.Parameters.AddWithValue("@nome", nome);
+                    commandInsercao.Parameters.AddWithValue("@email", email);
+                    commandInsercao.Parameters.AddWithValue("@endereco", endereco);
+                    commandInsercao.Parameters.AddWithValue("@documento", documento);
+                    commandInsercao.Parameters.AddWithValue("@telefone", telefone);
+
+                    commandInsercao.ExecuteNonQuery();
+
+                    MessageBox.Show("Dados do cliente inseridos com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao inserir dados do cliente: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static DataTable ConsultarClientesFiltrados(string termoPesquisa)
+        {
+            string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
+            string query = "SELECT * FROM dados_clientes WHERE " +
+                  "LOWER(nome) LIKE @termoPesquisa OR " +
+                  "LOWER(endereco) LIKE @termoPesquisa OR " +
+                  "REPLACE(LOWER(documento), ',', '') LIKE @termoPesquisa OR " +
+                  "LOWER(email) LIKE @termoPesquisa OR " +
+                  "LOWER(telefone) LIKE @termoPesquisa";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@termoPesquisa", "%" + termoPesquisa + "%");
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
         }
 
     }

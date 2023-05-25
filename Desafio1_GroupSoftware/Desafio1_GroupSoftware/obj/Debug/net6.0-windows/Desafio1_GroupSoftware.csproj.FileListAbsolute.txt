@@ -40,3 +40,11 @@ C:\Users\athos\OneDrive\Documents\GitHub\Desafio1-GroupSoftware\Desafio1_GroupSo
 C:\Users\athos\OneDrive\Documents\GitHub\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.Properties.Resources.resources
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.ListaClientes.resources
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.Properties.Resources.resources
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.csproj.CopyComplete
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\CsvHelper.dll

@@ -26,7 +26,6 @@ namespace Desafio1_GroupSoftware
 
         private void button_Lista_Click(object sender, EventArgs e)
         {
-            ListClientes.CriarObjClientes();
             ListaClientes listaClientes = new ListaClientes();
             listaClientes.ShowDialog();
         }

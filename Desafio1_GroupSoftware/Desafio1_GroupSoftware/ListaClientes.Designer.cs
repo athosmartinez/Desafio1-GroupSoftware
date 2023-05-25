@@ -39,12 +39,13 @@ namespace Desafio1_GroupSoftware
             button_Voltar = new Button();
             dataGrid_Clientes = new DataGridView();
             nomeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            endereçoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Endereço = new DataGridViewTextBoxColumn();
             documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             clienteBindingSource = new BindingSource(components);
             clienteBindingSource1 = new BindingSource(components);
+            button_Exportar = new Button();
             groupBox_Pesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
@@ -88,6 +89,7 @@ namespace Desafio1_GroupSoftware
             // button_Voltar
             // 
             button_Voltar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_Voltar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button_Voltar.Location = new Point(608, 310);
             button_Voltar.Name = "button_Voltar";
             button_Voltar.Size = new Size(75, 23);
@@ -102,7 +104,7 @@ namespace Desafio1_GroupSoftware
             dataGrid_Clientes.AllowUserToDeleteRows = false;
             dataGrid_Clientes.AutoGenerateColumns = false;
             dataGrid_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, endereçoDataGridViewTextBoxColumn, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
+            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, Endereço, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
             dataGrid_Clientes.DataSource = clienteBindingSource;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -125,42 +127,47 @@ namespace Desafio1_GroupSoftware
             // nomeDataGridViewTextBoxColumn
             // 
             nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            nomeDataGridViewTextBoxColumn.FillWeight = 140F;
             nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
             nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
             nomeDataGridViewTextBoxColumn.ReadOnly = true;
             nomeDataGridViewTextBoxColumn.Width = 130;
             // 
-            // endereçoDataGridViewTextBoxColumn
+            // Endereço
             // 
-            endereçoDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            endereçoDataGridViewTextBoxColumn.DataPropertyName = "Endereço";
-            endereçoDataGridViewTextBoxColumn.HeaderText = "Endereço";
-            endereçoDataGridViewTextBoxColumn.Name = "endereçoDataGridViewTextBoxColumn";
-            endereçoDataGridViewTextBoxColumn.ReadOnly = true;
+            Endereço.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Endereço.DataPropertyName = "Endereco";
+            Endereço.HeaderText = "Endereço";
+            Endereço.Name = "Endereço";
+            Endereço.ReadOnly = true;
             // 
             // documentoDataGridViewTextBoxColumn
             // 
+            documentoDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             documentoDataGridViewTextBoxColumn.DataPropertyName = "Documento";
-            documentoDataGridViewTextBoxColumn.FillWeight = 130F;
             documentoDataGridViewTextBoxColumn.HeaderText = "Documento";
             documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
             documentoDataGridViewTextBoxColumn.ReadOnly = true;
+            documentoDataGridViewTextBoxColumn.Width = 95;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.FillWeight = 120F;
             emailDataGridViewTextBoxColumn.HeaderText = "Email";
             emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             emailDataGridViewTextBoxColumn.ReadOnly = true;
-            emailDataGridViewTextBoxColumn.Width = 140;
+            emailDataGridViewTextBoxColumn.Width = 130;
             // 
             // telefoneDataGridViewTextBoxColumn
             // 
+            telefoneDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             telefoneDataGridViewTextBoxColumn.DataPropertyName = "Telefone";
+            telefoneDataGridViewTextBoxColumn.FillWeight = 130F;
             telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
             telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             telefoneDataGridViewTextBoxColumn.ReadOnly = true;
-            telefoneDataGridViewTextBoxColumn.Width = 130;
+            telefoneDataGridViewTextBoxColumn.Width = 76;
             // 
             // clienteBindingSource
             // 
@@ -170,11 +177,23 @@ namespace Desafio1_GroupSoftware
             // 
             clienteBindingSource1.DataSource = typeof(Cliente);
             // 
+            // button_Exportar
+            // 
+            button_Exportar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Exportar.Location = new Point(16, 310);
+            button_Exportar.Name = "button_Exportar";
+            button_Exportar.Size = new Size(75, 23);
+            button_Exportar.TabIndex = 4;
+            button_Exportar.Text = "EXPORTAR";
+            button_Exportar.UseVisualStyleBackColor = true;
+            button_Exportar.Click += button_Exportar_Click;
+            // 
             // ListaClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+            Controls.Add(button_Exportar);
             Controls.Add(button_Voltar);
             Controls.Add(groupBox_Pesquisa);
             Controls.Add(dataGrid_Clientes);
@@ -201,10 +220,13 @@ namespace Desafio1_GroupSoftware
         private BindingSource clienteBindingSource;
         private BindingSource clienteBindingSource1;
         private DataGridViewTextBoxColumn enderecoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn endereçoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Endereço;
         private DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private Button button_Exportar;
     }
 }

@@ -69,17 +69,34 @@ namespace Desafio1_GroupSoftware
             {
                 MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CNPJ.Checked && Util.ValidarCNPJ(maskText_Documento.Text))
-            {
-                MessageBox.Show("OK!");
-            }
             else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text))
             {
                 MessageBox.Show("CPF Inválido", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CPF.Checked && Util.ValidarCPF(maskText_Documento.Text))
+            else if (string.IsNullOrEmpty(txt_nome.Text.Trim()) ||
+           string.IsNullOrEmpty(txt_Endereco.Text.Trim()) ||
+           string.IsNullOrEmpty(maskText_Documento.Text.Replace("_", "").Trim()) ||
+           string.IsNullOrEmpty(mask_telefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "").Trim()) ||
+           string.IsNullOrEmpty(maskText_Documento.Text.Replace("_", "").Trim()) ||
+           mask_telefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "").Trim().Length < 11 ||
+           string.IsNullOrEmpty(txt_email.Text.Trim()))
             {
-                MessageBox.Show("OK");
+                MessageBox.Show("PREENCHA TODOS OS DADOS!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+
+            else if ((radio_CNPJ.Checked && Util.ValidarCNPJ(maskText_Documento.Text)) ||
+               (radio_CPF.Checked && Util.ValidarCPF(maskText_Documento.Text)))
+            {
+                // Obtenha os valores dos campos de entrada
+                string nome = txt_nome.Text;
+                string email = txt_email.Text;
+                string endereco = txt_Endereco.Text;
+                string documento = maskText_Documento.Text;
+                string telefone = mask_telefone.Text;
+
+                // Chame o método para inserir os dados na tabela
+                Util.InserirDadosCliente(nome, email, endereco, documento, telefone);
             }
         }
 

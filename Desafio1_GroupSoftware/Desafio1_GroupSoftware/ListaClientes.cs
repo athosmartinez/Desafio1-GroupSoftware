@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using System.Globalization;
 using Desafio1_GroupSoftware.Classes;
 using Desafio1_GroupSoftware.Funcoes;
+using System.Data.SqlClient;
+using System.Formats.Asn1;
+using CsvHelper;
+using CsvHelper.Configuration;
 
 namespace Desafio1_GroupSoftware
 {
@@ -29,21 +33,32 @@ namespace Desafio1_GroupSoftware
         {
             if (string.IsNullOrEmpty(txt_Pesquisa.Text))
             {
-                dataGrid_Clientes.DataSource = ListClientes.clientes;
+                // Consulta SQL para selecionar todos os dados da tabela dados_clientes
+                string query = "SELECT * FROM dados_clientes";
+
+                // Criar a conexão com o banco de dados
+                string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Criar o SqlDataAdapter e DataTable
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+
+                    // Preencher o DataTable com os dados do banco de dados
+                    adapter.Fill(dataTable);
+
+                    // Atribuir o DataTable ao DataSource do DataGridView
+                    dataGrid_Clientes.DataSource = dataTable;
+                }
             }
             else
             {
                 string termoPesquisa = txt_Pesquisa.Text.ToLower(); // Obter o termo de pesquisa em letras minúsculas
 
-                List<Cliente> clientesFiltrados = ListClientes.clientes.Where(cliente =>
-        Util.RemoverAcentos(cliente.Nome.ToLower()).Contains(termoPesquisa) ||
-        Util.RemoverAcentos(cliente.Endereço.ToLower()).Contains(termoPesquisa) ||
-        Util.RemoverAcentos(cliente.Documento.ToLower()).Contains(termoPesquisa) ||
-        Util.RemoverAcentos(cliente.Email.ToLower()).Contains(termoPesquisa) ||
-        Util.RemoverAcentos(cliente.Telefone.ToLower()).Contains(termoPesquisa))
-        .ToList();
+                DataTable lista_clientes = Util.ConsultarClientesFiltrados(txt_Pesquisa.Text);
+                dataGrid_Clientes.DataSource = lista_clientes;
 
-                dataGrid_Clientes.DataSource = clientesFiltrados;
+
             }
         }
 
@@ -65,5 +80,62 @@ namespace Desafio1_GroupSoftware
                 button_Pesquisa_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
             }
         }
+
+        private void button_Exportar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Verificar se a origem de dados é um DataTable
+                if (dataGrid_Clientes.DataSource is DataTable dataTable)
+                {
+                    // Criar o objeto SaveFileDialog
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "Arquivo CSV (*.csv)|*.csv";
+                    saveFileDialog.Title = "Salvar Tabela";
+                    saveFileDialog.ShowDialog();
+
+                    // Verificar se o usuário selecionou um local e nome de arquivo válido
+                    if (!string.IsNullOrEmpty(saveFileDialog.FileName))
+                    {
+                        // Criar o StreamWriter para escrever no arquivo
+                        using (StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName))
+                        {
+                            // Escrever o cabeçalho no arquivo
+                            for (int i = 0; i < dataTable.Columns.Count; i++)
+                            {
+                                streamWriter.Write(dataTable.Columns[i].ColumnName);
+                                if (i < dataTable.Columns.Count - 1)
+                                    streamWriter.Write(",");
+                            }
+                            streamWriter.WriteLine();
+
+                            // Escrever os dados no arquivo
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                for (int i = 0; i < dataTable.Columns.Count; i++)
+                                {
+                                    streamWriter.Write(row[i].ToString());
+                                    if (i < dataTable.Columns.Count - 1)
+                                        streamWriter.Write(",");
+                                }
+                                streamWriter.WriteLine();
+                            }
+                        }
+                        MessageBox.Show("Tabela exportada com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("A origem de dados do DataGridView não é um DataTable.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao exportar tabela: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
     }
 }

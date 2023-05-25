@@ -1,3 +1,5 @@
+using System.Data.SqlClient;
+
 namespace Desafio1_GroupSoftware
 {
     internal static class Program
@@ -8,12 +10,20 @@ namespace Desafio1_GroupSoftware
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            TelaLogin login = new TelaLogin();
-            if (login.ShowDialog() == DialogResult.OK)
-                Application.Run(new frmPrincipal());
+            try
+            {
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
+                ApplicationConfiguration.Initialize();
+               
+                TelaLogin login = new TelaLogin();
+                if (login.ShowDialog() == DialogResult.OK)
+                    Application.Run(new frmPrincipal());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }
