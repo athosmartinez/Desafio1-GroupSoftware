@@ -5,6 +5,7 @@ namespace Desafio1_GroupSoftware
 {
     public partial class TelaLogin : Form
     {
+        string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
 
         public TelaLogin()
         {
