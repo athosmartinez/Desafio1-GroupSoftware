@@ -31,32 +31,11 @@ namespace Desafio1_GroupSoftware
 
         private void button_Pesquisa_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_Pesquisa.Text))
-            {
-                // Consulta SQL para selecionar todos os dados da tabela dados_clientes
-                string query = "SELECT * FROM dados_clientes";
 
-                // Criar a conexão com o banco de dados
-                string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    // Criar o SqlDataAdapter e DataTable
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable dataTable = new DataTable();
+            string termoPesquisa = txt_Pesquisa.Text.ToLower(); // Obter o termo de pesquisa em letras minúsculas
+            DataTable lista_clientes_filtrados = Util.ConsultarClientesFiltrados(txt_Pesquisa.Text);
+            dataGrid_Clientes.DataSource = lista_clientes_filtrados;
 
-                    // Preencher o DataTable com os dados do banco de dados
-                    adapter.Fill(dataTable);
-
-                    // Atribuir o DataTable ao DataSource do DataGridView
-                    dataGrid_Clientes.DataSource = dataTable;
-                }
-            }
-            else
-            {
-                string termoPesquisa = txt_Pesquisa.Text.ToLower(); // Obter o termo de pesquisa em letras minúsculas
-                DataTable lista_clientes_filtrados = Util.ConsultarClientesFiltrados(txt_Pesquisa.Text);
-                dataGrid_Clientes.DataSource = lista_clientes_filtrados;
-            }
         }
 
         private void button_Voltar_Click(object sender, EventArgs e)
@@ -132,7 +111,10 @@ namespace Desafio1_GroupSoftware
             }
         }
 
-
-
+        private void ListaClientes_Load(object sender, EventArgs e)
+        {
+            DataTable lista_clientes = Util.ConsultarDadosClientes();
+            dataGrid_Clientes.DataSource = lista_clientes;
+        }
     }
 }

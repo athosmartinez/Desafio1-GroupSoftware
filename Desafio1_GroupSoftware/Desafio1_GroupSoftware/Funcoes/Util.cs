@@ -164,5 +164,24 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
+        public static DataTable ConsultarDadosClientes()
+        {
+ 
+            // Exemplo:
+            string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
+            string query = "SELECT * FROM dados_clientes";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
     }
 }

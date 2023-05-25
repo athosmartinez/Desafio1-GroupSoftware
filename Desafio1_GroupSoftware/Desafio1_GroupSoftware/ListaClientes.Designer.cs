@@ -202,6 +202,7 @@ namespace Desafio1_GroupSoftware
             Name = "ListaClientes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Clientes";
+            Load += ListaClientes_Load;
             groupBox_Pesquisa.ResumeLayout(false);
             groupBox_Pesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).EndInit();
