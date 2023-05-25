@@ -38,7 +38,7 @@ namespace Desafio1_GroupSoftware
                 connection.Close();
             }
             Application.Exit();
-        
+
         }
 
         private void button_Enter_Click(object sender, EventArgs e)
@@ -47,14 +47,6 @@ namespace Desafio1_GroupSoftware
             {
                 if (txt_User.Text.Equals("group") && txt_Password.Text.Equals("admin"))
                 {
-                    SqlConnection connection = new SqlConnection(connectionString);
-                    connection.Open();
-
-                    if (connection.State == ConnectionState.Open)
-                    {
-                        MessageBox.Show("Conexão bem-sucedida!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
