@@ -54,11 +54,8 @@ namespace Desafio1_GroupSoftware
             else
             {
                 string termoPesquisa = txt_Pesquisa.Text.ToLower(); // Obter o termo de pesquisa em letras minúsculas
-
-                DataTable lista_clientes = Util.ConsultarClientesFiltrados(txt_Pesquisa.Text);
-                dataGrid_Clientes.DataSource = lista_clientes;
-
-
+                DataTable lista_clientes_filtrados = Util.ConsultarClientesFiltrados(txt_Pesquisa.Text);
+                dataGrid_Clientes.DataSource = lista_clientes_filtrados;
             }
         }
 

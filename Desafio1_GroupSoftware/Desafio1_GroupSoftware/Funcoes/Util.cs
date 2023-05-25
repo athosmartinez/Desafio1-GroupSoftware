@@ -156,12 +156,10 @@ namespace Desafio1_GroupSoftware.Funcoes
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@termoPesquisa", "%" + termoPesquisa + "%");
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
                 return dataTable;
             }
         }
