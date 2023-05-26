@@ -46,6 +46,7 @@ namespace Desafio1_GroupSoftware
             clienteBindingSource = new BindingSource(components);
             clienteBindingSource1 = new BindingSource(components);
             button_Exportar = new Button();
+            label_ActiveUser = new Label();
             groupBox_Pesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
@@ -188,11 +189,21 @@ namespace Desafio1_GroupSoftware
             button_Exportar.UseVisualStyleBackColor = true;
             button_Exportar.Click += button_Exportar_Click;
             // 
+            // label_ActiveUser
+            // 
+            label_ActiveUser.AutoSize = true;
+            label_ActiveUser.Location = new Point(94, 314);
+            label_ActiveUser.Name = "label_ActiveUser";
+            label_ActiveUser.Size = new Size(29, 15);
+            label_ActiveUser.TabIndex = 5;
+            label_ActiveUser.Text = "user";
+            // 
             // ListaClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+            Controls.Add(label_ActiveUser);
             Controls.Add(button_Exportar);
             Controls.Add(button_Voltar);
             Controls.Add(groupBox_Pesquisa);
@@ -203,12 +214,14 @@ namespace Desafio1_GroupSoftware
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Clientes";
             Load += ListaClientes_Load;
+            Shown += ListaClientes_Shown;
             groupBox_Pesquisa.ResumeLayout(false);
             groupBox_Pesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).EndInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -229,5 +242,6 @@ namespace Desafio1_GroupSoftware
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private Button button_Exportar;
+        private Label label_ActiveUser;
     }
 }

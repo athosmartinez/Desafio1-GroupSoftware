@@ -118,5 +118,12 @@ namespace Desafio1_GroupSoftware
             DataTable lista_clientes = Util.ConsultarDadosClientes();
             dataGrid_Clientes.DataSource = lista_clientes;
         }
+
+        private void ListaClientes_Shown(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_ActiveUser.Text = "TABELA: " + Util.UserName.ToUpper() + " - " + numeroIDString;
+        }
     }
 }
