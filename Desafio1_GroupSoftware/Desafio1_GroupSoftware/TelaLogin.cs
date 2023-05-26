@@ -111,5 +111,11 @@ namespace Desafio1_GroupSoftware
                 button_Cancel_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
             }
         }
+
+        private void button_Redefinir_Click(object sender, EventArgs e)
+        {
+            RedefinirSenha redefinir = new RedefinirSenha();    
+            redefinir.Show();
+        }
     }
 }

@@ -13,6 +13,9 @@
     <Compile Update="NovoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="RedefinirSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TelaLogin.cs">
       <SubType>Form</SubType>
     </Compile>

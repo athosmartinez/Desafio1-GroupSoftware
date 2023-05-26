@@ -36,11 +36,13 @@
             label_Password = new Label();
             txt_User = new TextBox();
             label_User = new Label();
+            button_Redefinir = new Button();
             groupBox_Login.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox_Login
             // 
+            groupBox_Login.Controls.Add(button_Redefinir);
             groupBox_Login.Controls.Add(checkBox_Showpass);
             groupBox_Login.Controls.Add(button_Enter);
             groupBox_Login.Controls.Add(button_Cancel);
@@ -134,6 +136,17 @@
             label_User.Text = "User";
             label_User.Click += label_User_Click;
             // 
+            // button_Redefinir
+            // 
+            button_Redefinir.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Redefinir.Location = new Point(5, 102);
+            button_Redefinir.Name = "button_Redefinir";
+            button_Redefinir.Size = new Size(132, 22);
+            button_Redefinir.TabIndex = 6;
+            button_Redefinir.Text = "ESQUECI MINHA SENHA";
+            button_Redefinir.UseVisualStyleBackColor = true;
+            button_Redefinir.Click += button_Redefinir_Click;
+            // 
             // TelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -162,5 +175,6 @@
         private Button button_Enter;
         private Button button_Cancel;
         private CheckBox checkBox_Showpass;
+        private Button button_Redefinir;
     }
 }

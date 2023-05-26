@@ -1,7 +1,9 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Forms.VisualStyles;
 using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace Desafio1_GroupSoftware.Funcoes
@@ -272,6 +274,58 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
+        public static void AlterarSenha(string username, string novaSenha)
+        {
+            string senhaCriptografada = BCryptNet.HashPassword(novaSenha);
+
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Verificar se o usuário existe
+                    string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username";
+                    SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
+                    checkUserCommand.Parameters.AddWithValue("@Username", username);
+
+                    int userCount = (int)checkUserCommand.ExecuteScalar();
+
+                    if (userCount > 0)
+                    {
+                        // Atualizar a senha do usuário
+                        string updateQuery = "UPDATE usuarios SET senha = @Password WHERE username = @Username";
+                        SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+
+                        updateCommand.Parameters.AddWithValue("@Username", username);
+                        updateCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
+
+                        int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Senha alterada com sucesso!");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falha ao alterar senha.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuário não encontrado no banco de dados.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao alterar senha no banco de dados: " + ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
 

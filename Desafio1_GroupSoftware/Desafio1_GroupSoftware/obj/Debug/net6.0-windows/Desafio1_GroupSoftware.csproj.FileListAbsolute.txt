@@ -63,3 +63,4 @@ C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftwar
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\System.Security.Cryptography.Pkcs.dll
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.RedefinirSenha.resources
