@@ -39,7 +39,6 @@ namespace Desafio1_GroupSoftware
                 connection.Close();
             }
             Application.Exit();
-
         }
 
         private void button_Enter_Click(object sender, EventArgs e)
