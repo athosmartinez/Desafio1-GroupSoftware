@@ -101,6 +101,7 @@
             text_ConfirmeSenha.TabIndex = 5;
             text_ConfirmeSenha.UseSystemPasswordChar = true;
             text_ConfirmeSenha.TextChanged += text_ConfirmeSenha_TextChanged;
+            text_ConfirmeSenha.KeyDown += text_ConfirmeSenha_KeyDown;
             // 
             // label_ConfSenha
             // 
@@ -119,6 +120,7 @@
             text_CrieSenha.TabIndex = 3;
             text_CrieSenha.UseSystemPasswordChar = true;
             text_CrieSenha.TextChanged += text_CrieSenha_TextChanged;
+            text_CrieSenha.KeyDown += text_CrieSenha_KeyDown;
             // 
             // label_CrieSenha
             // 
@@ -158,6 +160,7 @@
             Name = "NovoUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Novo Usuário";
+            KeyDown += NovoUsuario_KeyDown;
             groupBox_NovoUsuario.ResumeLayout(false);
             groupBox_NovoUsuario.PerformLayout();
             ResumeLayout(false);

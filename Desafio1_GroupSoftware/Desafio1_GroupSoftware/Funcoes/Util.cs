@@ -186,7 +186,6 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
-
         public static DataTable ConsultarDadosClientes()
         {
 
@@ -212,7 +211,6 @@ namespace Desafio1_GroupSoftware.Funcoes
         public static bool VerificarLogin(string username, string senha)
         {
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

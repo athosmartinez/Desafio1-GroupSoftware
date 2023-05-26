@@ -103,6 +103,7 @@ namespace Desafio1_GroupSoftware
             // 
             dataGrid_Clientes.AllowUserToAddRows = false;
             dataGrid_Clientes.AllowUserToDeleteRows = false;
+            dataGrid_Clientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGrid_Clientes.AutoGenerateColumns = false;
             dataGrid_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, Endereço, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
@@ -180,6 +181,7 @@ namespace Desafio1_GroupSoftware
             // 
             // button_Exportar
             // 
+            button_Exportar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button_Exportar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button_Exportar.Location = new Point(16, 310);
             button_Exportar.Name = "button_Exportar";
@@ -191,6 +193,7 @@ namespace Desafio1_GroupSoftware
             // 
             // label_ActiveUser
             // 
+            label_ActiveUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label_ActiveUser.AutoSize = true;
             label_ActiveUser.Location = new Point(94, 314);
             label_ActiveUser.Name = "label_ActiveUser";

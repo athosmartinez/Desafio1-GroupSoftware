@@ -65,21 +65,37 @@ namespace Desafio1_GroupSoftware
                     {
                         connection.Open();
 
-                        string sql = "INSERT INTO usuarios (username, senha) VALUES (@Username, @Password)";
-                        SqlCommand command = new SqlCommand(sql, connection);
+                        // Verificar se o usuário já existe
+                        string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username";
+                        SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
+                        checkUserCommand.Parameters.AddWithValue("@Username", username);
 
-                        command.Parameters.AddWithValue("@Username", username);
-                        command.Parameters.AddWithValue("@Password", senhaCriptografada);
+                        int userCount = (int)checkUserCommand.ExecuteScalar();
 
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        if (userCount > 0)
                         {
-                            MessageBox.Show("Usuário criado com sucesso!");
+                            MessageBox.Show("Já existe um usuário com esse nome de usuário.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                         {
-                            MessageBox.Show("Falha ao criar usuário.");
+                            // Inserir o novo usuário
+                            string insertQuery = "INSERT INTO usuarios (username, senha) VALUES (@Username, @Password)";
+                            SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+
+                            insertCommand.Parameters.AddWithValue("@Username", username);
+                            insertCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
+
+                            int rowsAffected = insertCommand.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Usuário criado com sucesso!");
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falha ao criar usuário.");
+                            }
                         }
                     }
                 }
@@ -87,6 +103,7 @@ namespace Desafio1_GroupSoftware
                 {
                     MessageBox.Show("Erro ao inserir usuário no banco de dados: " + ex.Message);
                 }
+
             }
         }
 
@@ -96,6 +113,48 @@ namespace Desafio1_GroupSoftware
         }
 
         private void text_CrieUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                button_Salvar_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                button_Cancelar_Click(sender, e);
+            }
+        }
+
+        private void text_CrieSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                button_Salvar_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                button_Cancelar_Click(sender, e);
+            }
+        }
+
+        private void text_ConfirmeSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                button_Salvar_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                button_Cancelar_Click(sender, e);
+            }
+        }
+
+        private void NovoUsuario_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
