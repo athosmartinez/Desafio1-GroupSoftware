@@ -1,25 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Globalization;
-using Desafio1_GroupSoftware.Classes;
+﻿using System.Data;
 using Desafio1_GroupSoftware.Funcoes;
 using System.Data.SqlClient;
-using System.Formats.Asn1;
-using CsvHelper;
-using CsvHelper.Configuration;
 using OfficeOpenXml;
-using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.IO;
-using System.Windows.Forms;
+
 
 namespace Desafio1_GroupSoftware
 {

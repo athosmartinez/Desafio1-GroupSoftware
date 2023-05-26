@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using BCryptNet = BCrypt.Net.BCrypt;
-using Desafio1_GroupSoftware.Classes;
 
 namespace Desafio1_GroupSoftware.Funcoes
 {
