@@ -14,6 +14,12 @@ using System.Data.SqlClient;
 using System.Formats.Asn1;
 using CsvHelper;
 using CsvHelper.Configuration;
+using OfficeOpenXml;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Desafio1_GroupSoftware
 {
@@ -52,13 +58,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Pesquisa_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true;
+                button_Pesquisa_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Voltar_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true;
+                button_Voltar_Click(sender, e);
             }
         }
 
@@ -66,56 +72,61 @@ namespace Desafio1_GroupSoftware
         {
             try
             {
-                // Consultar todos os clientes do usuário logado
-                DataTable dataTable = Util.ConsultarDadosClientes();
-
-                // Verificar se existem dados a serem exportados
-                if (dataTable.Rows.Count > 0)
+                // Obter a conexão com o banco de dados
+                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    // Criar o objeto SaveFileDialog
+                    connection.Open();
+
+                    // Consultar os dados do usuário logado
+                    string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@usuarioID", Util.UserID);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Criar o objeto SaveFileDialog para escolher o local e nome do arquivo Excel
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.Filter = "Arquivo CSV (*.csv)|*.csv";
-                    saveFileDialog.Title = "Salvar Tabela";
-                    saveFileDialog.ShowDialog();
+                    saveFileDialog.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
+                    saveFileDialog.Title = "Salvar Banco de Dados do Usuário";
+                    saveFileDialog.FileName = "Banco de dados_" + Util.UserID + "_" + Util.UserName;
 
                     // Verificar se o usuário selecionou um local e nome de arquivo válido
-                    if (!string.IsNullOrEmpty(saveFileDialog.FileName))
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // Criar o StreamWriter para escrever no arquivo
-                        using (StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName))
+                        // Criar o arquivo Excel usando o EPPlus
+                        FileInfo excelFile = new FileInfo(saveFileDialog.FileName);
+                        using (ExcelPackage package = new ExcelPackage(excelFile))
                         {
-                            // Escrever o cabeçalho no arquivo
-                            for (int i = 0; i < dataTable.Columns.Count; i++)
-                            {
-                                streamWriter.Write(dataTable.Columns[i].ColumnName);
-                                if (i < dataTable.Columns.Count - 1)
-                                    streamWriter.Write(",");
-                            }
-                            streamWriter.WriteLine();
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Banco de Dados");
 
-                            // Escrever os dados no arquivo
-                            foreach (DataRow row in dataTable.Rows)
+                            // Preencher as células com os dados da tabela
+                            for (int col = 0; col < dataTable.Columns.Count; col++)
                             {
-                                for (int i = 0; i < dataTable.Columns.Count; i++)
-                                {
-                                    streamWriter.Write(row[i].ToString());
-                                    if (i < dataTable.Columns.Count - 1)
-                                        streamWriter.Write(",");
-                                }
-                                streamWriter.WriteLine();
+                                worksheet.Cells[1, col + 1].Value = dataTable.Columns[col].ColumnName;
                             }
+
+                            for (int row = 0; row < dataTable.Rows.Count; row++)
+                            {
+                                for (int col = 0; col < dataTable.Columns.Count; col++)
+                                {
+                                    worksheet.Cells[row + 2, col + 1].Value = dataTable.Rows[row][col];
+                                }
+                            }
+
+                            // Salvar o arquivo Excel
+                            package.Save();
                         }
-                        MessageBox.Show("Tabela exportada com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        MessageBox.Show("Banco de dados exportado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Não há dados para exportar.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao exportar tabela: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao exportar banco de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

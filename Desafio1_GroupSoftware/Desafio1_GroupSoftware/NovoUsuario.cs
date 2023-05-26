@@ -108,13 +108,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Salvar_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Salvar_Click(sender, e); 
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Cancelar_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Cancelar_Click(sender, e); 
             }
         }
     }

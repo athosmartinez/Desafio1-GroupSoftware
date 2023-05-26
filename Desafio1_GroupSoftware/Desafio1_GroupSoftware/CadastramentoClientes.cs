@@ -165,13 +165,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true;
+                button_Save_Click(sender, e); 
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Exit_Click(sender, e); 
             }
         }
 
@@ -179,13 +179,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Save_Click(sender, e); 
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Exit_Click(sender, e); 
             }
         }
 
@@ -193,13 +193,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Save_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Exit_Click(sender, e); 
             }
         }
 
@@ -207,13 +207,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Save_Click(sender, e); 
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Exit_Click(sender, e); 
             }
         }
 
@@ -221,13 +221,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Save_Click(sender, e); 
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
-                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+                e.SuppressKeyPress = true; 
+                button_Exit_Click(sender, e); 
             }
         }
     }
