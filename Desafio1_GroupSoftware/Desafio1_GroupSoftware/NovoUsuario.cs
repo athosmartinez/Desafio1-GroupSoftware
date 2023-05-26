@@ -57,12 +57,17 @@ namespace Desafio1_GroupSoftware
             if (text_CrieSenha.Text != text_ConfirmeSenha.Text)
             {
                 MessageBox.Show("SENHAS DEVEM SER IGUAIS", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            }
+            else if (string.IsNullOrWhiteSpace(text_CrieSenha.Text))
+            {
+                MessageBox.Show("A senha não pode estar vazia.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (text_CrieSenha.Text.Contains(" "))
+            {
+                MessageBox.Show("A senha não pode conter espaços em branco.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-
-
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -92,12 +97,25 @@ namespace Desafio1_GroupSoftware
                     MessageBox.Show("Erro ao inserir usuário no banco de dados: " + ex.Message);
                 }
             }
-
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void text_CrieUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Salvar_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Cancelar_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
         }
     }
 }

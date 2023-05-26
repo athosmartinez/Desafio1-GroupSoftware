@@ -65,7 +65,7 @@
             button_Sair.Location = new Point(384, 11);
             button_Sair.Name = "button_Sair";
             button_Sair.Size = new Size(118, 76);
-            button_Sair.TabIndex = 2;
+            button_Sair.TabIndex = 3;
             button_Sair.Text = "DESLOGAR";
             button_Sair.UseVisualStyleBackColor = true;
             button_Sair.Click += button_Sair_Click;
@@ -76,7 +76,7 @@
             button_NovoUsuario.Location = new Point(260, 12);
             button_NovoUsuario.Name = "button_NovoUsuario";
             button_NovoUsuario.Size = new Size(118, 75);
-            button_NovoUsuario.TabIndex = 3;
+            button_NovoUsuario.TabIndex = 2;
             button_NovoUsuario.Text = "NOVO USUÁRIO";
             button_NovoUsuario.UseVisualStyleBackColor = true;
             button_NovoUsuario.Click += button_NovoUsuario_Click;
@@ -97,7 +97,7 @@
             button_CloseApp.Location = new Point(427, 87);
             button_CloseApp.Name = "button_CloseApp";
             button_CloseApp.Size = new Size(75, 23);
-            button_CloseApp.TabIndex = 5;
+            button_CloseApp.TabIndex = 4;
             button_CloseApp.Text = "SAIR";
             button_CloseApp.UseVisualStyleBackColor = true;
             button_CloseApp.Click += button_CloseApp_Click;

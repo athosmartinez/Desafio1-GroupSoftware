@@ -170,42 +170,49 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static DataTable ConsultarClientesFiltrados(string termoPesquisa)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
-            string query = "SELECT * FROM dados_clientes WHERE " +
-                  "LOWER(nome) LIKE @termoPesquisa OR " +
-                  "LOWER(endereco) LIKE @termoPesquisa OR " +
-                  "REPLACE(LOWER(documento), ',', '') LIKE @termoPesquisa OR " +
-                  "LOWER(email) LIKE @termoPesquisa OR " +
-                  "LOWER(telefone) LIKE @termoPesquisa";
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID " +
+                          "AND (LOWER(nome) LIKE @termoPesquisa OR " +
+                          "LOWER(endereco) LIKE @termoPesquisa OR " +
+                          "REPLACE(LOWER(documento), ',', '') LIKE @termoPesquisa OR " +
+                          "LOWER(email) LIKE @termoPesquisa OR " +
+                          "LOWER(telefone) LIKE @termoPesquisa)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.SelectCommand.Parameters.AddWithValue("@termoPesquisa", "%" + termoPesquisa + "%");
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@usuarioID", Util.UserID);
+                command.Parameters.AddWithValue("@termoPesquisa", "%" + termoPesquisa.ToLower() + "%");
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 return dataTable;
             }
         }
 
+
         public static DataTable ConsultarDadosClientes()
         {
 
-            // Exemplo:
-            string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
-            string query = "SELECT * FROM dados_clientes";
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@usuarioID", Util.UserID);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
                 return dataTable;
             }
+
         }
 
         public static bool VerificarLogin(string username, string senha)

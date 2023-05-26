@@ -135,6 +135,7 @@
             text_CrieUser.Size = new Size(243, 23);
             text_CrieUser.TabIndex = 1;
             text_CrieUser.TextChanged += text_CrieUser_TextChanged;
+            text_CrieUser.KeyDown += text_CrieUser_KeyDown;
             // 
             // label_CrieUser
             // 

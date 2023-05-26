@@ -55,14 +55,22 @@ namespace Desafio1_GroupSoftware
                 e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
                 button_Pesquisa_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
             }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Voltar_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
         }
 
         private void button_Exportar_Click(object sender, EventArgs e)
         {
             try
             {
-                // Verificar se a origem de dados é um DataTable
-                if (dataGrid_Clientes.DataSource is DataTable dataTable)
+                // Consultar todos os clientes do usuário logado
+                DataTable dataTable = Util.ConsultarDadosClientes();
+
+                // Verificar se existem dados a serem exportados
+                if (dataTable.Rows.Count > 0)
                 {
                     // Criar o objeto SaveFileDialog
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -102,7 +110,7 @@ namespace Desafio1_GroupSoftware
                 }
                 else
                 {
-                    MessageBox.Show("A origem de dados do DataGridView não é um DataTable.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Não há dados para exportar.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -110,6 +118,7 @@ namespace Desafio1_GroupSoftware
                 MessageBox.Show("Erro ao exportar tabela: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ListaClientes_Load(object sender, EventArgs e)
         {
             DataTable lista_clientes = Util.ConsultarDadosClientes();

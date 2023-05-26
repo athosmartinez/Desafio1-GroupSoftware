@@ -69,7 +69,7 @@ namespace Desafio1_GroupSoftware
             {
                 MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text) )
+            else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text))
             {
                 MessageBox.Show("CPF Inválido", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -93,7 +93,7 @@ namespace Desafio1_GroupSoftware
                 string documento = maskText_Documento.Text;
                 string telefone = mask_telefone.Text;
                 int usuarioID = Util.UserID;
-                
+
                 // Chame o método para inserir os dados na tabela
                 Util.InserirDadosCliente(nome, email, endereco, documento, telefone, usuarioID);
             }
@@ -148,6 +148,86 @@ namespace Desafio1_GroupSoftware
                 label_Doc.Text = "Documento: ";
                 maskText_Documento.Mask = "";
                 maskText_Documento.Text = "";
+            }
+        }
+
+        private void button_save_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void CadastramentoClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txt_nome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+        }
+
+        private void txt_Endereco_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+        }
+
+        private void maskText_Documento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+        }
+
+        private void txt_email_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+        }
+
+        private void mask_telefone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Save_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true; // Suprimir o som de "beep" ao pressionar Enter
+                button_Exit_Click(sender, e); // Chamar o evento de clique do botão de pesquisa
             }
         }
     }

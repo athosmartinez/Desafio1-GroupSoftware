@@ -115,6 +115,7 @@
             maskText_Documento.Size = new Size(256, 23);
             maskText_Documento.TabIndex = 6;
             maskText_Documento.MaskInputRejected += maskText_Documento_MaskInputRejected;
+            maskText_Documento.KeyDown += maskText_Documento_KeyDown;
             // 
             // mask_telefone
             // 
@@ -124,6 +125,7 @@
             mask_telefone.Size = new Size(272, 23);
             mask_telefone.TabIndex = 7;
             mask_telefone.MaskInputRejected += maskText_Telefone_MaskInputRejected;
+            mask_telefone.KeyDown += mask_telefone_KeyDown;
             // 
             // label_Doc
             // 
@@ -146,6 +148,7 @@
             button_save.Text = "SAVE";
             button_save.UseVisualStyleBackColor = true;
             button_save.Click += button_Save_Click;
+            button_save.KeyDown += button_save_KeyDown;
             // 
             // button_exit
             // 
@@ -167,6 +170,7 @@
             txt_email.Size = new Size(272, 23);
             txt_email.TabIndex = 5;
             txt_email.TextChanged += txt_Email_TextChanged;
+            txt_email.KeyDown += txt_email_KeyDown;
             // 
             // txt_Endereco
             // 
@@ -176,6 +180,7 @@
             txt_Endereco.Size = new Size(256, 23);
             txt_Endereco.TabIndex = 4;
             txt_Endereco.TextChanged += txt_Endereco_TextChanged;
+            txt_Endereco.KeyDown += txt_Endereco_KeyDown;
             // 
             // txt_nome
             // 
@@ -185,6 +190,7 @@
             txt_nome.Size = new Size(256, 23);
             txt_nome.TabIndex = 1;
             txt_nome.TextChanged += txt_Nome_TextChanged;
+            txt_nome.KeyDown += txt_nome_KeyDown;
             // 
             // label6
             // 
@@ -246,6 +252,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastramento Clientes";
             TopMost = true;
+            KeyDown += CadastramentoClientes_KeyDown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);
