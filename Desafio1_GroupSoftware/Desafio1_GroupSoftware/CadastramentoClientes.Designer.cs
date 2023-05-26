@@ -69,7 +69,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(566, 170);
+            groupBox1.Size = new Size(566, 173);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Preencha os campos";
@@ -145,7 +145,7 @@
             button_save.Name = "button_save";
             button_save.Size = new Size(82, 22);
             button_save.TabIndex = 8;
-            button_save.Text = "SAVE";
+            button_save.Text = "SALVAR";
             button_save.UseVisualStyleBackColor = true;
             button_save.Click += button_Save_Click;
             button_save.KeyDown += button_save_KeyDown;
@@ -158,7 +158,7 @@
             button_exit.Name = "button_exit";
             button_exit.Size = new Size(82, 22);
             button_exit.TabIndex = 9;
-            button_exit.Text = "EXIT";
+            button_exit.Text = "VOLTAR";
             button_exit.UseVisualStyleBackColor = true;
             button_exit.Click += button_Exit_Click;
             // 
@@ -243,7 +243,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(584, 179);
+            ClientSize = new Size(584, 183);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(3, 2, 3, 2);

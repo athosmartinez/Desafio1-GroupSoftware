@@ -157,12 +157,12 @@ namespace Desafio1_GroupSoftware
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
-                button_Save_Click(sender, e); 
+                button_Save_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; 
-                button_Exit_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Exit_Click(sender, e);
             }
         }
 
@@ -170,13 +170,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; 
-                button_Save_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Save_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; 
-                button_Exit_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Exit_Click(sender, e);
             }
         }
 
@@ -184,13 +184,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; 
+                e.SuppressKeyPress = true;
                 button_Save_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; 
-                button_Exit_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Exit_Click(sender, e);
             }
         }
 
@@ -198,13 +198,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; 
-                button_Save_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Save_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; 
-                button_Exit_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Exit_Click(sender, e);
             }
         }
 
@@ -212,13 +212,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; 
-                button_Save_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Save_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; 
-                button_Exit_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Exit_Click(sender, e);
             }
         }
     }

@@ -53,9 +53,9 @@
             groupBox_NovoUsuario.Controls.Add(label_CrieSenha);
             groupBox_NovoUsuario.Controls.Add(text_CrieUser);
             groupBox_NovoUsuario.Controls.Add(label_CrieUser);
-            groupBox_NovoUsuario.Location = new Point(3, 3);
+            groupBox_NovoUsuario.Location = new Point(5, 3);
             groupBox_NovoUsuario.Name = "groupBox_NovoUsuario";
-            groupBox_NovoUsuario.Size = new Size(255, 209);
+            groupBox_NovoUsuario.Size = new Size(260, 209);
             groupBox_NovoUsuario.TabIndex = 0;
             groupBox_NovoUsuario.TabStop = false;
             groupBox_NovoUsuario.Text = "Novo usuário";
@@ -63,7 +63,7 @@
             // button_Salvar
             // 
             button_Salvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Salvar.Location = new Point(174, 179);
+            button_Salvar.Location = new Point(180, 179);
             button_Salvar.Name = "button_Salvar";
             button_Salvar.Size = new Size(75, 23);
             button_Salvar.TabIndex = 8;
@@ -74,7 +74,7 @@
             // button_Cancelar
             // 
             button_Cancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Cancelar.Location = new Point(93, 179);
+            button_Cancelar.Location = new Point(99, 179);
             button_Cancelar.Name = "button_Cancelar";
             button_Cancelar.Size = new Size(75, 23);
             button_Cancelar.TabIndex = 7;
@@ -85,11 +85,11 @@
             // checkBox_ShowPassword
             // 
             checkBox_ShowPassword.AutoSize = true;
-            checkBox_ShowPassword.Location = new Point(141, 154);
+            checkBox_ShowPassword.Location = new Point(154, 154);
             checkBox_ShowPassword.Name = "checkBox_ShowPassword";
-            checkBox_ShowPassword.Size = new Size(108, 19);
+            checkBox_ShowPassword.Size = new Size(101, 19);
             checkBox_ShowPassword.TabIndex = 6;
-            checkBox_ShowPassword.Text = "Show Password";
+            checkBox_ShowPassword.Text = "Mostrar senha";
             checkBox_ShowPassword.UseVisualStyleBackColor = true;
             checkBox_ShowPassword.CheckedChanged += checkBox_ShowPassword_CheckedChanged;
             // 
@@ -97,7 +97,7 @@
             // 
             text_ConfirmeSenha.Location = new Point(6, 125);
             text_ConfirmeSenha.Name = "text_ConfirmeSenha";
-            text_ConfirmeSenha.Size = new Size(243, 23);
+            text_ConfirmeSenha.Size = new Size(249, 23);
             text_ConfirmeSenha.TabIndex = 5;
             text_ConfirmeSenha.UseSystemPasswordChar = true;
             text_ConfirmeSenha.TextChanged += text_ConfirmeSenha_TextChanged;
@@ -115,7 +115,7 @@
             // 
             text_CrieSenha.Location = new Point(6, 81);
             text_CrieSenha.Name = "text_CrieSenha";
-            text_CrieSenha.Size = new Size(243, 23);
+            text_CrieSenha.Size = new Size(249, 23);
             text_CrieSenha.TabIndex = 3;
             text_CrieSenha.UseSystemPasswordChar = true;
             text_CrieSenha.TextChanged += text_CrieSenha_TextChanged;
@@ -133,7 +133,7 @@
             // 
             text_CrieUser.Location = new Point(6, 37);
             text_CrieUser.Name = "text_CrieUser";
-            text_CrieUser.Size = new Size(243, 23);
+            text_CrieUser.Size = new Size(249, 23);
             text_CrieUser.TabIndex = 1;
             text_CrieUser.TextChanged += text_CrieUser_TextChanged;
             text_CrieUser.KeyDown += text_CrieUser_KeyDown;

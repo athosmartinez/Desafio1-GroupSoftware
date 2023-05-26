@@ -94,7 +94,7 @@ namespace Desafio1_GroupSoftware
             button_Voltar.Name = "button_Voltar";
             button_Voltar.Size = new Size(75, 23);
             button_Voltar.TabIndex = 2;
-            button_Voltar.Text = "Voltar";
+            button_Voltar.Text = "VOLTAR";
             button_Voltar.UseVisualStyleBackColor = true;
             button_Voltar.Click += button_Voltar_Click;
             // 

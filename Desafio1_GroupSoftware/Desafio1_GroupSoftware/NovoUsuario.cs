@@ -99,13 +99,13 @@ namespace Desafio1_GroupSoftware
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; 
-                button_Salvar_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Salvar_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                e.SuppressKeyPress = true; 
-                button_Cancelar_Click(sender, e); 
+                e.SuppressKeyPress = true;
+                button_Cancelar_Click(sender, e);
             }
         }
     }

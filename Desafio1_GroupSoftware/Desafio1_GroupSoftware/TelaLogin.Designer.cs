@@ -60,12 +60,12 @@
             // checkBox_Showpass
             // 
             checkBox_Showpass.AutoSize = true;
-            checkBox_Showpass.Location = new Point(253, 101);
+            checkBox_Showpass.Location = new Point(260, 101);
             checkBox_Showpass.Margin = new Padding(3, 2, 3, 2);
             checkBox_Showpass.Name = "checkBox_Showpass";
-            checkBox_Showpass.Size = new Size(108, 19);
+            checkBox_Showpass.Size = new Size(101, 19);
             checkBox_Showpass.TabIndex = 3;
-            checkBox_Showpass.Text = "Show Password";
+            checkBox_Showpass.Text = "Mostrar senha";
             checkBox_Showpass.UseVisualStyleBackColor = true;
             checkBox_Showpass.CheckedChanged += checkBox_Showpass_CheckedChanged;
             // 
@@ -77,7 +77,7 @@
             button_Enter.Name = "button_Enter";
             button_Enter.Size = new Size(82, 22);
             button_Enter.TabIndex = 3;
-            button_Enter.Text = "ENTER";
+            button_Enter.Text = "ENTRAR";
             button_Enter.UseVisualStyleBackColor = true;
             button_Enter.Click += button_Enter_Click;
             // 
@@ -89,7 +89,7 @@
             button_Cancel.Name = "button_Cancel";
             button_Cancel.Size = new Size(82, 22);
             button_Cancel.TabIndex = 5;
-            button_Cancel.Text = "CANCEL";
+            button_Cancel.Text = "CANCELAR";
             button_Cancel.UseVisualStyleBackColor = true;
             button_Cancel.Click += button_Cancel_Click;
             // 

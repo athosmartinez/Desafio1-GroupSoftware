@@ -47,7 +47,6 @@ C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftwar
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.csproj.CopyComplete
-C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\CsvHelper.dll
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.NovoUsuario.resources
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\EPPlus.dll
