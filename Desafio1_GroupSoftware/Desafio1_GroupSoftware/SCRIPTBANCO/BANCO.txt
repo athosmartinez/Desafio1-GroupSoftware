@@ -1,0 +1,86 @@
+//Criar base dos dados
+CREATE DATABASE users
+
+//Criar tabela usuarios
+USE [users]
+GO
+
+/****** Object:  Table [dbo].[usuarios]    Script Date: 26/05/2023 13:21:36 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[usuarios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](255) NOT NULL,
+	[senha] [varchar](255) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+//Criar tabela clientes
+USE [users]
+GO
+
+/****** Object:  Table [dbo].[clientes]    Script Date: 26/05/2023 13:18:46 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[clientes](
+	[nome] [varchar](255) NOT NULL,
+	[email] [varchar](255) NOT NULL,
+	[endereco] [varchar](255) NOT NULL,
+	[documento] [varchar](255) NOT NULL,
+	[telefone] [varchar](255) NOT NULL,
+	[usuarioID] [int] NOT NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[clientes]  WITH CHECK ADD FOREIGN KEY([usuarioID])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+
+//Cadastrar primeiro usuario
+Para cadastrar o primeiro usuario 
+Altere em Program.cs ->    
+        try
+            {
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
+                ApplicationConfiguration.Initialize();
+                TelaLogin login = new TelaLogin();
+                if (login.ShowDialog() == DialogResult.OK)
+                    Application.Run(new frmPrincipal());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            } 
+para -> 
+       try
+            {
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
+                ApplicationConfiguration.Initialize();        
+                    Application.Run(new NovoUsuario());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            } 
+
+Depois apenas retornar para a versão inicial.
+
+
