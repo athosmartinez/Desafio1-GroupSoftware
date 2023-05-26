@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovoUsuario));
             groupBox_NovoUsuario = new GroupBox();
             button_Salvar = new Button();
             button_Cancelar = new Button();
@@ -152,6 +153,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(270, 217);
             Controls.Add(groupBox_NovoUsuario);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "NovoUsuario";
             StartPosition = FormStartPosition.CenterScreen;
