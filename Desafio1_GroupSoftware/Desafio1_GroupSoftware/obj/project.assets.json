@@ -15,19 +15,6 @@
           }
         }
       },
-      "CsvHelper/30.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CsvHelper.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CsvHelper.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "EPPlus/6.2.4": {
         "type": "package",
         "dependencies": {
@@ -587,30 +574,6 @@
         "lib/netstandard2.1/BCrypt.Net-Next.dll",
         "lib/netstandard2.1/BCrypt.Net-Next.xml",
         "readme.md"
-      ]
-    },
-    "CsvHelper/30.0.1": {
-      "sha512": "rcZtgbWR+As4G3Vpgx0AMNmShGuQLFjkHAPIIflzrfkJCx8/AOd4m96ZRmiU1Wi39qS5UVjV0P8qdgqOo5Cwyg==",
-      "type": "package",
-      "path": "csvhelper/30.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "csvhelper.30.0.1.nupkg.sha512",
-        "csvhelper.nuspec",
-        "lib/net45/CsvHelper.dll",
-        "lib/net45/CsvHelper.xml",
-        "lib/net47/CsvHelper.dll",
-        "lib/net47/CsvHelper.xml",
-        "lib/net5.0/CsvHelper.dll",
-        "lib/net5.0/CsvHelper.xml",
-        "lib/net6.0/CsvHelper.dll",
-        "lib/net6.0/CsvHelper.xml",
-        "lib/netstandard2.0/CsvHelper.dll",
-        "lib/netstandard2.0/CsvHelper.xml",
-        "lib/netstandard2.1/CsvHelper.dll",
-        "lib/netstandard2.1/CsvHelper.xml"
       ]
     },
     "EPPlus/6.2.4": {
@@ -1464,7 +1427,6 @@
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "BCrypt.Net-Next >= 4.0.3",
-      "CsvHelper >= 30.0.1",
       "EPPlus >= 6.2.4",
       "System.Data.SqlClient >= 4.8.5"
     ]
@@ -1511,10 +1473,6 @@
           "BCrypt.Net-Next": {
             "target": "Package",
             "version": "[4.0.3, )"
-          },
-          "CsvHelper": {
-            "target": "Package",
-            "version": "[30.0.1, )"
           },
           "EPPlus": {
             "target": "Package",

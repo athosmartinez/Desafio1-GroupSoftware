@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "aLPpnb07Dq/y78LeuPPQgOgEWU2irBVepnx8XaxJ8AOeL48GGUaFzI0TjlglO3Dp87FRnxwtthJhHbWMlKPMDA==",
+  "dgSpecHash": "E3047tDx9P4hQHIHqrfelMxf7T4xTRs3tBewZb5xVHPpg3rp8Qyn0uO8ky63BL/ufMn1swlfkK+sNHPx6WoJHw==",
   "success": true,
   "projectFilePath": "C:\\Users\\athos.andrade\\source\\repos\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\athos.andrade\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
-    "C:\\Users\\athos.andrade\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\athos.andrade\\.nuget\\packages\\epplus\\6.2.4\\epplus.6.2.4.nupkg.sha512",
     "C:\\Users\\athos.andrade\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",
     "C:\\Users\\athos.andrade\\.nuget\\packages\\epplus.system.drawing\\6.1.1\\epplus.system.drawing.6.1.1.nupkg.sha512",
