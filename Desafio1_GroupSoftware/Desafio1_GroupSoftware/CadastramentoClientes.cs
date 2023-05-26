@@ -69,7 +69,7 @@ namespace Desafio1_GroupSoftware
             {
                 MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text))
+            else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text) )
             {
                 MessageBox.Show("CPF Inválido", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -83,8 +83,6 @@ namespace Desafio1_GroupSoftware
             {
                 MessageBox.Show("PREENCHA TODOS OS DADOS!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-
             else if ((radio_CNPJ.Checked && Util.ValidarCNPJ(maskText_Documento.Text)) ||
                (radio_CPF.Checked && Util.ValidarCPF(maskText_Documento.Text)))
             {
@@ -94,9 +92,10 @@ namespace Desafio1_GroupSoftware
                 string endereco = txt_Endereco.Text;
                 string documento = maskText_Documento.Text;
                 string telefone = mask_telefone.Text;
-
+                int usuarioID = Util.UserID;
+                
                 // Chame o método para inserir os dados na tabela
-                Util.InserirDadosCliente(nome, email, endereco, documento, telefone);
+                Util.InserirDadosCliente(nome, email, endereco, documento, telefone, usuarioID);
             }
         }
 

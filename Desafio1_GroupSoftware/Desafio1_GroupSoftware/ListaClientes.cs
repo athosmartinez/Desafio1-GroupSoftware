@@ -110,7 +110,6 @@ namespace Desafio1_GroupSoftware
                 MessageBox.Show("Erro ao exportar tabela: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void ListaClientes_Load(object sender, EventArgs e)
         {
             DataTable lista_clientes = Util.ConsultarDadosClientes();

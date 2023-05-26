@@ -38,5 +38,84 @@ namespace Desafio1_GroupSoftware
             telaLogin.ShowDialog();
 
         }
+        //DUVIDA QUAL MELHOR EVENTO UTILIZAR
+        private void button_NovoUsuario_Click(object sender, EventArgs e)
+        {
+            NovoUsuario novoUsuario = new NovoUsuario();
+            novoUsuario.ShowDialog();
+        }
+
+        private void label_UserShow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_Shown(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_MouseDown(object sender, MouseEventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_MouseEnter(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_MouseLeave(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_MouseMove(object sender, MouseEventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_MouseHover(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_RegionChanged(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void frmPrincipal_VisibleChanged(object sender, EventArgs e)
+        {
+            int numeroID = Util.UserID;
+            string numeroIDString = numeroID.ToString();
+            label_UserShow.Text = "Active: " + Util.UserName + " - " + numeroIDString;
+        }
+
+        private void button_CloseApp_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

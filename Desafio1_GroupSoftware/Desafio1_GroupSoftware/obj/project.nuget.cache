@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tQDxeYCclvFw9frfQYtpS1rQYbQ1vd3iTAfpati8KY4CV/iYy/ITYPhbIxYMpOX+x+v0jUvjpSJNp8KbB1vX0w==",
+  "dgSpecHash": "0eBE7NNPl5oeoDc6KZPb/ATple2AVBb1/uJklGMdwUjZ+651TfhJc61LzERUELx1Os4WrlooWkWpR5Qub6zzug==",
   "success": true,
   "projectFilePath": "C:\\Users\\athos.andrade\\source\\repos\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\athos.andrade\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\athos.andrade\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\athos.andrade\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\athos.andrade\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

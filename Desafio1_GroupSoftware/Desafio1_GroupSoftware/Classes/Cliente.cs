@@ -13,6 +13,7 @@ namespace Desafio1_GroupSoftware.Classes
         public string Documento { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
+        public int UsuarioID { get; set; }
 
 
     }

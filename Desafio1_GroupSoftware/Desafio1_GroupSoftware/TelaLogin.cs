@@ -1,3 +1,4 @@
+using Desafio1_GroupSoftware.Funcoes;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -45,21 +46,34 @@ namespace Desafio1_GroupSoftware
         {
             try
             {
-                if (txt_User.Text.Equals("group") && txt_Password.Text.Equals("admin"))
+                string username = txt_User.Text;
+                string password = txt_Password.Text;
+                bool loginSucesso = Util.VerificarLogin(username, password);
+                if (loginSucesso)
                 {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    int usuarioID = Util.ObterIDUsuarioLogado(username);
+                    Util.UserID = usuarioID;
+                    if (usuarioID != -1)
+                    {
+
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao obter o ID do usuário logado!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("User ou senha estão errados!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuário ou senha estão incorretos!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txt_User.Focus();
                     txt_Password.Text = "";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERRO", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Acesso negado", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

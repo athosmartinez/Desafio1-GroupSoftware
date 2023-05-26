@@ -6,6 +6,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using BCryptNet = BCrypt.Net.BCrypt;
+using Desafio1_GroupSoftware.Classes;
 
 namespace Desafio1_GroupSoftware.Funcoes
 {
@@ -24,7 +27,7 @@ namespace Desafio1_GroupSoftware.Funcoes
             string digito;
             string tempCnpj;
             cnpj = cnpj.Trim().SomenteNumeros();
-            if (cnpj.Length != 14)
+            if (cnpj.Length != 14 || TodosDigitosIguaisCnpj(cnpj))
                 return false;
             tempCnpj = cnpj.Substring(0, 12);
             soma = 0;
@@ -48,10 +51,21 @@ namespace Desafio1_GroupSoftware.Funcoes
             digito = digito + resto.ToString();
             return cnpj.EndsWith(digito);
         }
+
+        private static bool TodosDigitosIguaisCnpj(string cnpj)
+        {
+            for (int i = 1; i < cnpj.Length; i++)
+            {
+                if (cnpj[i] != cnpj[0])
+                    return false;
+            }
+            return true;
+        }
+
         public static bool ValidarCPF(string cpf)
         {
             cpf = cpf.Trim().SomenteNumeros();
-            if (cpf.Length != 11)
+            if (cpf.Length != 11 || TodosDigitosIguaisCpf(cpf))
                 return false;
 
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -88,6 +102,17 @@ namespace Desafio1_GroupSoftware.Funcoes
             return cpf.EndsWith(digito);
         }
 
+        private static bool TodosDigitosIguaisCpf(string cpf)
+        {
+            for (int i = 1; i < cpf.Length; i++)
+            {
+                if (cpf[i] != cpf[0])
+                    return false;
+            }
+            return true;
+        }
+
+
         public static string RemoverAcentos(string txtPesquisa)
         {
             string txtSemAcento = txtPesquisa.Normalize(NormalizationForm.FormD);
@@ -100,17 +125,19 @@ namespace Desafio1_GroupSoftware.Funcoes
             return stringBuilder.ToString();
         }
 
-        public static void InserirDadosCliente(string nome, string email, string endereco, string documento, string telefone)
+        public static void InserirDadosCliente(string nome, string email, string endereco, string documento, string telefone, int usuarioID)
         {
             try
             {
-                string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
+                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    // Verificar se o cliente já existe com base no nome, telefone ou documento
-                    string queryVerificacao = "SELECT COUNT(*) FROM dados_clientes WHERE nome = @nome OR telefone = @telefone OR documento = @documento";
+                    Util.UserID = usuarioID;
+
+                    // Verificar se o cliente já existe com base no nome, telefone e documento
+                    string queryVerificacao = "SELECT COUNT(*) FROM clientes WHERE nome = @nome OR  telefone = @telefone OR  documento = @documento";
                     SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
                     commandVerificacao.Parameters.AddWithValue("@nome", nome);
                     commandVerificacao.Parameters.AddWithValue("@telefone", telefone);
@@ -119,21 +146,19 @@ namespace Desafio1_GroupSoftware.Funcoes
                     int count = (int)commandVerificacao.ExecuteScalar();
                     if (count > 0)
                     {
-                        MessageBox.Show("Cliente já existe no banco de dados. Verifique os campos NOME, DOCUMENTO ou telefone", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cliente já existe no banco de dados. Verifique os campos NOME, DOCUMENTO ou TELEFONE", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return; // Não realizar a inserção se o cliente já existe
                     }
-
                     // Inserir o cliente caso não exista
-                    string queryInsercao = "INSERT INTO dados_clientes (nome, email, endereco, documento, telefone) VALUES (@nome, @email, @endereco, @documento, @telefone)";
+                    string queryInsercao = "INSERT INTO clientes (nome, email, endereco, documento, telefone, usuarioID) VALUES (@nome, @email, @endereco, @documento, @telefone, @usuarioID)";
                     SqlCommand commandInsercao = new SqlCommand(queryInsercao, connection);
                     commandInsercao.Parameters.AddWithValue("@nome", nome);
                     commandInsercao.Parameters.AddWithValue("@email", email);
                     commandInsercao.Parameters.AddWithValue("@endereco", endereco);
                     commandInsercao.Parameters.AddWithValue("@documento", documento);
                     commandInsercao.Parameters.AddWithValue("@telefone", telefone);
-
+                    commandInsercao.Parameters.AddWithValue("@usuarioID", usuarioID);
                     commandInsercao.ExecuteNonQuery();
-
                     MessageBox.Show("Dados do cliente inseridos com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -166,7 +191,7 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static DataTable ConsultarDadosClientes()
         {
- 
+
             // Exemplo:
             string connectionString = "Data Source=group-note02312;Initial Catalog=clientes;User ID=SA;Password=Admin@123";
             string query = "SELECT * FROM dados_clientes";
@@ -183,5 +208,71 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
+        public static bool VerificarLogin(string username, string senha)
+        {
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT senha FROM usuarios WHERE username = @Username";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Username", username);
+                string encryptedPassword = command.ExecuteScalar()?.ToString();
+
+                bool isPasswordCorrect = BCryptNet.Verify(senha, encryptedPassword);
+
+                if (isPasswordCorrect)
+                {
+                    // A senha está correta, o login é bem-sucedido
+                    return true;
+                }
+                else
+                {
+                    // A senha está incorreta
+                    return false;
+                }
+            }
+        }
+
+        // Declare uma variável global para armazenar o ID do usuário logado
+        public static int UserID { get; set; }
+        public static string UserName { get; set; }
+
+        public static int ObterIDUsuarioLogado(string username)
+        {
+            try
+            {
+                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+                string query = "SELECT id FROM usuarios WHERE username = @username";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@username", username);
+                    UserName = username;
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        UserID = Convert.ToInt32(result);
+                        return UserID;
+                    }
+                    else
+                    {
+                        return -1; // Usuário não encontrado
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter ID do usuário logado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+
     }
 }
+
