@@ -163,6 +163,117 @@ namespace Desafio1_GroupSoftware.Funcoes
                 MessageBox.Show("Erro ao inserir dados do cliente: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static bool VerificarClienteExistente(string nome, int usuarioID)
+        {
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            string query = "SELECT COUNT(*) FROM clientes WHERE nome = @Nome AND usuarioID = @UsuarioID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Nome", nome);
+                command.Parameters.AddWithValue("@UsuarioID", usuarioID);
+
+                int count = (int)command.ExecuteScalar();
+
+                return count > 0;
+            }
+        }
+
+        public static void AtualizarDadosCliente(string nome, string email, string endereco, string documento, string telefone, int usuarioID)
+        {
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            string queryVerificarExistencia = "SELECT COUNT(*) FROM clientes WHERE (telefone = @Telefone) AND usuarioID = @UsuarioID";
+            string queryAtualizar = "UPDATE clientes SET email = @Email, endereco = @Endereco, documento = @Documento, telefone = @Telefone WHERE nome = @Nome AND usuarioID = @UsuarioID";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Verificar a existência de valores duplicados
+                    SqlCommand verificarExistenciaCommand = new SqlCommand(queryVerificarExistencia, connection);
+                    verificarExistenciaCommand.Parameters.AddWithValue("@Telefone", telefone);
+                    verificarExistenciaCommand.Parameters.AddWithValue("@UsuarioID", usuarioID);
+
+                    int duplicadosCount = (int)verificarExistenciaCommand.ExecuteScalar();
+
+                    if (duplicadosCount > 0)
+                    {
+                        MessageBox.Show("Falha ao atualizar os dados do cliente. Já existe um cliente com o mesmo CPF, telefone ou nome.");
+                    }
+                    else
+                    {
+                        // Atualizar os dados do cliente
+                        SqlCommand atualizarCommand = new SqlCommand(queryAtualizar, connection);
+                        atualizarCommand.Parameters.AddWithValue("@Email", email);
+                        atualizarCommand.Parameters.AddWithValue("@Endereco", endereco);
+                        atualizarCommand.Parameters.AddWithValue("@Nome", nome);
+                        atualizarCommand.Parameters.AddWithValue("@Telefone", telefone);
+                        atualizarCommand.Parameters.AddWithValue("@Documento", documento);
+                        atualizarCommand.Parameters.AddWithValue("@UsuarioID", usuarioID);
+
+                        int rowsAffected = atualizarCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Dados do cliente atualizados com sucesso!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falha ao atualizar os dados do cliente.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar dados do cliente: " + ex.Message);
+            }
+        }
+        public static void DeletarCliente(string nome, string endereco, string documento, string email, string telefone, int usuarioID)
+        {
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            string query = "DELETE FROM clientes WHERE nome = @Nome AND endereco = @Endereco AND documento = @Documento AND email = @Email AND telefone = @Telefone AND usuarioID = @UsuarioID";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Nome", nome);
+                    command.Parameters.AddWithValue("@Endereco", endereco);
+                    command.Parameters.AddWithValue("@Documento", documento);
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Telefone", telefone);
+                    command.Parameters.AddWithValue("@UsuarioID", usuarioID);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Cliente deletado com sucesso!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falha ao deletar o cliente.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao deletar o cliente: " + ex.Message);
+            }
+        }
+
+
+
         //CONSULTAS NO BANCO
         public static DataTable ConsultarDadosClientes()
         {
@@ -277,7 +388,7 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static void AdicionarNovoUsuario(string username, string senhaCriptografada)
         {
-           string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -309,7 +420,7 @@ namespace Desafio1_GroupSoftware.Funcoes
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Usuário criado com sucesso!");
-                            
+
                         }
                         else
                         {

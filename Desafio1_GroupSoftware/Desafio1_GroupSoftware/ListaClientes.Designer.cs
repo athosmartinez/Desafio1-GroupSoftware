@@ -43,6 +43,7 @@ namespace Desafio1_GroupSoftware
             documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            usuarioIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             clienteBindingSource = new BindingSource(components);
             clienteBindingSource1 = new BindingSource(components);
             button_Exportar = new Button();
@@ -106,7 +107,7 @@ namespace Desafio1_GroupSoftware
             dataGrid_Clientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGrid_Clientes.AutoGenerateColumns = false;
             dataGrid_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, Endereço, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
+            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, Endereço, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn, usuarioIDDataGridViewTextBoxColumn });
             dataGrid_Clientes.DataSource = clienteBindingSource;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -124,52 +125,56 @@ namespace Desafio1_GroupSoftware
             dataGrid_Clientes.RowTemplate.Height = 25;
             dataGrid_Clientes.Size = new Size(666, 226);
             dataGrid_Clientes.TabIndex = 3;
+            dataGrid_Clientes.CellClick += dataGrid_Clientes_CellClick;
             dataGrid_Clientes.CellContentClick += dataGrid_Clientes_CellContentClick;
+            dataGrid_Clientes.CellContentDoubleClick += dataGrid_Clientes_CellContentDoubleClick;
+            dataGrid_Clientes.MouseDown += dataGrid_Clientes_MouseDown;
+            dataGrid_Clientes.MouseEnter += dataGrid_Clientes_MouseEnter;
+            dataGrid_Clientes.MouseMove += dataGrid_Clientes_MouseMove;
+            dataGrid_Clientes.Move += dataGrid_Clientes_Move;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
             nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            nomeDataGridViewTextBoxColumn.FillWeight = 140F;
             nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
             nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
             nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            nomeDataGridViewTextBoxColumn.Width = 130;
             // 
             // Endereço
             // 
             Endereço.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Endereço.DataPropertyName = "Endereco";
+            Endereço.DataPropertyName = "endereco";
             Endereço.HeaderText = "Endereço";
             Endereço.Name = "Endereço";
             Endereço.ReadOnly = true;
             // 
             // documentoDataGridViewTextBoxColumn
             // 
-            documentoDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             documentoDataGridViewTextBoxColumn.DataPropertyName = "Documento";
             documentoDataGridViewTextBoxColumn.HeaderText = "Documento";
             documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
             documentoDataGridViewTextBoxColumn.ReadOnly = true;
-            documentoDataGridViewTextBoxColumn.Width = 95;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            emailDataGridViewTextBoxColumn.FillWeight = 120F;
             emailDataGridViewTextBoxColumn.HeaderText = "Email";
             emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             emailDataGridViewTextBoxColumn.ReadOnly = true;
-            emailDataGridViewTextBoxColumn.Width = 130;
             // 
             // telefoneDataGridViewTextBoxColumn
             // 
-            telefoneDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             telefoneDataGridViewTextBoxColumn.DataPropertyName = "Telefone";
-            telefoneDataGridViewTextBoxColumn.FillWeight = 130F;
             telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
             telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             telefoneDataGridViewTextBoxColumn.ReadOnly = true;
-            telefoneDataGridViewTextBoxColumn.Width = 76;
+            // 
+            // usuarioIDDataGridViewTextBoxColumn
+            // 
+            usuarioIDDataGridViewTextBoxColumn.DataPropertyName = "UsuarioID";
+            usuarioIDDataGridViewTextBoxColumn.HeaderText = "UsuarioID";
+            usuarioIDDataGridViewTextBoxColumn.Name = "usuarioIDDataGridViewTextBoxColumn";
+            usuarioIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // clienteBindingSource
             // 
@@ -216,8 +221,10 @@ namespace Desafio1_GroupSoftware
             Name = "ListaClientes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Clientes";
+            Deactivate += ListaClientes_Deactivate;
             Load += ListaClientes_Load;
             Shown += ListaClientes_Shown;
+            MouseMove += ListaClientes_MouseMove;
             groupBox_Pesquisa.ResumeLayout(false);
             groupBox_Pesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).EndInit();
@@ -237,14 +244,14 @@ namespace Desafio1_GroupSoftware
         private BindingSource clienteBindingSource;
         private BindingSource clienteBindingSource1;
         private DataGridViewTextBoxColumn enderecoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endereçoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private Button button_Exportar;
+        private Label label_ActiveUser;
         private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn Endereço;
         private DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
-        private Button button_Exportar;
-        private Label label_ActiveUser;
+        private DataGridViewTextBoxColumn usuarioIDDataGridViewTextBoxColumn;
     }
 }
