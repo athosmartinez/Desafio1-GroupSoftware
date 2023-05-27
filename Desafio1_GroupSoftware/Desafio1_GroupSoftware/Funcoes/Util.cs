@@ -10,10 +10,30 @@ namespace Desafio1_GroupSoftware.Funcoes
 {
     public static class Util
     {
+        //VALIDAÇÕES DADOS
         public static string SomenteNumeros(this string s)
         {
             return string.Join("", System.Text.RegularExpressions.Regex.Split(s, @"[^\d]"));
         }
+        private static bool TodosDigitosIguaisCnpj(string cnpj)
+        {
+            for (int i = 1; i < cnpj.Length; i++)
+            {
+                if (cnpj[i] != cnpj[0])
+                    return false;
+            }
+            return true;
+        }
+        private static bool TodosDigitosIguaisCpf(string cpf)
+        {
+            for (int i = 1; i < cpf.Length; i++)
+            {
+                if (cpf[i] != cpf[0])
+                    return false;
+            }
+            return true;
+        }
+
         public static bool ValidarCNPJ(string cnpj)
         {
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -48,15 +68,6 @@ namespace Desafio1_GroupSoftware.Funcoes
             return cnpj.EndsWith(digito);
         }
 
-        private static bool TodosDigitosIguaisCnpj(string cnpj)
-        {
-            for (int i = 1; i < cnpj.Length; i++)
-            {
-                if (cnpj[i] != cnpj[0])
-                    return false;
-            }
-            return true;
-        }
 
         public static bool ValidarCPF(string cpf)
         {
@@ -98,17 +109,6 @@ namespace Desafio1_GroupSoftware.Funcoes
             return cpf.EndsWith(digito);
         }
 
-        private static bool TodosDigitosIguaisCpf(string cpf)
-        {
-            for (int i = 1; i < cpf.Length; i++)
-            {
-                if (cpf[i] != cpf[0])
-                    return false;
-            }
-            return true;
-        }
-
-
         public static string RemoverAcentos(string txtPesquisa)
         {
             string txtSemAcento = txtPesquisa.Normalize(NormalizationForm.FormD);
@@ -120,7 +120,7 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
             return stringBuilder.ToString();
         }
-
+        //INSERI DADOS NO BANCO
         public static void InserirDadosCliente(string nome, string email, string endereco, string documento, string telefone, int usuarioID)
         {
             try
@@ -163,6 +163,28 @@ namespace Desafio1_GroupSoftware.Funcoes
                 MessageBox.Show("Erro ao inserir dados do cliente: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //CONSULTAS NO BANCO
+        public static DataTable ConsultarDadosClientes()
+        {
+
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@usuarioID", Util.UserID);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+
+        }
 
         public static DataTable ConsultarClientesFiltrados(string termoPesquisa)
         {
@@ -188,28 +210,7 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
-        public static DataTable ConsultarDadosClientes()
-        {
-
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-            string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@usuarioID", Util.UserID);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                return dataTable;
-            }
-
-        }
-
+        //LOGIN
         public static bool VerificarLogin(string username, string senha)
         {
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
@@ -274,6 +275,55 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
+        public static void AdicionarNovoUsuario(string username, string senhaCriptografada)
+        {
+           string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Verificar se o usuário já existe
+                    string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username";
+                    SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
+                    checkUserCommand.Parameters.AddWithValue("@Username", username);
+
+                    int userCount = (int)checkUserCommand.ExecuteScalar();
+
+                    if (userCount > 0)
+                    {
+                        MessageBox.Show("Já existe um usuário com esse nome de usuário. Vá em ESQUECI MINHA SENHA a para redefinir a senha deste usuário!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        // Inserir o novo usuário
+                        string insertQuery = "INSERT INTO usuarios (username, senha) VALUES (@Username, @Password)";
+                        SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+
+                        insertCommand.Parameters.AddWithValue("@Username", username);
+                        insertCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
+
+                        int rowsAffected = insertCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Usuário criado com sucesso!");
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falha ao criar usuário.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao inserir usuário no banco de dados: " + ex.Message);
+            }
+        }
+        //ALTERA DADO NO BANCO
         public static void AlterarSenha(string username, string novaSenha)
         {
             string senhaCriptografada = BCryptNet.HashPassword(novaSenha);
@@ -324,7 +374,6 @@ namespace Desafio1_GroupSoftware.Funcoes
             {
                 MessageBox.Show("Erro ao alterar senha no banco de dados: " + ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

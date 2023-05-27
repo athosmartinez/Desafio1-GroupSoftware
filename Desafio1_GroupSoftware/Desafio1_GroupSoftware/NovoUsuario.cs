@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using Desafio1_GroupSoftware.Funcoes;
+using System.Data.SqlClient;
 using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace Desafio1_GroupSoftware
@@ -59,50 +60,8 @@ namespace Desafio1_GroupSoftware
             }
             else
             {
-                try
-                {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-
-                        // Verificar se o usuário já existe
-                        string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username";
-                        SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
-                        checkUserCommand.Parameters.AddWithValue("@Username", username);
-
-                        int userCount = (int)checkUserCommand.ExecuteScalar();
-
-                        if (userCount > 0)
-                        {
-                            MessageBox.Show("Já existe um usuário com esse nome de usuário.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            // Inserir o novo usuário
-                            string insertQuery = "INSERT INTO usuarios (username, senha) VALUES (@Username, @Password)";
-                            SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
-
-                            insertCommand.Parameters.AddWithValue("@Username", username);
-                            insertCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
-
-                            int rowsAffected = insertCommand.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Usuário criado com sucesso!");
-                                this.Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Falha ao criar usuário.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao inserir usuário no banco de dados: " + ex.Message);
-                }
+                Util.AdicionarNovoUsuario(username, senhaCriptografada);
+                this.Close();
 
             }
         }
