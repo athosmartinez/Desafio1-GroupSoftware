@@ -133,10 +133,9 @@ namespace Desafio1_GroupSoftware.Funcoes
                     Util.UserID = usuarioID;
 
                     // Verificar se o cliente já existe com base no nome, telefone e documento
-                    string queryVerificacao = "SELECT COUNT(*) FROM clientes WHERE nome = @nome OR  telefone = @telefone OR  documento = @documento";
+                    string queryVerificacao = "SELECT COUNT(*) FROM clientes WHERE nome = @nome OR documento = @documento";
                     SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
                     commandVerificacao.Parameters.AddWithValue("@nome", nome);
-                    commandVerificacao.Parameters.AddWithValue("@telefone", telefone);
                     commandVerificacao.Parameters.AddWithValue("@documento", documento);
 
                     int count = (int)commandVerificacao.ExecuteScalar();
@@ -186,7 +185,7 @@ namespace Desafio1_GroupSoftware.Funcoes
         public static void AtualizarDadosCliente(string nome, string email, string endereco, string documento, string telefone, int usuarioID)
         {
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-            string queryVerificarExistencia = "SELECT COUNT(*) FROM clientes WHERE (telefone = @Telefone) AND usuarioID = @UsuarioID";
+            string queryVerificarExistencia = "SELECT COUNT(*) FROM clientes WHERE email = @Email AND endereco = @Endereco AND documento = @Documento AND telefone = @Telefone AND nome = @Nome AND usuarioID = @UsuarioID ";
             string queryAtualizar = "UPDATE clientes SET email = @Email, endereco = @Endereco, documento = @Documento, telefone = @Telefone WHERE nome = @Nome AND usuarioID = @UsuarioID";
 
             try
@@ -197,14 +196,17 @@ namespace Desafio1_GroupSoftware.Funcoes
 
                     // Verificar a existência de valores duplicados
                     SqlCommand verificarExistenciaCommand = new SqlCommand(queryVerificarExistencia, connection);
+                    verificarExistenciaCommand.Parameters.AddWithValue("@Email", email);
+                    verificarExistenciaCommand.Parameters.AddWithValue("@Endereco", endereco);
+                    verificarExistenciaCommand.Parameters.AddWithValue("@Nome", nome);
                     verificarExistenciaCommand.Parameters.AddWithValue("@Telefone", telefone);
+                    verificarExistenciaCommand.Parameters.AddWithValue("@Documento", documento);
                     verificarExistenciaCommand.Parameters.AddWithValue("@UsuarioID", usuarioID);
-
                     int duplicadosCount = (int)verificarExistenciaCommand.ExecuteScalar();
 
-                    if (duplicadosCount > 0)
+                    if (duplicadosCount > 5)
                     {
-                        MessageBox.Show("Falha ao atualizar os dados do cliente. Já existe um cliente com o mesmo CPF, telefone ou nome.");
+                        MessageBox.Show("Falha ao atualizar os dados do cliente. Já existe um cliente com o mesmo DOCUMENTO, TEELFONE ou NOME.");
                     }
                     else
                     {
