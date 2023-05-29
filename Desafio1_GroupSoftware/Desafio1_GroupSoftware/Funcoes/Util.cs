@@ -274,8 +274,6 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
-
-
         //CONSULTAS NO BANCO
         public static DataTable ConsultarDadosClientes()
         {
@@ -334,7 +332,6 @@ namespace Desafio1_GroupSoftware.Funcoes
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", username);
                 string encryptedPassword = command.ExecuteScalar()?.ToString();
-
                 bool isPasswordCorrect = BCryptNet.Verify(senha, encryptedPassword);
 
                 if (isPasswordCorrect)
@@ -440,20 +437,16 @@ namespace Desafio1_GroupSoftware.Funcoes
         public static void AlterarSenha(string username, string novaSenha)
         {
             string senhaCriptografada = BCryptNet.HashPassword(novaSenha);
-
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
                     // Verificar se o usuário existe
                     string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username";
                     SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
                     checkUserCommand.Parameters.AddWithValue("@Username", username);
-
                     int userCount = (int)checkUserCommand.ExecuteScalar();
 
                     if (userCount > 0)
@@ -461,7 +454,6 @@ namespace Desafio1_GroupSoftware.Funcoes
                         // Atualizar a senha do usuário
                         string updateQuery = "UPDATE usuarios SET senha = @Password WHERE username = @Username";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
-
                         updateCommand.Parameters.AddWithValue("@Username", username);
                         updateCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
 
@@ -470,7 +462,6 @@ namespace Desafio1_GroupSoftware.Funcoes
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Senha alterada com sucesso!");
-
                         }
                         else
                         {

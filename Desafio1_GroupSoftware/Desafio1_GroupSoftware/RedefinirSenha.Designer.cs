@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedefinirSenha));
             groupBox1 = new GroupBox();
             checkBox_ShowPassword = new CheckBox();
             text_User = new TextBox();
@@ -154,6 +155,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(277, 215);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "RedefinirSenha";
             StartPosition = FormStartPosition.CenterScreen;
