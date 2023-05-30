@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarDadosCliente));
             groupBox1 = new GroupBox();
+            button_Delete = new Button();
+            label7 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
             panel1 = new Panel();
             radio_CPF = new RadioButton();
             radio_CNPJ = new RadioButton();
@@ -46,18 +52,13 @@
             label_Tipo = new Label();
             label_Endereco = new Label();
             label_Nome = new Label();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label7 = new Label();
-            button_Delete = new Button();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(button_Delete);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label4);
@@ -86,6 +87,66 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Preencha os campos";
+            // 
+            // button_Delete
+            // 
+            button_Delete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Delete.Location = new Point(307, 143);
+            button_Delete.Name = "button_Delete";
+            button_Delete.Size = new Size(75, 23);
+            button_Delete.TabIndex = 23;
+            button_Delete.Text = "DELETAR";
+            button_Delete.UseVisualStyleBackColor = true;
+            button_Delete.Click += button_Delete_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(96, 147);
+            label7.Name = "label7";
+            label7.Size = new Size(137, 15);
+            label7.TabIndex = 22;
+            label7.Text = "não podem ser alterados";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(87, 147);
+            label4.Name = "label4";
+            label4.Size = new Size(12, 15);
+            label4.TabIndex = 21;
+            label4.Text = "*";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(13, 147);
+            label3.Name = "label3";
+            label3.Size = new Size(81, 15);
+            label3.TabIndex = 20;
+            label3.Text = "Campos com ";
+            label3.Click += label3_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(82, 98);
+            label2.Name = "label2";
+            label2.Size = new Size(12, 15);
+            label2.TabIndex = 19;
+            label2.Text = "*";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(50, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(12, 15);
+            label1.TabIndex = 18;
+            label1.Text = "*";
             // 
             // panel1
             // 
@@ -242,72 +303,13 @@
             label_Nome.TabIndex = 0;
             label_Nome.Text = "Nome:";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.Red;
-            label1.Location = new Point(50, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(12, 15);
-            label1.TabIndex = 18;
-            label1.Text = "*";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.Red;
-            label2.Location = new Point(82, 98);
-            label2.Name = "label2";
-            label2.Size = new Size(12, 15);
-            label2.TabIndex = 19;
-            label2.Text = "*";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(13, 147);
-            label3.Name = "label3";
-            label3.Size = new Size(81, 15);
-            label3.TabIndex = 20;
-            label3.Text = "Campos com ";
-            label3.Click += label3_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.Red;
-            label4.Location = new Point(87, 147);
-            label4.Name = "label4";
-            label4.Size = new Size(12, 15);
-            label4.TabIndex = 21;
-            label4.Text = "*";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(96, 147);
-            label7.Name = "label7";
-            label7.Size = new Size(137, 15);
-            label7.TabIndex = 22;
-            label7.Text = "não podem ser alterados";
-            // 
-            // button_Delete
-            // 
-            button_Delete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Delete.Location = new Point(307, 143);
-            button_Delete.Name = "button_Delete";
-            button_Delete.Size = new Size(75, 23);
-            button_Delete.TabIndex = 23;
-            button_Delete.Text = "DELETAR";
-            button_Delete.UseVisualStyleBackColor = true;
-            button_Delete.Click += button_Delete_Click;
-            // 
             // EditarDadosCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(574, 181);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "EditarDadosCliente";

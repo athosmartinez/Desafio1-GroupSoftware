@@ -114,7 +114,7 @@ namespace Desafio1_GroupSoftware
 
         private void button_Redefinir_Click(object sender, EventArgs e)
         {
-            RedefinirSenha redefinir = new RedefinirSenha();    
+            RedefinirSenha redefinir = new RedefinirSenha();
             redefinir.Show();
         }
     }

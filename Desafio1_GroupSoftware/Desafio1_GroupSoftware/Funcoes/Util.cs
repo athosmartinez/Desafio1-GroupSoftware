@@ -163,10 +163,10 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
-        public static bool VerificarClienteExistente(string nome, int usuarioID)
+        public static bool VerificarClienteExistente(string nome, string documento, int usuarioID)
         {
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-            string query = "SELECT COUNT(*) FROM clientes WHERE nome = @Nome AND usuarioID = @UsuarioID";
+            string query = "SELECT COUNT(*) FROM clientes WHERE nome = @Nome AND documento = @Documento AND usuarioID = @UsuarioID";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -174,6 +174,7 @@ namespace Desafio1_GroupSoftware.Funcoes
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Nome", nome);
+                command.Parameters.AddWithValue("@Documento", documento);
                 command.Parameters.AddWithValue("@UsuarioID", usuarioID);
 
                 int count = (int)command.ExecuteScalar();
@@ -206,7 +207,7 @@ namespace Desafio1_GroupSoftware.Funcoes
 
                     if (duplicadosCount > 5)
                     {
-                        MessageBox.Show("Falha ao atualizar os dados do cliente. Já existe um cliente com o mesmo DOCUMENTO, TEELFONE ou NOME.");
+                        MessageBox.Show("Falha ao atualizar os dados do cliente. Já existe um cliente com o mesmo DOCUMENTO, TELFONE ou NOME.");
                     }
                     else
                     {
@@ -284,17 +285,13 @@ namespace Desafio1_GroupSoftware.Funcoes
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@usuarioID", Util.UserID);
-
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
                 return dataTable;
             }
-
         }
 
         public static DataTable ConsultarClientesFiltrados(string termoPesquisa)
@@ -313,7 +310,6 @@ namespace Desafio1_GroupSoftware.Funcoes
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@usuarioID", Util.UserID);
                 command.Parameters.AddWithValue("@termoPesquisa", "%" + termoPesquisa.ToLower() + "%");
-
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);

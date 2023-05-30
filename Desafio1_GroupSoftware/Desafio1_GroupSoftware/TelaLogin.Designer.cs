@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaLogin));
             groupBox_Login = new GroupBox();
+            button_Redefinir = new Button();
             checkBox_Showpass = new CheckBox();
             button_Enter = new Button();
             button_Cancel = new Button();
@@ -36,7 +38,6 @@
             label_Password = new Label();
             txt_User = new TextBox();
             label_User = new Label();
-            button_Redefinir = new Button();
             groupBox_Login.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,6 +59,17 @@
             groupBox_Login.TabIndex = 0;
             groupBox_Login.TabStop = false;
             groupBox_Login.Text = "Login";
+            // 
+            // button_Redefinir
+            // 
+            button_Redefinir.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Redefinir.Location = new Point(5, 102);
+            button_Redefinir.Name = "button_Redefinir";
+            button_Redefinir.Size = new Size(132, 22);
+            button_Redefinir.TabIndex = 6;
+            button_Redefinir.Text = "ESQUECI MINHA SENHA";
+            button_Redefinir.UseVisualStyleBackColor = true;
+            button_Redefinir.Click += button_Redefinir_Click;
             // 
             // checkBox_Showpass
             // 
@@ -136,17 +148,6 @@
             label_User.Text = "User";
             label_User.Click += label_User_Click;
             // 
-            // button_Redefinir
-            // 
-            button_Redefinir.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Redefinir.Location = new Point(5, 102);
-            button_Redefinir.Name = "button_Redefinir";
-            button_Redefinir.Size = new Size(132, 22);
-            button_Redefinir.TabIndex = 6;
-            button_Redefinir.Text = "ESQUECI MINHA SENHA";
-            button_Redefinir.UseVisualStyleBackColor = true;
-            button_Redefinir.Click += button_Redefinir_Click;
-            // 
             // TelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -154,6 +155,7 @@
             ClientSize = new Size(387, 170);
             Controls.Add(groupBox_Login);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;

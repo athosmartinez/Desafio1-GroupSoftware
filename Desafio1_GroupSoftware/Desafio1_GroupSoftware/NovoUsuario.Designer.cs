@@ -155,6 +155,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(270, 217);
             Controls.Add(groupBox_NovoUsuario);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "NovoUsuario";

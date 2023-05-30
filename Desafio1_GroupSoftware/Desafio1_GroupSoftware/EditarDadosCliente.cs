@@ -25,11 +25,9 @@ namespace Desafio1_GroupSoftware
             // Desabilitar o RadioButton
             radio_CNPJ.Enabled = false;
             radio_CPF.Enabled = false;
-
             // Tornar os TextBox somente leitura
-            txt_nome.ReadOnly = true;
-
-            maskText_Documento.ReadOnly = true;
+            txt_nome.Enabled = false;
+            maskText_Documento.Enabled = false;
 
 
 
@@ -106,7 +104,7 @@ namespace Desafio1_GroupSoftware
                 int usuarioID = Util.UserID;
 
                 // Verifique se o cliente já existe para o usuário atual
-                if (Util.VerificarClienteExistente(nome, usuarioID))
+                if (Util.VerificarClienteExistente(nome, documento, usuarioID))
                 {
                     // Atualize os dados do cliente
                     Util.AtualizarDadosCliente(nome, email, endereco, documento, telefone, usuarioID);
