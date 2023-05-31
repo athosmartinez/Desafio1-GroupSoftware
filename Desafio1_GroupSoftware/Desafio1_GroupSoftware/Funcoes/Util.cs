@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -133,19 +134,19 @@ namespace Desafio1_GroupSoftware.Funcoes
                     Util.UserID = usuarioID;
 
                     // Verificar se o cliente já existe com base no nome, telefone e documento
-                    string queryVerificacao = "SELECT COUNT(*) FROM clientes WHERE nome = @nome OR documento = @documento";
+                    string queryVerificacao = "SELECT COUNT(*) FROM clientes WHERE (nome = @nome OR documento = @documento) AND usuarioID = @usuarioID ";
                     SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
                     commandVerificacao.Parameters.AddWithValue("@nome", nome);
                     commandVerificacao.Parameters.AddWithValue("@documento", documento);
-
+                    commandVerificacao.Parameters.AddWithValue("@usuarioID", usuarioID);
                     int count = (int)commandVerificacao.ExecuteScalar();
                     if (count > 0)
                     {
-                        MessageBox.Show("Cliente já existe no banco de dados. Verifique os campos NOME, DOCUMENTO ou TELEFONE", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cliente já existe no banco de dados. Verifique os campos NOME, DOCUMENTO para o seu usuário!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return; // Não realizar a inserção se o cliente já existe
                     }
                     // Inserir o cliente caso não exista
-                    string queryInsercao = "INSERT INTO clientes (nome, email, endereco, documento, telefone, usuarioID) VALUES (@nome, @email, @endereco, @documento, @telefone, @usuarioID)";
+                    string queryInsercao = "INSERT INTO clientes (nome, email, endereco, documento, telefone, usuarioID, IDCliente) VALUES (@nome, @email, @endereco, @documento, @telefone, @usuarioID, @idcliente)";
                     SqlCommand commandInsercao = new SqlCommand(queryInsercao, connection);
                     commandInsercao.Parameters.AddWithValue("@nome", nome);
                     commandInsercao.Parameters.AddWithValue("@email", email);
@@ -153,6 +154,7 @@ namespace Desafio1_GroupSoftware.Funcoes
                     commandInsercao.Parameters.AddWithValue("@documento", documento);
                     commandInsercao.Parameters.AddWithValue("@telefone", telefone);
                     commandInsercao.Parameters.AddWithValue("@usuarioID", usuarioID);
+                    commandInsercao.Parameters.AddWithValue("@idcliente", ObterProximoIdCliente(usuarioID));
                     commandInsercao.ExecuteNonQuery();
                     MessageBox.Show("Dados do cliente inseridos com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -377,6 +379,40 @@ namespace Desafio1_GroupSoftware.Funcoes
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao obter ID do usuário logado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+
+        public static int ObterProximoIdCliente(int IdUsuario)
+        {
+            try
+            {
+                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+                string query = "  SELECT Max(IDCliente) + 1 FROM clientes WHERE usuarioID = @UsuarioID";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@UsuarioID", UserID);
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        UserID = Convert.ToInt32(result);
+                        return UserID;
+                    }
+                    else
+                    { //se não encontrar um proximo ID - retorna 1 - primeiro
+                        return 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro obter proximo ID disponivel: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
         }

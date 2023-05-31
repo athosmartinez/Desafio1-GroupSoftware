@@ -33,10 +33,6 @@ namespace Desafio1_GroupSoftware
             this.Close();
         }
 
-        private void dataGrid_Clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void txt_Pesquisa_KeyDown(object sender, KeyEventArgs e)
         {
@@ -116,8 +112,7 @@ namespace Desafio1_GroupSoftware
 
         private void ListaClientes_Load(object sender, EventArgs e)
         {
-            DataTable lista_clientes = Util.ConsultarDadosClientes();
-            dataGrid_Clientes.DataSource = lista_clientes;
+            AtualizarTabela();
         }
 
         private void ListaClientes_Shown(object sender, EventArgs e)
@@ -129,34 +124,12 @@ namespace Desafio1_GroupSoftware
             label_ActiveUser.Text = "TABELA: " + Util.UserName.ToUpper() + " - " + numeroIDString;
         }
 
-        private void dataGrid_Clientes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
-
-        private void dataGrid_Clientes_Move(object sender, EventArgs e)
-        {
-      
-        }
-
-        private void dataGrid_Clientes_MouseDown(object sender, MouseEventArgs e)
-        {
-   
-        }
-
-        private void dataGrid_Clientes_MouseEnter(object sender, EventArgs e)
-        {
-           
-        }
 
         private void dataGrid_Clientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-
                 DataGridViewRow row = dataGrid_Clientes.Rows[e.RowIndex];
-
                 string nome = row.Cells["nomeDataGridViewTextBoxColumn"].Value.ToString();
                 string email = row.Cells["emailDataGridViewTextBoxColumn"].Value.ToString();
                 string endereco = row.Cells["Endereço"].Value.ToString();
@@ -171,27 +144,16 @@ namespace Desafio1_GroupSoftware
                 Classes.DadosClienteLista.Documento = documento;
                 Classes.DadosClienteLista.Telefone = telefone;
                 Classes.DadosClienteLista.UserID = numeroID;
-
                 EditarDadosCliente editarDados = new EditarDadosCliente();
                 editarDados.ShowDialog();
-
+                AtualizarTabela();
             }
         }
 
-        private void dataGrid_Clientes_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void ListaClientes_MouseMove(object sender, MouseEventArgs e)
+        private void AtualizarTabela()
         {
             DataTable lista_clientes = Util.ConsultarDadosClientes();
             dataGrid_Clientes.DataSource = lista_clientes;
-        }
-
-        private void ListaClientes_Deactivate(object sender, EventArgs e)
-        {
-
         }
     }
 }

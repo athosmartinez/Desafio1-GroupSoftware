@@ -126,14 +126,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "INICIO";
             Load += frmPrincipal_Load;
-            Shown += frmPrincipal_Shown;
-            RegionChanged += frmPrincipal_RegionChanged;
-            VisibleChanged += frmPrincipal_VisibleChanged;
-            MouseDown += frmPrincipal_MouseDown;
-            MouseEnter += frmPrincipal_MouseEnter;
-            MouseLeave += frmPrincipal_MouseLeave;
-            MouseHover += frmPrincipal_MouseHover;
-            MouseMove += frmPrincipal_MouseMove;
             ResumeLayout(false);
             PerformLayout();
         }

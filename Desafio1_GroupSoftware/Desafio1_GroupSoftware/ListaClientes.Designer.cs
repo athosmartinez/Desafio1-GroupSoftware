@@ -43,7 +43,6 @@ namespace Desafio1_GroupSoftware
             documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            usuarioIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             clienteBindingSource = new BindingSource(components);
             clienteBindingSource1 = new BindingSource(components);
             button_Exportar = new Button();
@@ -107,7 +106,7 @@ namespace Desafio1_GroupSoftware
             dataGrid_Clientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGrid_Clientes.AutoGenerateColumns = false;
             dataGrid_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, Endereço, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn, usuarioIDDataGridViewTextBoxColumn });
+            dataGrid_Clientes.Columns.AddRange(new DataGridViewColumn[] { nomeDataGridViewTextBoxColumn, Endereço, documentoDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
             dataGrid_Clientes.DataSource = clienteBindingSource;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -125,13 +124,7 @@ namespace Desafio1_GroupSoftware
             dataGrid_Clientes.RowTemplate.Height = 25;
             dataGrid_Clientes.Size = new Size(666, 226);
             dataGrid_Clientes.TabIndex = 3;
-            dataGrid_Clientes.CellClick += dataGrid_Clientes_CellClick;
-            dataGrid_Clientes.CellContentClick += dataGrid_Clientes_CellContentClick;
             dataGrid_Clientes.CellContentDoubleClick += dataGrid_Clientes_CellContentDoubleClick;
-            dataGrid_Clientes.MouseDown += dataGrid_Clientes_MouseDown;
-            dataGrid_Clientes.MouseEnter += dataGrid_Clientes_MouseEnter;
-            dataGrid_Clientes.MouseMove += dataGrid_Clientes_MouseMove;
-            dataGrid_Clientes.Move += dataGrid_Clientes_Move;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -168,13 +161,6 @@ namespace Desafio1_GroupSoftware
             telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
             telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             telefoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usuarioIDDataGridViewTextBoxColumn
-            // 
-            usuarioIDDataGridViewTextBoxColumn.DataPropertyName = "UsuarioID";
-            usuarioIDDataGridViewTextBoxColumn.HeaderText = "UsuarioID";
-            usuarioIDDataGridViewTextBoxColumn.Name = "usuarioIDDataGridViewTextBoxColumn";
-            usuarioIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // clienteBindingSource
             // 
@@ -221,10 +207,8 @@ namespace Desafio1_GroupSoftware
             Name = "ListaClientes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Clientes";
-            Deactivate += ListaClientes_Deactivate;
             Load += ListaClientes_Load;
             Shown += ListaClientes_Shown;
-            MouseMove += ListaClientes_MouseMove;
             groupBox_Pesquisa.ResumeLayout(false);
             groupBox_Pesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).EndInit();
@@ -252,6 +236,5 @@ namespace Desafio1_GroupSoftware
         private DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn usuarioIDDataGridViewTextBoxColumn;
     }
 }
