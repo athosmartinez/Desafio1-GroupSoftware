@@ -654,7 +654,7 @@ namespace Desafio1_GroupSoftware.Funcoes
                             if (count > 0)
                             {
                                 // Cliente já existe, não realizar a inserção
-                                MessageBox.Show("Cliente já existe no banco de dados. Verifique os campos NOME ou DOCUMENTO.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show($"Cliente da linha {row} do documento já existe no banco de dados. Verifique os campos NOME ou DOCUMENTO.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 continue;
                             }
 
