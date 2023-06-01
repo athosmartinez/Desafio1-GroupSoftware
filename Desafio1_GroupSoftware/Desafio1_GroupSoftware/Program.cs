@@ -1,3 +1,4 @@
+using OfficeOpenXml;
 using System.Data.SqlClient;
 
 namespace Desafio1_GroupSoftware
@@ -18,6 +19,8 @@ namespace Desafio1_GroupSoftware
                 TelaLogin login = new TelaLogin();
                 if (login.ShowDialog() == DialogResult.OK)
                     Application.Run(new frmPrincipal());
+
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             }
             catch (Exception ex)
             {

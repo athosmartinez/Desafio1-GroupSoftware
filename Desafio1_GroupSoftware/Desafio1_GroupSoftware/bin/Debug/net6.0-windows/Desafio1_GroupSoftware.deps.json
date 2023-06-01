@@ -10,6 +10,8 @@
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "EPPlus": "6.2.4",
+          "EPPlus.Interfaces": "6.1.1",
+          "EPPlus.System.Drawing": "6.1.1",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {

@@ -47,6 +47,7 @@ namespace Desafio1_GroupSoftware
             clienteBindingSource1 = new BindingSource(components);
             button_Exportar = new Button();
             label_ActiveUser = new Label();
+            button_Importar = new Button();
             groupBox_Pesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
@@ -173,8 +174,8 @@ namespace Desafio1_GroupSoftware
             // button_Exportar
             // 
             button_Exportar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button_Exportar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Exportar.Location = new Point(16, 310);
+            button_Exportar.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Exportar.Location = new Point(99, 310);
             button_Exportar.Name = "button_Exportar";
             button_Exportar.Size = new Size(75, 23);
             button_Exportar.TabIndex = 4;
@@ -186,17 +187,29 @@ namespace Desafio1_GroupSoftware
             // 
             label_ActiveUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label_ActiveUser.AutoSize = true;
-            label_ActiveUser.Location = new Point(94, 314);
+            label_ActiveUser.Location = new Point(180, 314);
             label_ActiveUser.Name = "label_ActiveUser";
             label_ActiveUser.Size = new Size(29, 15);
             label_ActiveUser.TabIndex = 5;
             label_ActiveUser.Text = "user";
+            // 
+            // button_Importar
+            // 
+            button_Importar.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Importar.Location = new Point(16, 310);
+            button_Importar.Name = "button_Importar";
+            button_Importar.Size = new Size(75, 23);
+            button_Importar.TabIndex = 6;
+            button_Importar.Text = "IMPORTAR";
+            button_Importar.UseVisualStyleBackColor = true;
+            button_Importar.MouseClick += button_Importar_MouseClick;
             // 
             // ListaClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+            Controls.Add(button_Importar);
             Controls.Add(label_ActiveUser);
             Controls.Add(button_Exportar);
             Controls.Add(button_Voltar);
@@ -236,5 +249,6 @@ namespace Desafio1_GroupSoftware
         private DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private Button button_Importar;
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿using OfficeOpenXml;
+
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -6,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms.VisualStyles;
 using BCryptNet = BCrypt.Net.BCrypt;
+
 
 namespace Desafio1_GroupSoftware.Funcoes
 {
@@ -154,7 +157,7 @@ namespace Desafio1_GroupSoftware.Funcoes
                     commandInsercao.Parameters.AddWithValue("@documento", documento);
                     commandInsercao.Parameters.AddWithValue("@telefone", telefone);
                     commandInsercao.Parameters.AddWithValue("@usuarioID", usuarioID);
-                    commandInsercao.Parameters.AddWithValue("@idcliente", ObterProximoIdCliente(usuarioID));
+                    commandInsercao.Parameters.AddWithValue("@idcliente", ObterProximoIdCliente());
                     commandInsercao.ExecuteNonQuery();
                     MessageBox.Show("Dados do cliente inseridos com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -383,7 +386,7 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
-        public static int ObterProximoIdCliente(int IdUsuario)
+        public static int ObterProximoIdCliente()
         {
             try
             {
@@ -395,14 +398,12 @@ namespace Desafio1_GroupSoftware.Funcoes
                     connection.Open();
 
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UsuarioID", UserID);
-
+                    command.Parameters.AddWithValue("@UsuarioID", Util.UserID);
                     object result = command.ExecuteScalar();
 
                     if (result != null && result != DBNull.Value)
                     {
-                        UserID = Convert.ToInt32(result);
-                        return UserID;
+                        return Convert.ToInt32(result);
                     }
                     else
                     { //se não encontrar um proximo ID - retorna 1 - primeiro
@@ -442,7 +443,6 @@ namespace Desafio1_GroupSoftware.Funcoes
                         // Inserir o novo usuário
                         string insertQuery = "INSERT INTO usuarios (username, senha) VALUES (@Username, @Password)";
                         SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
-
                         insertCommand.Parameters.AddWithValue("@Username", username);
                         insertCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
 
@@ -509,6 +509,217 @@ namespace Desafio1_GroupSoftware.Funcoes
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao alterar senha no banco de dados: " + ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void ExportarBanco()
+        {
+            try
+            {
+                // Obter a conexão com o banco de dados
+                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Consultar os dados do usuário logado
+                    string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@usuarioID", Util.UserID);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Criar o objeto SaveFileDialog para escolher o local e nome do arquivo Excel
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
+                    saveFileDialog.Title = "Salvar Banco de Dados do Usuário";
+                    saveFileDialog.FileName = "Banco de dados-" + Util.UserID + "-" + Util.UserName;
+
+                    // Verificar se o usuário selecionou um local e nome de arquivo válido
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Criar o arquivo Excel usando o EPPlus
+                        FileInfo excelFile = new FileInfo(saveFileDialog.FileName);
+                        using (ExcelPackage package = new ExcelPackage(excelFile))
+                        {
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Banco de Dados");
+
+                            // Preencher as células com os dados da tabela
+                            for (int col = 0; col < dataTable.Columns.Count; col++)
+                            {
+                                worksheet.Cells[1, col + 1].Value = dataTable.Columns[col].ColumnName;
+                            }
+
+                            for (int row = 0; row < dataTable.Rows.Count; row++)
+                            {
+                                for (int col = 0; col < dataTable.Columns.Count; col++)
+                                {
+                                    worksheet.Cells[row + 2, col + 1].Value = dataTable.Rows[row][col];
+                                }
+                            }
+
+                            // Salvar o arquivo Excel
+                            package.Save();
+                        }
+
+                        MessageBox.Show("Banco de dados exportado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao exportar banco de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void ImportarDadosDoExcel(string filePath)
+        {
+            try
+            {
+
+                // Obter a conexão com o banco de dados
+                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    connection.Open();
+
+                    // Ler o arquivo Excel usando o EPPlus
+                    FileInfo excelFile = new FileInfo(filePath);
+                    using (ExcelPackage package = new ExcelPackage(excelFile))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; // Considerando que os dados estão na primeira planilha
+
+                        int usuarioID = Util.UserID;
+
+                        // Obter o número de linhas e colunas com dados
+                        int rowCount = worksheet.Dimension.Rows;
+                        int columnCount = worksheet.Dimension.Columns;
+
+                        // Iterar pelas linhas do arquivo Excel (começando da segunda linha, pois a primeira contém os cabeçalhos)
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            // Obter os dados de cada coluna da linha atual
+                            string nome = worksheet.Cells[row, 1].Value?.ToString();
+                            string email = worksheet.Cells[row, 2].Value?.ToString();
+                            string endereco = worksheet.Cells[row, 3].Value?.ToString();
+                            string documento = worksheet.Cells[row, 4].Value?.ToString();
+                            string telefone = worksheet.Cells[row, 5].Value?.ToString();
+
+
+                            // Verificar se algum campo está em branco
+                            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(endereco) ||
+                                string.IsNullOrWhiteSpace(documento) || string.IsNullOrWhiteSpace(telefone))
+                            {
+                                MessageBox.Show("Um ou mais campos estão em branco para o cliente na linha " + row, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                continue;
+                            }
+
+
+                            // Telefone
+                            if (telefone.Length != 11)
+                            {
+                                MessageBox.Show("Telefone inválido para o cliente: " + nome, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                continue;
+                            }
+
+                            // CPF OU CNPJ
+                            bool documentoValido = false;
+
+                            if (Util.SomenteNumeros(documento).Length == 14)
+                            {
+                                documentoValido = ValidarCNPJ(documento);
+                            }
+                            else if (Util.SomenteNumeros(documento).Length == 11)
+                            {
+                                documentoValido = ValidarCPF(documento);
+                            }
+                            if (!documentoValido)
+                            {
+                                MessageBox.Show("Documento inválido para o cliente: " + nome, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                continue;
+                            }
+
+
+                            // Verificar se o cliente já existe para o usuário logado com base no nome ou documento
+                            string queryVerificacao = "SELECT COUNT(*) FROM clientes WHERE (nome = @nome OR documento = @documento) AND usuarioID = @usuarioID ";
+                            SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
+                            commandVerificacao.Parameters.AddWithValue("@nome", nome);
+                            commandVerificacao.Parameters.AddWithValue("@documento", FormatarDocumento(documento));
+                            commandVerificacao.Parameters.AddWithValue("@usuarioID", Util.UserID);
+
+                            int count = (int)commandVerificacao.ExecuteScalar();
+                            if (count > 0)
+                            {
+                                // Cliente já existe, não realizar a inserção
+                                MessageBox.Show("Cliente já existe no banco de dados. Verifique os campos NOME ou DOCUMENTO.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                continue;
+                            }
+
+                            // Inserir os dados no banco de dados associados ao usuário logado
+                            string queryInsercao = "INSERT INTO clientes (nome, email, endereco, documento, telefone, usuarioID, IDCliente) VALUES (@nome, @email, @endereco, @documento, @telefone, @usuarioID, @idcliente)";
+                            SqlCommand commandInsercao = new SqlCommand(queryInsercao, connection);
+                            commandInsercao.Parameters.AddWithValue("@nome", nome);
+                            commandInsercao.Parameters.AddWithValue("@email", email);
+                            commandInsercao.Parameters.AddWithValue("@endereco", endereco);
+                            commandInsercao.Parameters.AddWithValue("@documento", FormatarDocumento(documento));
+                            commandInsercao.Parameters.AddWithValue("@telefone", FormatarTelefone(telefone));
+                            commandInsercao.Parameters.AddWithValue("@usuarioID", Util.UserID);
+                            commandInsercao.Parameters.AddWithValue("@idcliente", ObterProximoIdCliente());
+                            commandInsercao.ExecuteNonQuery();
+
+                        }
+                    }
+
+                    MessageBox.Show("Dados do Excel importados com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao importar dados do Excel: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static string FormatarCPF(string cpf)
+        {
+            return cpf.Insert(3, ".").Insert(7, ".").Insert(11, "-");
+        }
+        public static string FormatarCNPJ(string cnpj)
+        {
+
+            return cnpj.Insert(2, ".").Insert(6, ".").Insert(10, "/").Insert(15, "-");
+        }
+
+        public static string FormatarTelefone(string telefone)
+        {
+            // Remover caracteres não numéricos do número de telefone
+            string numeros = new string(telefone.Where(char.IsDigit).ToArray());
+
+            // Verificar se o número de telefone possui os dígitos necessários
+            if (numeros.Length != 11)
+            {
+                // Retornar o número de telefone original se não estiver no formato esperado
+                return telefone;
+            }
+
+            // Formatar o número de telefone no formato "(99) 99999-9999"
+            return string.Format("({0}) {1}-{2}", numeros.Substring(0, 2), numeros.Substring(2, 5), numeros.Substring(7));
+        }
+
+        public static string FormatarDocumento(string documento)
+        {
+            if (Util.SomenteNumeros(documento).Length == 11)
+            {
+                return FormatarCPF(Util.SomenteNumeros(documento));
+            }
+            if (Util.SomenteNumeros(documento).Length == 14)
+            {
+                return FormatarCNPJ(Util.SomenteNumeros(documento));
+            }
+            else
+            {//nunca entra 
+                return null;
             }
         }
     }

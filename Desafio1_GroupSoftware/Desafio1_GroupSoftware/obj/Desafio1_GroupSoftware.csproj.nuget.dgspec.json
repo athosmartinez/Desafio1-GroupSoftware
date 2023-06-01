@@ -48,6 +48,14 @@
               "target": "Package",
               "version": "[6.2.4, )"
             },
+            "EPPlus.Interfaces": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            },
+            "EPPlus.System.Drawing": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
