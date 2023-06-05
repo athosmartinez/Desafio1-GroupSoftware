@@ -68,7 +68,6 @@ namespace Desafio1_GroupSoftware
             {
                 Util.AdicionarNovoUsuario(username, senhaCriptografada, email);
                 this.Close();
-
             }
         }
 

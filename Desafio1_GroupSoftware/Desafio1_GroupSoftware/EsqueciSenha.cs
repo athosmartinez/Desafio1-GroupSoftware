@@ -16,5 +16,17 @@ namespace Desafio1_GroupSoftware
         {
             InitializeComponent();
         }
+
+
+
+        private void button_Enviar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

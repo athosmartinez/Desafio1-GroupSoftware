@@ -7,7 +7,7 @@
     <Compile Update="EditarDadosCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
+    <Compile Update="EsqueciSenha.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmPrincipal.cs">

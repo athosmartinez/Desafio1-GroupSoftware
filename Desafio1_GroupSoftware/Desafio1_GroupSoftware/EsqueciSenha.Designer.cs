@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
+            button_Cancelar = new Button();
             button1 = new Button();
-            button2 = new Button();
+            textBox_Email = new TextBox();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(button_Cancelar);
             groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(textBox_Email);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(5, 6);
             groupBox1.Name = "groupBox1";
@@ -49,21 +49,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Esqueci minha senha";
             // 
-            // label1
+            // button_Cancelar
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(5, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(42, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Email: ";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(5, 39);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(239, 23);
-            textBox1.TabIndex = 1;
+            button_Cancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Cancelar.Location = new Point(88, 68);
+            button_Cancelar.Name = "button_Cancelar";
+            button_Cancelar.Size = new Size(75, 23);
+            button_Cancelar.TabIndex = 3;
+            button_Cancelar.Text = "CANCELAR";
+            button_Cancelar.UseVisualStyleBackColor = true;
+            button_Cancelar.Click += button_Cancelar_Click;
             // 
             // button1
             // 
@@ -74,16 +69,23 @@
             button1.TabIndex = 2;
             button1.Text = "ENVIAR";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button_Enviar_Click;
             // 
-            // button2
+            // textBox_Email
             // 
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(88, 68);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 3;
-            button2.Text = "CANCELAR";
-            button2.UseVisualStyleBackColor = true;
+            textBox_Email.Location = new Point(5, 39);
+            textBox_Email.Name = "textBox_Email";
+            textBox_Email.Size = new Size(239, 23);
+            textBox_Email.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(5, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(42, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Email: ";
             // 
             // EsqueciSenha
             // 
@@ -91,7 +93,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(262, 111);
             Controls.Add(groupBox1);
+            MaximizeBox = false;
             Name = "EsqueciSenha";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Esqueci Minha Senha";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -102,8 +106,8 @@
 
         private GroupBox groupBox1;
         private Label label1;
-        private TextBox textBox1;
-        private Button button2;
+        private TextBox textBox_Email;
+        private Button button_Cancelar;
         private Button button1;
     }
 }
