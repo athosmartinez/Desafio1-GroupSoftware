@@ -44,6 +44,7 @@ namespace Desafio1_GroupSoftware
         {
             string username = text_CrieUser.Text;
             string senhaCriptografada = BCryptNet.HashPassword(text_CrieSenha.Text);
+            string email = txt_Email.Text;
 
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
             if (text_CrieSenha.Text != text_ConfirmeSenha.Text)
@@ -57,6 +58,11 @@ namespace Desafio1_GroupSoftware
             else if (text_CrieSenha.Text.Contains(" "))
             {
                 MessageBox.Show("A senha não pode conter espaços em branco.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (string.IsNullOrEmpty(txt_Email.Text) || string.IsNullOrEmpty(text_CrieUser.Text) || string.IsNullOrEmpty(text_ConfirmeSenha.Text))
+            {
+                MessageBox.Show("PREENCHA TODOS OS CAMPOS.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             else
             {
@@ -125,6 +131,11 @@ namespace Desafio1_GroupSoftware
                 e.SuppressKeyPress = true;
                 button_Cancelar_Click(sender, e);
             }
+        }
+
+        private void txt_Email_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

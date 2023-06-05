@@ -85,9 +85,9 @@
             label_User.AutoSize = true;
             label_User.Location = new Point(6, 16);
             label_User.Name = "label_User";
-            label_User.Size = new Size(30, 15);
+            label_User.Size = new Size(35, 15);
             label_User.TabIndex = 6;
-            label_User.Text = "User";
+            label_User.Text = "Code";
             // 
             // button_Voltar
             // 
@@ -159,7 +159,7 @@
             MaximizeBox = false;
             Name = "RedefinirSenha";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Esqueci a senha";
+            Text = "Redefinir Senha";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
