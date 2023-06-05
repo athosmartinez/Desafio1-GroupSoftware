@@ -418,7 +418,7 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
         }
 
-        public static void AdicionarNovoUsuario(string username, string senhaCriptografada)
+        public static void AdicionarNovoUsuario(string username, string senhaCriptografada, string email)
         {
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
             try
@@ -428,23 +428,26 @@ namespace Desafio1_GroupSoftware.Funcoes
                     connection.Open();
 
                     // Verificar se o usuário já existe
-                    string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username";
+                    string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username OR email = @Email";
                     SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
                     checkUserCommand.Parameters.AddWithValue("@Username", username);
+                    checkUserCommand.Parameters.AddWithValue("@Email", email);
+
 
                     int userCount = (int)checkUserCommand.ExecuteScalar();
 
                     if (userCount > 0)
                     {
-                        MessageBox.Show("Já existe um usuário com esse nome de usuário. Vá em ESQUECI MINHA SENHA a para redefinir a senha deste usuário!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Já existe um usuário com esse nome de usuário ou email. Vá em ESQUECI MINHA SENHA a para redefinir a senha deste usuário!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         // Inserir o novo usuário
-                        string insertQuery = "INSERT INTO usuarios (username, senha) VALUES (@Username, @Password)";
+                        string insertQuery = "INSERT INTO usuarios (username, senha, email) VALUES (@Username, @Password, @Email)";
                         SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
                         insertCommand.Parameters.AddWithValue("@Username", username);
                         insertCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
+                        insertCommand.Parameters.AddWithValue("@Email", email);
 
                         int rowsAffected = insertCommand.ExecuteNonQuery();
 

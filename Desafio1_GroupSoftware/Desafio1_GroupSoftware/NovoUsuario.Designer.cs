@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovoUsuario));
             groupBox_NovoUsuario = new GroupBox();
+            txt_Email = new TextBox();
+            label1 = new Label();
             button_Salvar = new Button();
             button_Cancelar = new Button();
             checkBox_ShowPassword = new CheckBox();
@@ -39,8 +41,6 @@
             label_CrieSenha = new Label();
             text_CrieUser = new TextBox();
             label_CrieUser = new Label();
-            label1 = new Label();
-            txt_Email = new TextBox();
             groupBox_NovoUsuario.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,13 +64,30 @@
             groupBox_NovoUsuario.TabStop = false;
             groupBox_NovoUsuario.Text = "Novo usuário";
             // 
+            // txt_Email
+            // 
+            txt_Email.Location = new Point(5, 81);
+            txt_Email.Name = "txt_Email";
+            txt_Email.Size = new Size(248, 23);
+            txt_Email.TabIndex = 2;
+            txt_Email.TextChanged += txt_Email_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(7, 63);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 15);
+            label1.TabIndex = 9;
+            label1.Text = "E-mail:";
+            // 
             // button_Salvar
             // 
             button_Salvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button_Salvar.Location = new Point(179, 232);
             button_Salvar.Name = "button_Salvar";
             button_Salvar.Size = new Size(75, 23);
-            button_Salvar.TabIndex = 8;
+            button_Salvar.TabIndex = 6;
             button_Salvar.Text = "SALVAR";
             button_Salvar.UseVisualStyleBackColor = true;
             button_Salvar.Click += button_Salvar_Click;
@@ -92,7 +109,7 @@
             checkBox_ShowPassword.Location = new Point(152, 207);
             checkBox_ShowPassword.Name = "checkBox_ShowPassword";
             checkBox_ShowPassword.Size = new Size(101, 19);
-            checkBox_ShowPassword.TabIndex = 6;
+            checkBox_ShowPassword.TabIndex = 5;
             checkBox_ShowPassword.Text = "Mostrar senha";
             checkBox_ShowPassword.UseVisualStyleBackColor = true;
             checkBox_ShowPassword.CheckedChanged += checkBox_ShowPassword_CheckedChanged;
@@ -102,7 +119,7 @@
             text_ConfirmeSenha.Location = new Point(5, 171);
             text_ConfirmeSenha.Name = "text_ConfirmeSenha";
             text_ConfirmeSenha.Size = new Size(249, 23);
-            text_ConfirmeSenha.TabIndex = 5;
+            text_ConfirmeSenha.TabIndex = 4;
             text_ConfirmeSenha.UseSystemPasswordChar = true;
             text_ConfirmeSenha.TextChanged += text_ConfirmeSenha_TextChanged;
             text_ConfirmeSenha.KeyDown += text_ConfirmeSenha_KeyDown;
@@ -152,23 +169,6 @@
             label_CrieUser.Size = new Size(80, 15);
             label_CrieUser.TabIndex = 0;
             label_CrieUser.Text = "Crie seu user: ";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(7, 63);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 15);
-            label1.TabIndex = 9;
-            label1.Text = "E-mail:";
-            // 
-            // txt_Email
-            // 
-            txt_Email.Location = new Point(5, 81);
-            txt_Email.Name = "txt_Email";
-            txt_Email.Size = new Size(248, 23);
-            txt_Email.TabIndex = 10;
-            txt_Email.TextChanged += txt_Email_TextChanged;
             // 
             // NovoUsuario
             // 
