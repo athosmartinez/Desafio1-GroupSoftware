@@ -51,7 +51,7 @@
             groupBox_Login.Controls.Add(label_Password);
             groupBox_Login.Controls.Add(txt_User);
             groupBox_Login.Controls.Add(label_User);
-            groupBox_Login.Location = new Point(10, 8);
+            groupBox_Login.Location = new Point(6, 5);
             groupBox_Login.Margin = new Padding(3, 2, 3, 2);
             groupBox_Login.Name = "groupBox_Login";
             groupBox_Login.Padding = new Padding(3, 2, 3, 2);
@@ -152,7 +152,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(387, 170);
+            ClientSize = new Size(379, 162);
             Controls.Add(groupBox_Login);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
