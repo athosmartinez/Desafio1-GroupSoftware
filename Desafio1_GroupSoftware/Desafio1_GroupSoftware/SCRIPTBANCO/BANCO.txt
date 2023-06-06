@@ -12,10 +12,17 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+USE [users]
+GO
+
+
+
 CREATE TABLE [dbo].[usuarios](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[username] [varchar](255) NOT NULL,
 	[senha] [varchar](255) NOT NULL,
+	[email] [varchar](255) NOT NULL,
+	[codigoVerifica] [varchar](255) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -26,15 +33,9 @@ GO
 
 
 
+
 //Criar tabela clientes
 USE [users]
-GO
-
-/****** Object:  Table [dbo].[clientes]    Script Date: 26/05/2023 13:18:46 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[clientes](
@@ -43,13 +44,18 @@ CREATE TABLE [dbo].[clientes](
 	[endereco] [varchar](255) NOT NULL,
 	[documento] [varchar](255) NOT NULL,
 	[telefone] [varchar](255) NOT NULL,
-	[usuarioID] [int] NOT NULL
+	[usuarioID] [int] NOT NULL,
+	[IDCliente] [int] NOT NULL
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[clientes]  WITH CHECK ADD FOREIGN KEY([usuarioID])
+ALTER TABLE [dbo].[clientes]  WITH CHECK ADD  CONSTRAINT [FK__clientes__usuari__03F0984C] FOREIGN KEY([usuarioID])
 REFERENCES [dbo].[usuarios] ([id])
 GO
+    
+ALTER TABLE [dbo].[clientes] CHECK CONSTRAINT [FK__clientes__usuari__03F0984C]
+GO
+
 
 
 //Cadastrar primeiro usuario

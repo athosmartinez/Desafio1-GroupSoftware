@@ -27,6 +27,7 @@ namespace Desafio1_GroupSoftware
             Util.GerarCodigoVerificacao(email);
             RedefinirSenha redefinirSenha = new RedefinirSenha();
             redefinirSenha.Show();
+            this.Close();
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
