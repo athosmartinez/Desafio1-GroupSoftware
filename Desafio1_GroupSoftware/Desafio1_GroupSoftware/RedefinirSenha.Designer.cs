@@ -85,9 +85,9 @@
             label_User.AutoSize = true;
             label_User.Location = new Point(6, 16);
             label_User.Name = "label_User";
-            label_User.Size = new Size(46, 15);
+            label_User.Size = new Size(49, 15);
             label_User.TabIndex = 6;
-            label_User.Text = "Código";
+            label_User.Text = "Código:";
             // 
             // button_Voltar
             // 
@@ -126,9 +126,9 @@
             label_ConfirmeNova.AutoSize = true;
             label_ConfirmeNova.Location = new Point(6, 104);
             label_ConfirmeNova.Name = "label_ConfirmeNova";
-            label_ConfirmeNova.Size = new Size(100, 15);
+            label_ConfirmeNova.Size = new Size(103, 15);
             label_ConfirmeNova.TabIndex = 2;
-            label_ConfirmeNova.Text = "Confirme a senha";
+            label_ConfirmeNova.Text = "Confirme a senha:";
             // 
             // text_NovaSenha
             // 
@@ -145,9 +145,9 @@
             label_NovaSenha.AutoSize = true;
             label_NovaSenha.Location = new Point(6, 60);
             label_NovaSenha.Name = "label_NovaSenha";
-            label_NovaSenha.Size = new Size(69, 15);
+            label_NovaSenha.Size = new Size(72, 15);
             label_NovaSenha.TabIndex = 0;
-            label_NovaSenha.Text = "Nova senha";
+            label_NovaSenha.Text = "Nova senha:";
             // 
             // RedefinirSenha
             // 

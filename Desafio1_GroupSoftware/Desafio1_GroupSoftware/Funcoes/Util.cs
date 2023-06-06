@@ -84,7 +84,6 @@ namespace Desafio1_GroupSoftware.Funcoes
             return cnpj.EndsWith(digito);
         }
 
-
         public static bool ValidarCPF(string cpf)
         {
             cpf = cpf.Trim().SomenteNumeros();
@@ -143,9 +142,7 @@ namespace Desafio1_GroupSoftware.Funcoes
             {
                 using (SqlConnection connection = EstabelecerConexao())
                 {
-
                     Util.UserID = usuarioID;
-
                     // Verificar se o cliente já existe com base no nome, telefone e documento
                     string queryVerificacao = "SELECT COUNT(*) FROM clientes WHERE (nome = @nome OR documento = @documento) AND usuarioID = @usuarioID ";
                     SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
@@ -199,13 +196,10 @@ namespace Desafio1_GroupSoftware.Funcoes
         {
             string queryVerificarExistencia = "SELECT COUNT(*) FROM clientes WHERE email = @Email AND endereco = @Endereco AND documento = @Documento AND telefone = @Telefone AND nome = @Nome AND usuarioID = @UsuarioID ";
             string queryAtualizar = "UPDATE clientes SET email = @Email, endereco = @Endereco, documento = @Documento, telefone = @Telefone WHERE nome = @Nome AND usuarioID = @UsuarioID";
-
             try
             {
                 using (SqlConnection connection = EstabelecerConexao())
                 {
-
-
                     // Verificar a existência de valores duplicados
                     SqlCommand verificarExistenciaCommand = new SqlCommand(queryVerificarExistencia, connection);
                     verificarExistenciaCommand.Parameters.AddWithValue("@Email", email);
@@ -251,9 +245,7 @@ namespace Desafio1_GroupSoftware.Funcoes
         }
         public static void DeletarCliente(string nome, string endereco, string documento, string email, string telefone, int usuarioID)
         {
-
             string query = "DELETE FROM clientes WHERE nome = @Nome AND endereco = @Endereco AND documento = @Documento AND email = @Email AND telefone = @Telefone AND usuarioID = @UsuarioID";
-
             try
             {
                 using (SqlConnection connection = EstabelecerConexao())
@@ -334,7 +326,6 @@ namespace Desafio1_GroupSoftware.Funcoes
 
             using (SqlConnection connection = EstabelecerConexao())
             {
-
                 string query = "SELECT senha FROM usuarios WHERE username = @Username";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", username);
@@ -362,13 +353,10 @@ namespace Desafio1_GroupSoftware.Funcoes
         {
             try
             {
-
                 string query = "SELECT id FROM usuarios WHERE username = @username";
 
                 using (SqlConnection connection = EstabelecerConexao())
                 {
-
-
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@username", username);
                     UserName = username;
@@ -396,7 +384,6 @@ namespace Desafio1_GroupSoftware.Funcoes
         {
             try
             {
-
                 string query = "  SELECT Max(IDCliente) + 1 FROM clientes WHERE usuarioID = @UsuarioID";
 
                 using (SqlConnection connection = EstabelecerConexao())
@@ -424,7 +411,6 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static void AdicionarNovoUsuario(string username, string senhaCriptografada, string email)
         {
-
             try
             {
                 using (SqlConnection connection = EstabelecerConexao())
@@ -488,16 +474,12 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static string GetUserName(string email)
         {
-
-
             using (SqlConnection connection = EstabelecerConexao())
             {
-
                 // Verificar se o usuário existe com base no email
                 string queryVerificacao = "SELECT username FROM usuarios WHERE email = @Email";
                 SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
                 commandVerificacao.Parameters.AddWithValue("@Email", email);
-
                 object result = commandVerificacao.ExecuteScalar();
 
                 if (result != null)
@@ -514,12 +496,8 @@ namespace Desafio1_GroupSoftware.Funcoes
         public static string GerarCodigoVerificacao(string email)
         {
             string codigo = GerarCodigoAleatorio();
-
-
             using (SqlConnection connection = EstabelecerConexao())
             {
-
-
                 // Verificar se o usuário existe com base no email
                 string queryVerificacao = "SELECT COUNT(*) FROM usuarios WHERE email = @Email";
                 SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
@@ -618,7 +596,6 @@ namespace Desafio1_GroupSoftware.Funcoes
             try
             {
                 // Obter a conexão com o banco de dados
-
                 using (SqlConnection connection = EstabelecerConexao())
                 {
 
