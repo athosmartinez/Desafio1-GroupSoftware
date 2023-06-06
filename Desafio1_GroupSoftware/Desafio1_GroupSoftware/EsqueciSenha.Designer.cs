@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EsqueciSenha));
             groupBox1 = new GroupBox();
             button_Cancelar = new Button();
             button1 = new Button();
@@ -93,6 +94,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(262, 111);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "EsqueciSenha";
             StartPosition = FormStartPosition.CenterScreen;

@@ -66,3 +66,6 @@ C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftwar
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.genruntimeconfig.cache
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\ref\Desafio1_GroupSoftware.dll
 C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\obj\Debug\net6.0-windows\Desafio1_GroupSoftware.EsqueciSenha.resources
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\FluentEmail.Core.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\FluentEmail.Smtp.dll
+C:\Users\athos.andrade\source\repos\Desafio1-GroupSoftware\Desafio1_GroupSoftware\Desafio1_GroupSoftware\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll

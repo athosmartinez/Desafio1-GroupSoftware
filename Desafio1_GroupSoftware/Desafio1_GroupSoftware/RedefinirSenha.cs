@@ -48,7 +48,7 @@ namespace Desafio1_GroupSoftware
 
         private void button_Confirma_Click(object sender, EventArgs e)
         {
-            string username = text_User.Text;
+            string code = text_User.Text;
             string novaSenha = text_NovaSenha.Text;
             if (text_NovaSenha.Text != text_ConfirmeSenha.Text)
             {
@@ -62,9 +62,9 @@ namespace Desafio1_GroupSoftware
             {
                 MessageBox.Show("A senha não pode conter espaços em branco.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (!string.IsNullOrEmpty(username))
+            else if (!string.IsNullOrEmpty(code))
             {
-                Util.AlterarSenha(username, novaSenha);
+                Util.AlterarSenha(code, novaSenha);
                 this.Close();
             }
             else

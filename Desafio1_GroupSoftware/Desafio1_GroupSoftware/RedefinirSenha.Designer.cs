@@ -85,9 +85,9 @@
             label_User.AutoSize = true;
             label_User.Location = new Point(6, 16);
             label_User.Name = "label_User";
-            label_User.Size = new Size(35, 15);
+            label_User.Size = new Size(46, 15);
             label_User.TabIndex = 6;
-            label_User.Text = "Code";
+            label_User.Text = "Código";
             // 
             // button_Voltar
             // 
@@ -155,6 +155,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(277, 215);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "RedefinirSenha";

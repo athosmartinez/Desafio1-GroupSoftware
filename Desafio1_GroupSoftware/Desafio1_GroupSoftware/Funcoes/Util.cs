@@ -8,7 +8,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms.VisualStyles;
 using BCryptNet = BCrypt.Net.BCrypt;
-
+using System.Net;
+using System.Net.Mail;
+using Desafio1_GroupSoftware.Classes;
+using FluentEmail.Core;
 
 namespace Desafio1_GroupSoftware.Funcoes
 {
@@ -468,8 +471,111 @@ namespace Desafio1_GroupSoftware.Funcoes
                 MessageBox.Show("Erro ao inserir usuário no banco de dados: " + ex.Message);
             }
         }
+
+        public static string GerarCodigoAleatorio()
+        {
+            const string caracteres = "0123456789";
+            Random random = new Random();
+            StringBuilder codigo = new StringBuilder();
+
+            for (int i = 0; i < 6; i++)
+            {
+                int index = random.Next(caracteres.Length);
+                codigo.Append(caracteres[index]);
+            }
+
+            return codigo.ToString();
+        }
+
+        public static string GetUserName(string email)
+        {
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Verificar se o usuário existe com base no email
+                string queryVerificacao = "SELECT username FROM usuarios WHERE email = @Email";
+                SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
+                commandVerificacao.Parameters.AddWithValue("@Email", email);
+
+                object result = commandVerificacao.ExecuteScalar();
+
+                if (result != null)
+                {
+                    return result.ToString();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static string GerarCodigoVerificacao(string email)
+        {
+            string codigo = GerarCodigoAleatorio();
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Verificar se o usuário existe com base no email
+                string queryVerificacao = "SELECT COUNT(*) FROM usuarios WHERE email = @Email";
+                SqlCommand commandVerificacao = new SqlCommand(queryVerificacao, connection);
+                commandVerificacao.Parameters.AddWithValue("@Email", email);
+
+                int count = (int)commandVerificacao.ExecuteScalar();
+                if (count == 0)
+                {
+                    MessageBox.Show("Usuário não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null; // Usuário não encontrado
+                }
+
+                // Atualizar o código de verificação para o usuário correspondente ao email
+                string queryAtualizacao = "UPDATE usuarios SET codigoVerifica = @Codigo WHERE email = @Email";
+                SqlCommand commandAtualizacao = new SqlCommand(queryAtualizacao, connection);
+                commandAtualizacao.Parameters.AddWithValue("@Codigo", codigo);
+                commandAtualizacao.Parameters.AddWithValue("@Email", email);
+
+                int rowsAffected = commandAtualizacao.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    try
+                    {
+                        MailMessage mensagem = new MailMessage(DadosSMTP.Remetente(), email, "CÓDIGO PARA ALTERAR A SUA SENHA!", $"Olá {Util.GetUserName(email)}, seu código para alterar a senha é {codigo}.");
+                        SmtpClient clienteSmtp = new SmtpClient("smtp.office365.com", 587); // Substitua com as configurações do seu provedor SMTP
+                        clienteSmtp.UseDefaultCredentials = false;
+                        clienteSmtp.Credentials = new NetworkCredential(DadosSMTP.Remetente(), DadosSMTP.Senha());
+                        clienteSmtp.Credentials = new NetworkCredential(DadosSMTP.Remetente(), DadosSMTP.Senha());
+                        clienteSmtp.EnableSsl = true;
+
+                        clienteSmtp.Send(mensagem);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Erro ao enviar o e-mail: " + ex.Message);
+                    }
+                    return codigo;
+
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao gerar o código de verificação.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+
+
+            }
+        }
+
+
+        //AO IVNES DE SER O USUARIO VAI SER O CODIGO GERADO E ENVIADO PELO EMAIL E DEPOIS QUE ENVIAR VOLTA COMO NULO
         //ALTERA DADO NO BANCO
-        public static void AlterarSenha(string username, string novaSenha)
+        public static void AlterarSenha(string code, string novaSenha)
         {
             string senhaCriptografada = BCryptNet.HashPassword(novaSenha);
             string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
@@ -479,17 +585,17 @@ namespace Desafio1_GroupSoftware.Funcoes
                 {
                     connection.Open();
                     // Verificar se o usuário existe
-                    string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username";
+                    string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE codigoVerifica = @Codigo";
                     SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
-                    checkUserCommand.Parameters.AddWithValue("@Username", username);
+                    checkUserCommand.Parameters.AddWithValue("@Codigo", code);
                     int userCount = (int)checkUserCommand.ExecuteScalar();
 
                     if (userCount > 0)
                     {
                         // Atualizar a senha do usuário
-                        string updateQuery = "UPDATE usuarios SET senha = @Password WHERE username = @Username";
+                        string updateQuery = "UPDATE usuarios SET senha = @Password WHERE codigoVerifica = @Codigo";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
-                        updateCommand.Parameters.AddWithValue("@Username", username);
+                        updateCommand.Parameters.AddWithValue("@Codigo", code);
                         updateCommand.Parameters.AddWithValue("@Password", senhaCriptografada);
 
                         int rowsAffected = updateCommand.ExecuteNonQuery();

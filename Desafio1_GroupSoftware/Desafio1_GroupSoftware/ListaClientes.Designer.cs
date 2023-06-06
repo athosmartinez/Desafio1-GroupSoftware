@@ -195,6 +195,7 @@ namespace Desafio1_GroupSoftware
             // 
             // button_Importar
             // 
+            button_Importar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button_Importar.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
             button_Importar.Location = new Point(16, 310);
             button_Importar.Name = "button_Importar";
