@@ -78,6 +78,7 @@
             textBox_Email.Name = "textBox_Email";
             textBox_Email.Size = new Size(239, 23);
             textBox_Email.TabIndex = 1;
+            textBox_Email.KeyDown += textBox_Email_KeyDown;
             // 
             // label1
             // 

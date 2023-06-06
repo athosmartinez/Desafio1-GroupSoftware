@@ -33,5 +33,19 @@ namespace Desafio1_GroupSoftware
         {
             this.Close();
         }
+
+        private void textBox_Email_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                button_Enviar_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                button_Cancelar_Click(sender, e);
+            }
+        }
     }
 }

@@ -17,6 +17,15 @@ namespace Desafio1_GroupSoftware.Funcoes
 {
     public static class Util
     {
+
+        public static SqlConnection EstabelecerConexao()
+        {
+            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            return connection;
+        }
+
         //VALIDAÇÕES DADOS
         public static string SomenteNumeros(this string s)
         {
@@ -132,11 +141,9 @@ namespace Desafio1_GroupSoftware.Funcoes
         {
             try
             {
-                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
+
                     Util.UserID = usuarioID;
 
                     // Verificar se o cliente já existe com base no nome, telefone e documento
@@ -173,13 +180,10 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static bool VerificarClienteExistente(string nome, string documento, int usuarioID)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
             string query = "SELECT COUNT(*) FROM clientes WHERE nome = @Nome AND documento = @Documento AND usuarioID = @UsuarioID";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = EstabelecerConexao())
             {
-                connection.Open();
-
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Nome", nome);
                 command.Parameters.AddWithValue("@Documento", documento);
@@ -193,15 +197,14 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static void AtualizarDadosCliente(string nome, string email, string endereco, string documento, string telefone, int usuarioID)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
             string queryVerificarExistencia = "SELECT COUNT(*) FROM clientes WHERE email = @Email AND endereco = @Endereco AND documento = @Documento AND telefone = @Telefone AND nome = @Nome AND usuarioID = @UsuarioID ";
             string queryAtualizar = "UPDATE clientes SET email = @Email, endereco = @Endereco, documento = @Documento, telefone = @Telefone WHERE nome = @Nome AND usuarioID = @UsuarioID";
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
+
 
                     // Verificar a existência de valores duplicados
                     SqlCommand verificarExistenciaCommand = new SqlCommand(queryVerificarExistencia, connection);
@@ -248,14 +251,14 @@ namespace Desafio1_GroupSoftware.Funcoes
         }
         public static void DeletarCliente(string nome, string endereco, string documento, string email, string telefone, int usuarioID)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
             string query = "DELETE FROM clientes WHERE nome = @Nome AND endereco = @Endereco AND documento = @Documento AND email = @Email AND telefone = @Telefone AND usuarioID = @UsuarioID";
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
+
 
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Nome", nome);
@@ -287,12 +290,12 @@ namespace Desafio1_GroupSoftware.Funcoes
         public static DataTable ConsultarDadosClientes()
         {
 
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
             string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = EstabelecerConexao())
             {
-                connection.Open();
+
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@usuarioID", Util.UserID);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -304,7 +307,7 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static DataTable ConsultarClientesFiltrados(string termoPesquisa)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
             string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID " +
                           "AND (LOWER(nome) LIKE @termoPesquisa OR " +
                           "LOWER(endereco) LIKE @termoPesquisa OR " +
@@ -312,9 +315,9 @@ namespace Desafio1_GroupSoftware.Funcoes
                           "LOWER(email) LIKE @termoPesquisa OR " +
                           "LOWER(telefone) LIKE @termoPesquisa)";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = EstabelecerConexao())
             {
-                connection.Open();
+
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@usuarioID", Util.UserID);
                 command.Parameters.AddWithValue("@termoPesquisa", "%" + termoPesquisa.ToLower() + "%");
@@ -328,10 +331,10 @@ namespace Desafio1_GroupSoftware.Funcoes
         //LOGIN
         public static bool VerificarLogin(string username, string senha)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            using (SqlConnection connection = EstabelecerConexao())
             {
-                connection.Open();
+
                 string query = "SELECT senha FROM usuarios WHERE username = @Username";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", username);
@@ -359,12 +362,12 @@ namespace Desafio1_GroupSoftware.Funcoes
         {
             try
             {
-                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
                 string query = "SELECT id FROM usuarios WHERE username = @username";
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
+
 
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@username", username);
@@ -393,13 +396,11 @@ namespace Desafio1_GroupSoftware.Funcoes
         {
             try
             {
-                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
                 string query = "  SELECT Max(IDCliente) + 1 FROM clientes WHERE usuarioID = @UsuarioID";
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
-
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@UsuarioID", Util.UserID);
                     object result = command.ExecuteScalar();
@@ -423,13 +424,11 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static void AdicionarNovoUsuario(string username, string senhaCriptografada, string email)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
-
                     // Verificar se o usuário já existe
                     string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE username = @Username OR email = @Email";
                     SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
@@ -489,11 +488,10 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static string GetUserName(string email)
         {
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            using (SqlConnection connection = EstabelecerConexao())
             {
-                connection.Open();
 
                 // Verificar se o usuário existe com base no email
                 string queryVerificacao = "SELECT username FROM usuarios WHERE email = @Email";
@@ -516,11 +514,11 @@ namespace Desafio1_GroupSoftware.Funcoes
         public static string GerarCodigoVerificacao(string email)
         {
             string codigo = GerarCodigoAleatorio();
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            using (SqlConnection connection = EstabelecerConexao())
             {
-                connection.Open();
+
 
                 // Verificar se o usuário existe com base no email
                 string queryVerificacao = "SELECT COUNT(*) FROM usuarios WHERE email = @Email";
@@ -546,7 +544,7 @@ namespace Desafio1_GroupSoftware.Funcoes
                 {
                     try
                     {
-                        MailMessage mensagem = new MailMessage(DadosSMTP.Remetente(), email, "CÓDIGO PARA ALTERAR A SUA SENHA!", $"Olá {Util.GetUserName(email)}, seu código para alterar a senha é {codigo}.");
+                        MailMessage mensagem = new MailMessage(DadosSMTP.Remetente(), email, "CÓDIGO PARA ALTERAR A SUA SENHA!", $"Olá {Util.GetUserName(email).ToUpper()}!! Seu código para alterar a senha é {codigo}.");
                         SmtpClient clienteSmtp = new SmtpClient("smtp.office365.com", 587); // Substitua com as configurações do seu provedor SMTP
                         clienteSmtp.UseDefaultCredentials = false;
                         clienteSmtp.Credentials = new NetworkCredential(DadosSMTP.Remetente(), DadosSMTP.Senha());
@@ -560,30 +558,24 @@ namespace Desafio1_GroupSoftware.Funcoes
                         Console.WriteLine("Erro ao enviar o e-mail: " + ex.Message);
                     }
                     return codigo;
-
                 }
                 else
                 {
                     MessageBox.Show("Erro ao gerar o código de verificação.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return null;
                 }
-
-
             }
         }
 
-
-        //AO IVNES DE SER O USUARIO VAI SER O CODIGO GERADO E ENVIADO PELO EMAIL E DEPOIS QUE ENVIAR VOLTA COMO NULO
-        //ALTERA DADO NO BANCO
         public static void AlterarSenha(string code, string novaSenha)
         {
             string senhaCriptografada = BCryptNet.HashPassword(novaSenha);
-            string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
+
                     // Verificar se o usuário existe
                     string checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE codigoVerifica = @Codigo";
                     SqlCommand checkUserCommand = new SqlCommand(checkUserQuery, connection);
@@ -626,10 +618,9 @@ namespace Desafio1_GroupSoftware.Funcoes
             try
             {
                 // Obter a conexão com o banco de dados
-                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+
+                using (SqlConnection connection = EstabelecerConexao())
                 {
-                    connection.Open();
 
                     // Consultar os dados do usuário logado
                     string query = "SELECT * FROM clientes WHERE usuarioID = @usuarioID";
@@ -689,8 +680,8 @@ namespace Desafio1_GroupSoftware.Funcoes
             {
 
                 // Obter a conexão com o banco de dados
-                string connectionString = "Data Source=group-note02312;Initial Catalog=users;User ID=SA;Password=Admin@123";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+
+                using (SqlConnection connection = EstabelecerConexao())
                 {
                     ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     connection.Open();
