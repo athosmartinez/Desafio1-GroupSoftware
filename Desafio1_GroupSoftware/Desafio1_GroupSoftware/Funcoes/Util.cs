@@ -661,7 +661,7 @@ namespace Desafio1_GroupSoftware.Funcoes
                 using (SqlConnection connection = EstabelecerConexao())
                 {
                     ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-                    connection.Open();
+          
 
                     // Ler o arquivo Excel usando o EPPlus
                     FileInfo excelFile = new FileInfo(filePath);
@@ -749,7 +749,6 @@ namespace Desafio1_GroupSoftware.Funcoes
 
                         }
                     }
-
                     MessageBox.Show("Dados do Excel importados com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
