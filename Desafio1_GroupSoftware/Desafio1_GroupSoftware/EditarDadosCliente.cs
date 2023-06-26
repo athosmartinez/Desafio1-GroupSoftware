@@ -20,14 +20,14 @@ namespace Desafio1_GroupSoftware
             txt_Endereco.Text = Classes.DadosClienteLista.Endereco;
             mask_telefone.Text = Classes.DadosClienteLista.Telefone;
             txt_email.Text = Classes.DadosClienteLista.Email;
-            maskText_Documento.Text = Classes.DadosClienteLista.Documento;
+            text_Documento.Text = Classes.DadosClienteLista.Documento;
 
             // Desabilitar o RadioButton
             radio_CNPJ.Enabled = false;
             radio_CPF.Enabled = false;
             // Tornar os TextBox somente leitura
             txt_nome.Enabled = false;
-            maskText_Documento.Enabled = false;
+            text_Documento.Enabled = false;
 
 
 
@@ -45,7 +45,7 @@ namespace Desafio1_GroupSoftware
 
         private void maskText_Documento_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            maskText_Documento.Select(0, 0);
+            text_Documento.Select(0, 0);
         }
 
         private void txt_email_TextChanged(object sender, EventArgs e)
@@ -56,11 +56,6 @@ namespace Desafio1_GroupSoftware
         private void mask_telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             mask_telefone.Select(0, 0);
-        }
-
-        private void radio_CNPJ_CheckedChanged(object sender, EventArgs e)
-        {
-            MudouCNPJCPF();
         }
 
         private void button_exit_Click(object sender, EventArgs e)
@@ -74,32 +69,32 @@ namespace Desafio1_GroupSoftware
             {
                 MessageBox.Show("SELECIONE O TIPO DE DOCUMENTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CNPJ.Checked && !Util.ValidarCNPJ(maskText_Documento.Text))
+            else if (radio_CNPJ.Checked && !Util.ValidarCNPJ(text_Documento.Text))
             {
                 MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (radio_CPF.Checked && !Util.ValidarCPF(maskText_Documento.Text))
+            else if (radio_CPF.Checked && !Util.ValidarCPF(text_Documento.Text))
             {
                 MessageBox.Show("CPF Inválido", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (string.IsNullOrEmpty(txt_nome.Text.Trim()) ||
                      string.IsNullOrEmpty(txt_Endereco.Text.Trim()) ||
-                     string.IsNullOrEmpty(maskText_Documento.Text.Replace("_", "").Trim()) ||
+                     string.IsNullOrEmpty(text_Documento.Text.Replace("_", "").Trim()) ||
                      string.IsNullOrEmpty(mask_telefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "").Trim()) ||
-                     string.IsNullOrEmpty(maskText_Documento.Text.Replace("_", "").Trim()) ||
+                     string.IsNullOrEmpty(text_Documento.Text.Replace("_", "").Trim()) ||
                      mask_telefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "").Trim().Length < 11 ||
                      string.IsNullOrEmpty(txt_email.Text.Trim()))
             {
                 MessageBox.Show("PREENCHA TODOS OS DADOS!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if ((radio_CNPJ.Checked && Util.ValidarCNPJ(maskText_Documento.Text)) ||
-                     (radio_CPF.Checked && Util.ValidarCPF(maskText_Documento.Text)))
+            else if ((radio_CNPJ.Checked && Util.ValidarCNPJ(text_Documento.Text)) ||
+                     (radio_CPF.Checked && Util.ValidarCPF(text_Documento.Text)))
             {
                 // Obtenha os valores dos campos de entrada
                 string nome = txt_nome.Text;
                 string email = txt_email.Text;
                 string endereco = txt_Endereco.Text;
-                string documento = maskText_Documento.Text;
+                string documento = text_Documento.Text;
                 string telefone = mask_telefone.Text;
                 int usuarioID = Util.UserID;
 
@@ -117,40 +112,14 @@ namespace Desafio1_GroupSoftware
             }
         }
 
-        private void radio_CPF_CheckedChanged(object sender, EventArgs e)
-        {
-            MudouCNPJCPF();
-        }
-
-        private void MudouCNPJCPF()
-        {
-            if (radio_CNPJ.Checked)
-            {
-                label_Doc.Text = "CPNJ: ";
-                maskText_Documento.Mask = "00,000,000/0000-00";
-
-            }
-            else if (radio_CPF.Checked)
-            {
-                label_Doc.Text = "CPF: ";
-                maskText_Documento.Mask = "000,000,000-00";
-
-            }
-            else
-            {
-                label_Doc.Text = "Documento: ";
-                maskText_Documento.Mask = "";
-            }
-        }
-
         private void EditarDadosCliente_Load(object sender, EventArgs e)
         {
-            if (maskText_Documento.Text.Length == 14)
+            if (text_Documento.Text.Length == 14)
             {
                 radio_CPF.Checked = true;
                 radio_CNPJ.Checked = false;
             }
-            else if (maskText_Documento.Text.Length == 18)
+            else if (text_Documento.Text.Length == 18)
             {
                 radio_CPF.Checked = false;
                 radio_CNPJ.Checked = true;
@@ -170,7 +139,7 @@ namespace Desafio1_GroupSoftware
                 // Obtém os valores dos campos relevantes
                 string nome = txt_nome.Text;
                 string endereco = txt_Endereco.Text;
-                string documento = maskText_Documento.Text;
+                string documento = Classes.DadosClienteLista.Documento;
                 string email = txt_email.Text;
                 string telefone = mask_telefone.Text;
                 int usuarioID = Util.UserID;
@@ -183,6 +152,11 @@ namespace Desafio1_GroupSoftware
             {
                 this.Close();
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -33,7 +33,6 @@ namespace Desafio1_GroupSoftware
             this.Close();
         }
 
-
         private void txt_Pesquisa_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -48,7 +47,6 @@ namespace Desafio1_GroupSoftware
             }
         }
 
-
         private void ListaClientes_Load(object sender, EventArgs e)
         {
             AtualizarTabela();
@@ -62,7 +60,6 @@ namespace Desafio1_GroupSoftware
             string numeroIDString = numeroID.ToString();
             label_ActiveUser.Text = "TABELA: " + Util.UserName.ToUpper() + " - " + numeroIDString;
         }
-
 
         private void dataGrid_Clientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -111,6 +108,11 @@ namespace Desafio1_GroupSoftware
                 Util.ImportarDadosDoExcel(filePath);
             }
             AtualizarTabela();
+        }
+
+        private void dataGrid_Clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
