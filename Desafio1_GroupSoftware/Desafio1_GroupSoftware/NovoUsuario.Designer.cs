@@ -61,7 +61,7 @@
             groupBox_NovoUsuario.Margin = new Padding(4, 5, 4, 5);
             groupBox_NovoUsuario.Name = "groupBox_NovoUsuario";
             groupBox_NovoUsuario.Padding = new Padding(4, 5, 4, 5);
-            groupBox_NovoUsuario.Size = new Size(371, 438);
+            groupBox_NovoUsuario.Size = new Size(371, 414);
             groupBox_NovoUsuario.TabIndex = 0;
             groupBox_NovoUsuario.TabStop = false;
             groupBox_NovoUsuario.Text = "Novo usuário";
@@ -88,7 +88,7 @@
             // button_Salvar
             // 
             button_Salvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Salvar.Location = new Point(247, 387);
+            button_Salvar.Location = new Point(244, 365);
             button_Salvar.Margin = new Padding(4, 5, 4, 5);
             button_Salvar.Name = "button_Salvar";
             button_Salvar.Size = new Size(116, 38);
@@ -100,7 +100,7 @@
             // button_Cancelar
             // 
             button_Cancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Cancelar.Location = new Point(123, 387);
+            button_Cancelar.Location = new Point(123, 365);
             button_Cancelar.Margin = new Padding(4, 5, 4, 5);
             button_Cancelar.Name = "button_Cancelar";
             button_Cancelar.Size = new Size(116, 38);
@@ -112,7 +112,7 @@
             // checkBox_ShowPassword
             // 
             checkBox_ShowPassword.AutoSize = true;
-            checkBox_ShowPassword.Location = new Point(217, 345);
+            checkBox_ShowPassword.Location = new Point(215, 326);
             checkBox_ShowPassword.Margin = new Padding(4, 5, 4, 5);
             checkBox_ShowPassword.Name = "checkBox_ShowPassword";
             checkBox_ShowPassword.Size = new Size(151, 29);
@@ -187,7 +187,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(386, 450);
+            ClientSize = new Size(386, 427);
             Controls.Add(groupBox_NovoUsuario);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");

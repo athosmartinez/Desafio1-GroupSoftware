@@ -65,51 +65,17 @@ namespace Desafio1_GroupSoftware
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            if (!radio_CNPJ.Checked && !radio_CPF.Checked)
-            {
-                MessageBox.Show("SELECIONE O TIPO DE DOCUMENTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (radio_CNPJ.Checked && !Util.ValidarCNPJ(text_Documento.Text))
-            {
-                MessageBox.Show("CNPJ Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (radio_CPF.Checked && !Util.ValidarCPF(text_Documento.Text))
-            {
-                MessageBox.Show("CPF Inválido", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(txt_nome.Text.Trim()) ||
-                     string.IsNullOrEmpty(txt_Endereco.Text.Trim()) ||
-                     string.IsNullOrEmpty(text_Documento.Text.Replace("_", "").Trim()) ||
-                     string.IsNullOrEmpty(mask_telefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "").Trim()) ||
-                     string.IsNullOrEmpty(text_Documento.Text.Replace("_", "").Trim()) ||
-                     mask_telefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "").Trim().Length < 11 ||
-                     string.IsNullOrEmpty(txt_email.Text.Trim()))
-            {
-                MessageBox.Show("PREENCHA TODOS OS DADOS!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if ((radio_CNPJ.Checked && Util.ValidarCNPJ(text_Documento.Text)) ||
-                     (radio_CPF.Checked && Util.ValidarCPF(text_Documento.Text)))
-            {
-                // Obtenha os valores dos campos de entrada
-                string nome = txt_nome.Text;
-                string email = txt_email.Text;
-                string endereco = txt_Endereco.Text;
-                string documento = text_Documento.Text;
-                string telefone = mask_telefone.Text;
-                int usuarioID = Util.UserID;
+            // Obtenha os valores dos campos de entrada
+            string nome = txt_nome.Text;
+            string email = txt_email.Text;
+            string endereco = txt_Endereco.Text;
+            string documento = text_Documento.Text;
+            string telefone = mask_telefone.Text;
+            int usuarioID = Util.UserID;
 
-                // Verifique se o cliente já existe para o usuário atual
-                if (Util.VerificarClienteExistente(nome, documento, usuarioID))
-                {
-                    // Atualize os dados do cliente
-                    Util.AtualizarDadosCliente(nome, email, endereco, documento, telefone, usuarioID);
-                }
-                else
-                {
-                    // Adicione um novo cliente
-                    Util.InserirDadosCliente(nome, email, endereco, documento, telefone, usuarioID);
-                }
-            }
+            Util.AtualizarDadosCliente(nome, email, endereco, documento, telefone, usuarioID);
+            this.Close();
+
         }
 
         private void EditarDadosCliente_Load(object sender, EventArgs e)

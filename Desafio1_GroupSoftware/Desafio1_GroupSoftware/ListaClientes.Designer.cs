@@ -38,16 +38,16 @@ namespace Desafio1_GroupSoftware
             txt_Pesquisa = new TextBox();
             button_Voltar = new Button();
             dataGrid_Clientes = new DataGridView();
-            nomeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Endereço = new DataGridViewTextBoxColumn();
-            documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             clienteBindingSource = new BindingSource(components);
             clienteBindingSource1 = new BindingSource(components);
             button_Exportar = new Button();
             label_ActiveUser = new Label();
             button_Importar = new Button();
+            nomeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Endereço = new DataGridViewTextBoxColumn();
+            documentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             groupBox_Pesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid_Clientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
@@ -136,51 +136,6 @@ namespace Desafio1_GroupSoftware
             dataGrid_Clientes.CellContentClick += dataGrid_Clientes_CellContentClick;
             dataGrid_Clientes.CellContentDoubleClick += dataGrid_Clientes_CellContentDoubleClick;
             // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            nomeDataGridViewTextBoxColumn.MinimumWidth = 8;
-            nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            nomeDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // Endereço
-            // 
-            Endereço.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Endereço.DataPropertyName = "endereco";
-            Endereço.HeaderText = "Endereço";
-            Endereço.MinimumWidth = 8;
-            Endereço.Name = "Endereço";
-            Endereço.ReadOnly = true;
-            // 
-            // documentoDataGridViewTextBoxColumn
-            // 
-            documentoDataGridViewTextBoxColumn.DataPropertyName = "Documento";
-            documentoDataGridViewTextBoxColumn.HeaderText = "Documento";
-            documentoDataGridViewTextBoxColumn.MinimumWidth = 8;
-            documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
-            documentoDataGridViewTextBoxColumn.ReadOnly = true;
-            documentoDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            emailDataGridViewTextBoxColumn.MinimumWidth = 8;
-            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            emailDataGridViewTextBoxColumn.ReadOnly = true;
-            emailDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // telefoneDataGridViewTextBoxColumn
-            // 
-            telefoneDataGridViewTextBoxColumn.DataPropertyName = "Telefone";
-            telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
-            telefoneDataGridViewTextBoxColumn.MinimumWidth = 8;
-            telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
-            telefoneDataGridViewTextBoxColumn.ReadOnly = true;
-            telefoneDataGridViewTextBoxColumn.Width = 150;
-            // 
             // clienteBindingSource
             // 
             clienteBindingSource.DataSource = typeof(Cliente);
@@ -226,6 +181,51 @@ namespace Desafio1_GroupSoftware
             button_Importar.UseVisualStyleBackColor = true;
             button_Importar.MouseClick += button_Importar_MouseClick;
             // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            nomeDataGridViewTextBoxColumn.MinimumWidth = 8;
+            nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            nomeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // Endereço
+            // 
+            Endereço.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Endereço.DataPropertyName = "endereco";
+            Endereço.HeaderText = "Endereço";
+            Endereço.MinimumWidth = 8;
+            Endereço.Name = "Endereço";
+            Endereço.ReadOnly = true;
+            // 
+            // documentoDataGridViewTextBoxColumn
+            // 
+            documentoDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            documentoDataGridViewTextBoxColumn.DataPropertyName = "Documento";
+            documentoDataGridViewTextBoxColumn.HeaderText = "Documento";
+            documentoDataGridViewTextBoxColumn.MinimumWidth = 8;
+            documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
+            documentoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.MinimumWidth = 8;
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.ReadOnly = true;
+            emailDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            telefoneDataGridViewTextBoxColumn.DataPropertyName = "Telefone";
+            telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
+            telefoneDataGridViewTextBoxColumn.MinimumWidth = 8;
+            telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            telefoneDataGridViewTextBoxColumn.ReadOnly = true;
+            telefoneDataGridViewTextBoxColumn.Width = 150;
+            // 
             // ListaClientes
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -266,11 +266,11 @@ namespace Desafio1_GroupSoftware
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private Button button_Exportar;
         private Label label_ActiveUser;
+        private Button button_Importar;
         private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn Endereço;
         private DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
-        private Button button_Importar;
     }
 }
