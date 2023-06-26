@@ -87,6 +87,14 @@ namespace Desafio1_GroupSoftware
 
                 // Chame o método para inserir os dados na tabela
                 Util.InserirDadosCliente(nome, email, endereco, documento, telefone, usuarioID);
+                
+                //Depois de salvar, limpa os campos
+                txt_nome.Text = "";
+                txt_email.Text = "";
+                txt_Endereco.Text = "";
+                maskText_Documento.Text = "";
+                mask_telefone.Text = "";
+
             }
         }
 
@@ -125,13 +133,13 @@ namespace Desafio1_GroupSoftware
             if (radio_CNPJ.Checked)
             {
                 label_Doc.Text = "CPNJ: ";
-                maskText_Documento.Mask = "00,000,000/0000-00";
+                maskText_Documento.Mask = "00.000.000/0000-00";
                 maskText_Documento.Text = "";
             }
             else if (radio_CPF.Checked)
             {
                 label_Doc.Text = "CPF: ";
-                maskText_Documento.Mask = "000,000,000-00";
+                maskText_Documento.Mask = "000.000.000-00";
                 maskText_Documento.Text = "";
             }
             else
