@@ -57,36 +57,41 @@
             groupBox_NovoUsuario.Controls.Add(label_CrieSenha);
             groupBox_NovoUsuario.Controls.Add(text_CrieUser);
             groupBox_NovoUsuario.Controls.Add(label_CrieUser);
-            groupBox_NovoUsuario.Location = new Point(5, 3);
+            groupBox_NovoUsuario.Location = new Point(7, 5);
+            groupBox_NovoUsuario.Margin = new Padding(4, 5, 4, 5);
             groupBox_NovoUsuario.Name = "groupBox_NovoUsuario";
-            groupBox_NovoUsuario.Size = new Size(260, 263);
+            groupBox_NovoUsuario.Padding = new Padding(4, 5, 4, 5);
+            groupBox_NovoUsuario.Size = new Size(371, 438);
             groupBox_NovoUsuario.TabIndex = 0;
             groupBox_NovoUsuario.TabStop = false;
             groupBox_NovoUsuario.Text = "Novo usuário";
             // 
             // txt_Email
             // 
-            txt_Email.Location = new Point(5, 81);
+            txt_Email.Location = new Point(7, 135);
+            txt_Email.Margin = new Padding(4, 5, 4, 5);
             txt_Email.Name = "txt_Email";
-            txt_Email.Size = new Size(248, 23);
+            txt_Email.Size = new Size(353, 31);
             txt_Email.TabIndex = 2;
             txt_Email.TextChanged += txt_Email_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(7, 63);
+            label1.Location = new Point(10, 105);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(44, 15);
+            label1.Size = new Size(65, 25);
             label1.TabIndex = 9;
             label1.Text = "E-mail:";
             // 
             // button_Salvar
             // 
             button_Salvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Salvar.Location = new Point(179, 232);
+            button_Salvar.Location = new Point(247, 387);
+            button_Salvar.Margin = new Padding(4, 5, 4, 5);
             button_Salvar.Name = "button_Salvar";
-            button_Salvar.Size = new Size(75, 23);
+            button_Salvar.Size = new Size(116, 38);
             button_Salvar.TabIndex = 6;
             button_Salvar.Text = "SALVAR";
             button_Salvar.UseVisualStyleBackColor = true;
@@ -95,9 +100,10 @@
             // button_Cancelar
             // 
             button_Cancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Cancelar.Location = new Point(99, 232);
+            button_Cancelar.Location = new Point(123, 387);
+            button_Cancelar.Margin = new Padding(4, 5, 4, 5);
             button_Cancelar.Name = "button_Cancelar";
-            button_Cancelar.Size = new Size(75, 23);
+            button_Cancelar.Size = new Size(116, 38);
             button_Cancelar.TabIndex = 7;
             button_Cancelar.Text = "CANCELAR";
             button_Cancelar.UseVisualStyleBackColor = true;
@@ -106,9 +112,10 @@
             // checkBox_ShowPassword
             // 
             checkBox_ShowPassword.AutoSize = true;
-            checkBox_ShowPassword.Location = new Point(152, 207);
+            checkBox_ShowPassword.Location = new Point(217, 345);
+            checkBox_ShowPassword.Margin = new Padding(4, 5, 4, 5);
             checkBox_ShowPassword.Name = "checkBox_ShowPassword";
-            checkBox_ShowPassword.Size = new Size(101, 19);
+            checkBox_ShowPassword.Size = new Size(151, 29);
             checkBox_ShowPassword.TabIndex = 5;
             checkBox_ShowPassword.Text = "Mostrar senha";
             checkBox_ShowPassword.UseVisualStyleBackColor = true;
@@ -116,9 +123,10 @@
             // 
             // text_ConfirmeSenha
             // 
-            text_ConfirmeSenha.Location = new Point(5, 171);
+            text_ConfirmeSenha.Location = new Point(7, 285);
+            text_ConfirmeSenha.Margin = new Padding(4, 5, 4, 5);
             text_ConfirmeSenha.Name = "text_ConfirmeSenha";
-            text_ConfirmeSenha.Size = new Size(249, 23);
+            text_ConfirmeSenha.Size = new Size(354, 31);
             text_ConfirmeSenha.TabIndex = 4;
             text_ConfirmeSenha.UseSystemPasswordChar = true;
             text_ConfirmeSenha.TextChanged += text_ConfirmeSenha_TextChanged;
@@ -127,17 +135,19 @@
             // label_ConfSenha
             // 
             label_ConfSenha.AutoSize = true;
-            label_ConfSenha.Location = new Point(5, 153);
+            label_ConfSenha.Location = new Point(7, 255);
+            label_ConfSenha.Margin = new Padding(4, 0, 4, 0);
             label_ConfSenha.Name = "label_ConfSenha";
-            label_ConfSenha.Size = new Size(103, 15);
+            label_ConfSenha.Size = new Size(154, 25);
             label_ConfSenha.TabIndex = 4;
             label_ConfSenha.Text = "Confirme a senha:";
             // 
             // text_CrieSenha
             // 
-            text_CrieSenha.Location = new Point(5, 127);
+            text_CrieSenha.Location = new Point(7, 212);
+            text_CrieSenha.Margin = new Padding(4, 5, 4, 5);
             text_CrieSenha.Name = "text_CrieSenha";
-            text_CrieSenha.Size = new Size(249, 23);
+            text_CrieSenha.Size = new Size(354, 31);
             text_CrieSenha.TabIndex = 3;
             text_CrieSenha.UseSystemPasswordChar = true;
             text_CrieSenha.TextChanged += text_CrieSenha_TextChanged;
@@ -146,17 +156,19 @@
             // label_CrieSenha
             // 
             label_CrieSenha.AutoSize = true;
-            label_CrieSenha.Location = new Point(7, 107);
+            label_CrieSenha.Location = new Point(10, 178);
+            label_CrieSenha.Margin = new Padding(4, 0, 4, 0);
             label_CrieSenha.Name = "label_CrieSenha";
-            label_CrieSenha.Size = new Size(86, 15);
+            label_CrieSenha.Size = new Size(129, 25);
             label_CrieSenha.TabIndex = 2;
             label_CrieSenha.Text = "Crie sua senha:";
             // 
             // text_CrieUser
             // 
-            text_CrieUser.Location = new Point(6, 37);
+            text_CrieUser.Location = new Point(9, 62);
+            text_CrieUser.Margin = new Padding(4, 5, 4, 5);
             text_CrieUser.Name = "text_CrieUser";
-            text_CrieUser.Size = new Size(249, 23);
+            text_CrieUser.Size = new Size(354, 31);
             text_CrieUser.TabIndex = 1;
             text_CrieUser.TextChanged += text_CrieUser_TextChanged;
             text_CrieUser.KeyDown += text_CrieUser_KeyDown;
@@ -164,20 +176,22 @@
             // label_CrieUser
             // 
             label_CrieUser.AutoSize = true;
-            label_CrieUser.Location = new Point(6, 19);
+            label_CrieUser.Location = new Point(9, 32);
+            label_CrieUser.Margin = new Padding(4, 0, 4, 0);
             label_CrieUser.Name = "label_CrieUser";
-            label_CrieUser.Size = new Size(80, 15);
+            label_CrieUser.Size = new Size(121, 25);
             label_CrieUser.TabIndex = 0;
             label_CrieUser.Text = "Crie seu user: ";
             // 
             // NovoUsuario
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(270, 270);
+            ClientSize = new Size(386, 450);
             Controls.Add(groupBox_NovoUsuario);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "NovoUsuario";
             StartPosition = FormStartPosition.CenterScreen;

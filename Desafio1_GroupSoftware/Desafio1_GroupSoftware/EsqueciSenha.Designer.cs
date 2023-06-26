@@ -43,9 +43,11 @@
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(textBox_Email);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(5, 6);
+            groupBox1.Location = new Point(7, 10);
+            groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(253, 101);
+            groupBox1.Padding = new Padding(4, 5, 4, 5);
+            groupBox1.Size = new Size(361, 168);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Esqueci minha senha";
@@ -53,9 +55,10 @@
             // button_Cancelar
             // 
             button_Cancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Cancelar.Location = new Point(88, 68);
+            button_Cancelar.Location = new Point(81, 113);
+            button_Cancelar.Margin = new Padding(4, 5, 4, 5);
             button_Cancelar.Name = "button_Cancelar";
-            button_Cancelar.Size = new Size(75, 23);
+            button_Cancelar.Size = new Size(129, 38);
             button_Cancelar.TabIndex = 3;
             button_Cancelar.Text = "CANCELAR";
             button_Cancelar.UseVisualStyleBackColor = true;
@@ -64,9 +67,10 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(170, 68);
+            button1.Location = new Point(218, 113);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(132, 38);
             button1.TabIndex = 2;
             button1.Text = "ENVIAR";
             button1.UseVisualStyleBackColor = true;
@@ -74,28 +78,31 @@
             // 
             // textBox_Email
             // 
-            textBox_Email.Location = new Point(5, 39);
+            textBox_Email.Location = new Point(7, 65);
+            textBox_Email.Margin = new Padding(4, 5, 4, 5);
             textBox_Email.Name = "textBox_Email";
-            textBox_Email.Size = new Size(239, 23);
+            textBox_Email.Size = new Size(340, 31);
             textBox_Email.TabIndex = 1;
             textBox_Email.KeyDown += textBox_Email_KeyDown;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(5, 21);
+            label1.Location = new Point(7, 35);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(42, 15);
+            label1.Size = new Size(63, 25);
             label1.TabIndex = 0;
             label1.Text = "Email: ";
             // 
             // EsqueciSenha
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(262, 111);
+            ClientSize = new Size(374, 185);
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "EsqueciSenha";
             StartPosition = FormStartPosition.CenterScreen;
