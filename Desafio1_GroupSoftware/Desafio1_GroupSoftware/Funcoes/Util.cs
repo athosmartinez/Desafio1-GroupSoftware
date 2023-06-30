@@ -134,7 +134,7 @@ namespace Desafio1_GroupSoftware.Funcoes
             }
             return stringBuilder.ToString();
         }
-        //INSERI DADOS NO BANCO
+        //INSERIR DADOS NO BANCO
         public static void InserirDadosCliente(string nome, string email, string endereco, string documento, string telefone, int usuarioID)
         {
             try
