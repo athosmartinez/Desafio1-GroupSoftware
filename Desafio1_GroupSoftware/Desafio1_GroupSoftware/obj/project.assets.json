@@ -3593,19 +3593,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\athos\\.nuget\\packages\\": {}
+    "C:\\Users\\Athos\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\athos\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
+      "projectUniqueName": "C:\\Users\\Athos\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
       "projectName": "Desafio1_GroupSoftware",
-      "projectPath": "C:\\Users\\athos\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
-      "packagesPath": "C:\\Users\\athos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\athos\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\obj\\",
+      "projectPath": "C:\\Users\\Athos\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware.csproj",
+      "packagesPath": "C:\\Users\\Athos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Athos\\Documents\\GitHub\\Desafio1-GroupSoftware\\Desafio1_GroupSoftware\\Desafio1_GroupSoftware\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\athos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Athos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3679,7 +3684,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
