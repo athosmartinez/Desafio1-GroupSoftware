@@ -19,7 +19,7 @@ namespace Desafio1_GroupSoftware.Funcoes
 
         public static SqlConnection EstabelecerConexao()
         {
-            string connectionString = "Data Source=Athos-Dell;Initial Catalog=users;User ID=sa;Password=Admin@123";
+            string connectionString = "Data Source=DESKTOP-0IOV30G;Initial Catalog=users;User ID=sa;Password=Admin@123";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
             return connection;
