@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\athos\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\athos\\.nuget\\packages",
+      "C:\\Users\\Athos\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Athos\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
