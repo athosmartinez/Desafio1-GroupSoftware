@@ -12,9 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Athos\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Athos\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\athos.andrade\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\athos.andrade\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
